@@ -14,6 +14,7 @@ public class Trap : MonoBehaviour
     public TrapState State = TrapState.BeingPlaced;
     public LayerMask Layer;
     public Material PlacingMat;
+    public float Force = 12, Radius = 5;
 
     private Material _deafultMat;
     private float _positionY;
@@ -22,7 +23,14 @@ public class Trap : MonoBehaviour
     {
         _deafultMat = GetComponent<Renderer>().material;
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.rigidbody.tag == "Enemy" && State != TrapState.BeingPlaced)
+        {
+            collision.rigidbody.AddExplosionForce(Force, transform.position, Radius, 2, ForceMode.Impulse);
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

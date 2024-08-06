@@ -122,3 +122,6 @@ MonoBehaviour:
   Layer:
     serializedVersion: 2
     m_Bits: 8
+  PlacingMat: {fileID: 2100000, guid: 48cf4f7e717a9774eae6c49771d07127, type: 2}
+  Force: 15
+  Radius: 10
