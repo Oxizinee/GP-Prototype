@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float MovementSpeed = 10, JumpHeight = 8, RotationSpeedY = 200, RotationSpeedX = 230, ThrowForce = 50;
-    public GameObject BlastBallPrefab, TrapPrefab;
+    public GameObject BlastBallPrefab, TrapPrefab, BlackHolePrefab;
 
     private CharacterController _characterController;
 
     private float _verticalVel, _gravity = 12, _targetYRotation;
     private Vector2 _movementInput;
     private Vector3 _moveVector, _mousePosition, _mouseInput;
-    private bool _trapAbilityActive = false;
+    private bool _trapAbilityActive = false, _blackHoleActive = false;
     private GameObject _selectedEnemy, _selectedTrap;
     void Start()
     {
@@ -29,16 +30,36 @@ public class PlayerController : MonoBehaviour
         ThrowEnemy();
         ShootBlastBall();
 
+        PlaceTrap();
+        ShootBlackHole();
+    }
+
+    private void ShootBlackHole()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _blackHoleActive = true;
+        }
+
+        if (_blackHoleActive && Input.GetMouseButtonDown(0))
+        {
+            Instantiate(BlackHolePrefab, transform.position, transform.rotation);
+            _blackHoleActive = false;
+        }
+    }
+
+    private void PlaceTrap()
+    {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             _trapAbilityActive = true;
         }
 
-        if(_trapAbilityActive && _selectedTrap == null) 
+        if (_trapAbilityActive && _selectedTrap == null)
         {
             _selectedTrap = Instantiate(TrapPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z + 2), Quaternion.identity);
         }
-        else if(_trapAbilityActive && _selectedTrap != null && Input.GetMouseButtonDown(0)) 
+        else if (_trapAbilityActive && _selectedTrap != null && Input.GetMouseButtonDown(0))
         {
             _selectedTrap.GetComponent<Trap>().State = TrapState.Placed;
             _selectedTrap = null;
@@ -55,7 +76,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ThrowEnemy()
     {
-        if (_trapAbilityActive) return;
+        if (_trapAbilityActive || _blackHoleActive) return;
         
         RaycastHit mouseRaycast;
 

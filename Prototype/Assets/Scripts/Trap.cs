@@ -25,7 +25,7 @@ public class Trap : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.rigidbody.tag == "Enemy" && State != TrapState.BeingPlaced)
+        if (collision.rigidbody.tag == "Enemy" && collision.gameObject.GetComponent<EnemyController>().State != EnemyStates.Selected && State != TrapState.BeingPlaced)
         {
             collision.rigidbody.AddExplosionForce(Force, transform.position, Radius, 2, ForceMode.Impulse);
             Destroy(gameObject);
