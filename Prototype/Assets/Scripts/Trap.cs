@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum TrapState
 {
@@ -14,7 +15,7 @@ public class Trap : MonoBehaviour
     public TrapState State = TrapState.BeingPlaced;
     public LayerMask Layer;
     public Material PlacingMat;
-    public float Force = 12, Radius = 5;
+    public float Force = 12, Radius = 5, RotationSpeed = 240;
 
     private Material _deafultMat;
     private float _positionY;
@@ -27,6 +28,8 @@ public class Trap : MonoBehaviour
     {
         if (collision.rigidbody.tag == "Enemy" && collision.gameObject.GetComponent<EnemyController>().State != EnemyStates.Selected && State != TrapState.BeingPlaced)
         {
+            Destroy(collision.gameObject.GetComponent<NavMeshAgent>());
+
             collision.rigidbody.AddExplosionForce(Force, transform.position, Radius, 2, ForceMode.Impulse);
             Destroy(gameObject);
         }
@@ -41,6 +44,12 @@ public class Trap : MonoBehaviour
             _input = Input.mousePosition;
             _input.z = Camera.main.nearClipPlane + 5;
             Vector3 mouse = Camera.main.ScreenToWorldPoint(_input);
+
+            if (Input.GetAxis("Mouse ScrollWheel")!= 0)
+            {
+                transform.Rotate(Vector3.up, (transform.eulerAngles.y + (RotationSpeed * Input.GetAxis("Mouse ScrollWheel"))) * Time.deltaTime);
+                Debug.Log(transform.eulerAngles.y);
+            }
 
             RaycastHit hit;
             if(Physics.Raycast(transform.position,-Vector3.up, out hit,Mathf.Infinity, Layer))

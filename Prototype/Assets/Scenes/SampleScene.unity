@@ -1029,6 +1029,7 @@ MonoBehaviour:
   ThrowForce: 15
   BlastBallPrefab: {fileID: 3255963329888112448, guid: b0d42aabc5fbc634ba6984712de1e4f2, type: 3}
   TrapPrefab: {fileID: 1756538042177529409, guid: 6c5c3add7cbd3a3458185fc5a72d173b, type: 3}
+  BlackHolePrefab: {fileID: 3289483598235306070, guid: 492bdc39a1fb0a742bdc631bcbdf5674, type: 3}
 --- !u!136 &1719863343
 CapsuleCollider:
   m_ObjectHideFlags: 0

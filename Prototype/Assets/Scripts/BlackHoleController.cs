@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BlackHoleController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class BlackHoleController : MonoBehaviour
         {
             _enemiesToPull.Add(other.gameObject);
             _startPulling = true;
+
             Debug.Log("enemy in range");
         }
     }
@@ -29,6 +31,7 @@ public class BlackHoleController : MonoBehaviour
         {
             foreach (var enemy in _enemiesToPull)
             {
+                enemy.GetComponent<NavMeshAgent>().SetDestination(transform.position);
                 Vector3 direction = (PullCenter.transform.position - enemy.transform.position).normalized;
                 Vector3 pullForce = direction * PullStrength;
 

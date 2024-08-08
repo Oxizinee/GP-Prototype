@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Enemy hit");
 
                     _selectedEnemy = mouseRaycast.rigidbody.gameObject;
-
+                    Destroy(_selectedEnemy.GetComponent<NavMeshAgent>());
                     _mouseInput = Input.mousePosition;
                     _mouseInput.z = Camera.main.nearClipPlane + mouseRaycast.point.z;
                     _selectedEnemy.transform.parent = transform;
