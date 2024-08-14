@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - BlastBall
+  - Floor
   layers:
   - Default
   - TransparentFX

@@ -28,7 +28,7 @@ public class Trap : MonoBehaviour
     {
         if (collision.rigidbody.tag == "Enemy" && collision.gameObject.GetComponent<EnemyController>().State != EnemyStates.Selected && State != TrapState.BeingPlaced)
         {
-            Destroy(collision.gameObject.GetComponent<NavMeshAgent>());
+            Destroy(collision.collider.GetComponent<NavMeshAgent>());
 
             collision.rigidbody.AddExplosionForce(Force, transform.position, Radius, 2, ForceMode.Impulse);
             Destroy(gameObject);
