@@ -7,13 +7,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8;
-    public float FullHp = 10, _currentHp = 10;
-    public Image HPBar;
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2;
 
     private CharacterController _characterController;
 
-    private float _verticalVel, _gravity = 12; //_currentHp;
+    private float _verticalVel, _gravity = 12;
+    private bool _canDash = true;
     private Vector2 _movementInput;
     private Vector3 _moveVector;
 
@@ -21,13 +20,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            _currentHp--;
+            GetComponent<HPBarBehaviour>().CurrentHP--;
         }
     }
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
-        _currentHp = FullHp;
     }
 
     // Update is called once per frame
@@ -35,14 +33,30 @@ public class Player : MonoBehaviour
     {
         Movement();
         Rotate();
-        
 
-        HPBarBehaviour();
+        Dash();
     }
-    private void HPBarBehaviour()
+
+    private void Dash()
     {
-        HPBar.fillAmount =  Mathf.Clamp(_currentHp, 0, FullHp) / FullHp;
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
+        {
+            _characterController.Move(transform.forward * DashDistance);
+            _canDash = false;
+        }
+
+        if (!_canDash)
+        {
+            DashCooldown -= Time.deltaTime;
+            if (DashCooldown < 0)
+            {
+                DashCooldown = 2;
+                _canDash = true;
+                return;
+            }
+        }
     }
+
 
     private void Rotate()
     {

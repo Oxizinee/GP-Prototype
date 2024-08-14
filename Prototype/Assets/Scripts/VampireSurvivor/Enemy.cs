@@ -43,6 +43,12 @@ public class Enemy : MonoBehaviour
 
         }
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
+
+
+        if(Input.GetMouseButtonDown(0)) 
+        {
+            GetComponent<HPBarBehaviour>().CurrentHP--;
+        }
     }
 
     public bool isGrounded()
