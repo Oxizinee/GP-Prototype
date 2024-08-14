@@ -5,8 +5,7 @@ using UnityEngine;
 public class BlastBallController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float Speed = 10;
-    private float _timer;
+    public float Force = 3;
     void Start()
     {
         
@@ -15,12 +14,6 @@ public class BlastBallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _timer += Time.deltaTime;
-        transform.position += transform.forward * Speed * Time.deltaTime;
-
-        if (_timer > 9)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }

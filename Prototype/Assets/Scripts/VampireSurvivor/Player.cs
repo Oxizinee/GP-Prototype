@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2;
+    public GameObject BulletPrefab, BombPrefab;
 
     private CharacterController _characterController;
 
@@ -35,8 +36,24 @@ public class Player : MonoBehaviour
         Rotate();
 
         Dash();
+        ShootBullet();
+        ShootBomb();
     }
 
+    private void ShootBomb()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Instantiate(BombPrefab, transform.position, transform.rotation);
+        }
+    }
+    private void ShootBullet()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(BulletPrefab, transform.position, transform.rotation);
+        }
+    }
     private void Dash()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _canDash)

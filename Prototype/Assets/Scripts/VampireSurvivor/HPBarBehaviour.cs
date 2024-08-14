@@ -16,10 +16,18 @@ public class HPBarBehaviour : MonoBehaviour
     public float FullHp = 10, CurrentHP;
     public Image HPBar;
     public Transform HPpivot;
+    public Transform HpBarGO;
 
+    private Quaternion _barRotation, _barRotation2;
     void Start()
     {
         CurrentHP = FullHp;
+
+        if (Type == OwnerType.Enemy)
+        {
+            _barRotation = HpBarGO.rotation;
+            _barRotation2 = HPpivot.rotation;
+        }
     }
 
     // Update is called once per frame
@@ -31,7 +39,15 @@ public class HPBarBehaviour : MonoBehaviour
         }
         else
         {
+            HpBarGO.rotation = Quaternion.Euler(HpBarGO.eulerAngles.x,HpBarGO.eulerAngles.y,_barRotation.eulerAngles.z);
+            HPpivot.rotation = Quaternion.Euler(HPpivot.eulerAngles.x,_barRotation2.eulerAngles.y,HPpivot.eulerAngles.z);
             HPpivot.localScale = new Vector3(Mathf.Clamp(CurrentHP, 0, FullHp) / FullHp,HPpivot.localScale.y, HPpivot.localScale.z);
+        }
+
+
+        if(CurrentHP <= 0) 
+        {
+            Destroy(gameObject);
         }
     }
 }

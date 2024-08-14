@@ -20,12 +20,37 @@ public class Enemy : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Bullet")
+        {
+            GetComponent<HPBarBehaviour>().CurrentHP--;
+            Destroy(other.gameObject);
+
+        }
+
+        if (other.gameObject.tag == "BlastBall")
+        {
+            Debug.Log("BlastBall Hit");
+            GetComponent<Rigidbody>().AddForce(new Vector3(other.transform.forward.x, transform.position.y + 1, other.transform.forward.z) * other.GetComponent<BlastBallController>().Force, 
+                ForceMode.Impulse);
+            GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - 3;
+            Destroy(other.gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         isGrounded();
 
-        if (State == EnemyStates.Selected) 
+        StateBehaviour();
+
+
+    }
+
+    private void StateBehaviour()
+    {
+        if (State == EnemyStates.Selected)
         {
 
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
@@ -36,19 +61,13 @@ public class Enemy : MonoBehaviour
             transform.position = mouse;
         }
 
-        if(State == EnemyStates.Walking) 
+        if (State == EnemyStates.Walking)
         {
-            
+
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         }
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
-
-
-        if(Input.GetMouseButtonDown(0)) 
-        {
-            GetComponent<HPBarBehaviour>().CurrentHP--;
-        }
     }
 
     public bool isGrounded()
