@@ -39,8 +39,8 @@ public class HPBarBehaviour : MonoBehaviour
         }
         else
         {
-            HpBarGO.rotation = Quaternion.Euler(HpBarGO.eulerAngles.x,HpBarGO.eulerAngles.y,_barRotation.eulerAngles.z);
-            HPpivot.rotation = Quaternion.Euler(HPpivot.eulerAngles.x,_barRotation2.eulerAngles.y,HPpivot.eulerAngles.z);
+            //HpBarGO.rotation = Quaternion.Euler(HpBarGO.eulerAngles.x,HpBarGO.eulerAngles.y,0);
+            //HPpivot.rotation = Quaternion.Euler(HPpivot.eulerAngles.x,0,HPpivot.eulerAngles.z);
             HPpivot.localScale = new Vector3(Mathf.Clamp(CurrentHP, 0, FullHp) / FullHp,HPpivot.localScale.y, HPpivot.localScale.z);
         }
 

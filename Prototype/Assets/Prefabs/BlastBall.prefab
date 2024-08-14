@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5373288634225662709}
   - component: {fileID: -7622075404156022855}
   - component: {fileID: 8212526127263523017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlastBall
   m_TagString: BlastBall
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a989bf67e08b96a4589f0c037e7fbbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
   Force: 10
 --- !u!114 &8212526127263523017
 MonoBehaviour:
@@ -133,3 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d1a350b6798c5429718f6d0ddde74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 10
