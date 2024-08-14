@@ -12,7 +12,7 @@ public class BlastBallController : MonoBehaviour
             Debug.Log("Bomb Hit  +" + collision.gameObject.name);
             if (collision.rigidbody != null)
             {
-                collision.rigidbody.AddForce(new Vector3(transform.forward.x, collision.transform.position.y + 1, transform.forward.z) * Force,
+                collision.rigidbody.AddForce(new Vector3(transform.forward.x, collision.transform.position.y, transform.forward.z) * Force,
                     ForceMode.Impulse);
                  if (collision.gameObject.tag == "Enemy")
                     {

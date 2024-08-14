@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         _movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        _moveVector = (transform.forward * _movementInput.y + Vector3.right * _movementInput.x) * MovementSpeed;
+        _moveVector = (Vector3.forward * _movementInput.y + Vector3.right * _movementInput.x) * MovementSpeed;
         _moveVector.y = _verticalVel;
 
         if (_characterController.isGrounded)

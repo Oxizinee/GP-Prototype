@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   _isGrounded: 0
+  _isStunned: 0
   Speed: 5
 --- !u!114 &2931200100778925940
 MonoBehaviour:
@@ -253,7 +254,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1755652863752562063
 GameObject:

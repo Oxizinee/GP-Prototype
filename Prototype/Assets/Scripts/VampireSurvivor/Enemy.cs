@@ -9,11 +9,12 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public EnemyStates State = EnemyStates.Walking;
-    public bool _isGrounded;
+    public bool _isGrounded, _isStunned;
     public float Speed = 5;
 
     private GameObject _player;
     private Vector3 _input;
+    private float _stunTimer;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
+            _isStunned =true;
             GetComponent<HPBarBehaviour>().CurrentHP--;
             Destroy(other.gameObject);
 
@@ -35,30 +37,22 @@ public class Enemy : MonoBehaviour
     {
         isGrounded();
 
-        StateBehaviour();
+        Move();
 
-
+        if (_isStunned)
+        {
+            _stunTimer += Time.deltaTime;
+            if( _stunTimer >= 0.5f ) 
+            {
+                _isStunned = false;
+                _stunTimer = 0;
+            }
+        }
     }
 
-    private void StateBehaviour()
+    private void Move()
     {
-        if (State == EnemyStates.Selected)
-        {
-
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-
-            _input = Input.mousePosition;
-            _input.z = Camera.main.nearClipPlane + 8;
-            Vector3 mouse = Camera.main.ScreenToWorldPoint(_input);
-            transform.position = mouse;
-        }
-
-        if (State == EnemyStates.Walking)
-        {
-
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
-        }
+        if (_isStunned) return;  
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
     }
 
