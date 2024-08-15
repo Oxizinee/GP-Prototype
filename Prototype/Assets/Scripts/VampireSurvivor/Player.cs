@@ -9,17 +9,20 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2;
     public GameObject BulletPrefab, BombPrefab;
+    public Material InvincibleMat;
+
 
     private CharacterController _characterController;
 
-    private float _verticalVel, _gravity = 12;
-    private bool _canDash = true;
+    private Material _deafultMat;
+    private float _verticalVel, _gravity = 12, _invincibilityTimer;
+    private bool _canDash = true, _invincible = false;
     private Vector2 _movementInput;
     private Vector3 _moveVector;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && !_invincible)
         {
             GetComponent<HPBarBehaviour>().CurrentHP--;
         }
@@ -27,6 +30,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _deafultMat = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -60,6 +64,7 @@ public class Player : MonoBehaviour
         {
             _characterController.Move(transform.forward * DashDistance);
             _canDash = false;
+            _invincible = true;
         }
 
         if (!_canDash)
@@ -70,6 +75,18 @@ public class Player : MonoBehaviour
                 DashCooldown = 2;
                 _canDash = true;
                 return;
+            }
+        }
+
+        if (_invincible)
+        {
+            GetComponent<Renderer>().material = InvincibleMat;
+            _invincibilityTimer += Time.deltaTime;
+            if (_invincibilityTimer >= 0.8f)
+            {
+                _invincibilityTimer = 0;
+                GetComponent<Renderer>().material = _deafultMat;
+                _invincible = false;
             }
         }
     }
