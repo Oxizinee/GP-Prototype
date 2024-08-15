@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        if (_isStunned) return;  
+        if (_isStunned || !isGrounded()) return;  
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
     }
 
