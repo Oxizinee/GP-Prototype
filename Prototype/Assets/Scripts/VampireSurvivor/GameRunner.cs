@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameRunner : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject PauseScreen, EnemyPrefab;
+    public Text EnemiesPresent, EnemiesKilled;
     private bool _isPaused;
+
+    public float EnemiesKilledNumber, EnemiesPresentNmber;
 
     private float _spawnTimer, _offset = 0.3f;
     void Start()
@@ -19,6 +23,9 @@ public class GameRunner : MonoBehaviour
     {
         PauseGame();
         SpawnEnemies();
+
+        EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
+        EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;
     }
 
     private void SpawnEnemies()
@@ -55,6 +62,7 @@ public class GameRunner : MonoBehaviour
             // Instantiate the object at the calculated position
             GameObject enemy = Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity);
             enemy.GetComponent<Enemy>().Type = (EnemyType)randomType;
+            EnemiesPresentNmber++;
             _spawnTimer = 0;
         }
     }

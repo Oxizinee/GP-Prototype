@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
             _isStunned =true;
             GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - 2;
             Destroy(other.gameObject);
-
         }
        
     }

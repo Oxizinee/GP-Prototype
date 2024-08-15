@@ -18,10 +18,13 @@ public class HPBarBehaviour : MonoBehaviour
     public Transform HPpivot;
     public Transform HpBarGO;
 
+    private GameRunner _gameRunner;
+
     void Start()
     {
         CurrentHP = FullHp;
 
+        _gameRunner = FindFirstObjectByType<GameRunner>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,8 @@ public class HPBarBehaviour : MonoBehaviour
             HPpivot.localScale = new Vector3(Mathf.Clamp(CurrentHP, 0, FullHp) / FullHp,HPpivot.localScale.y, HPpivot.localScale.z);
             if (CurrentHP <= 0)
             {
+                _gameRunner.EnemiesKilledNumber++;
+                _gameRunner.EnemiesPresentNmber--;
                 Destroy(gameObject);
                 GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent++;
             }
