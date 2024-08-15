@@ -7,7 +7,7 @@ public class XPBar : MonoBehaviour
 {
     // Start is called before the first frame update
     public Image XPbar;
-    public float XPCurrent = 0, XPMax = 15;
+    public float XPCurrent = 0, XPMax = 15, Level;
 
 
     void Start()
@@ -19,5 +19,12 @@ public class XPBar : MonoBehaviour
     void Update()
     {
         XPbar.fillAmount =  XPCurrent/ XPMax;
+
+        if (XPCurrent >= XPMax)
+        {
+            Level++;
+            XPCurrent = 0;
+            XPMax = XPMax + 5;
+        }
     }
 }
