@@ -4,17 +4,23 @@ using System.Net.Security;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyType
+{
+    Basic,
+    Ice,
+    Charging
+}
 
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    public EnemyStates State = EnemyStates.Walking;
-    public bool _isGrounded, _isStunned;
+    public EnemyType Type;
+    public bool _isGrounded, _isStunned, _canShoot = true;
     public float Speed = 5;
 
-    public GameObject Player;
+    public GameObject Player, BulletPrefab;
     private Vector3 _input;
-    private float _stunTimer;
+    [SerializeField]private float _stunTimer, _shootingTimer;
 
     void Start()
     {
@@ -26,7 +32,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Bullet")
         {
             _isStunned =true;
-            GetComponent<HPBarBehaviour>().CurrentHP--;
+            GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - 2;
             Destroy(other.gameObject);
 
         }
@@ -38,11 +44,40 @@ public class Enemy : MonoBehaviour
         isGrounded();
 
         Move();
+        StunBehaviour();
+        IceEnemyBehaviour();
 
+    }
+
+    private void IceEnemyBehaviour()
+    {
+        if (Type == EnemyType.Ice)
+        {
+            if (Vector3.Distance(Player.transform.position, transform.position) <= 10 && _canShoot)
+            {
+                GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+                Vector3 direction = Player.transform.position - transform.position;
+                bullet.transform.rotation = Quaternion.LookRotation(direction);
+                _canShoot = false;
+            }
+            if (!_canShoot)
+            {
+                _shootingTimer += Time.deltaTime;
+                if (_shootingTimer >= 3)
+                {
+                    _canShoot = true;
+                    _shootingTimer = 0;
+                }
+            }
+        }
+    }
+
+    private void StunBehaviour()
+    {
         if (_isStunned)
         {
             _stunTimer += Time.deltaTime;
-            if( _stunTimer >= 0.5f ) 
+            if (_stunTimer >= 0.5f)
             {
                 _isStunned = false;
                 _stunTimer = 0;

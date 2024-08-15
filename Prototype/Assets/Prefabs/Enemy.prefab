@@ -207,10 +207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078994a93f6147641bc54d692944a8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  State: 0
+  Type: 0
   _isGrounded: 0
   _isStunned: 0
+  _canShoot: 1
   Speed: 5
+  Player: {fileID: 0}
+  BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
 --- !u!114 &2931200100778925940
 MonoBehaviour:
   m_ObjectHideFlags: 0

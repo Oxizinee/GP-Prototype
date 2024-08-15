@@ -28,6 +28,7 @@ public class GameRunner : MonoBehaviour
         if (_spawnTimer >= 3)
         {
             int side = Random.Range(0, 4);
+            int randomType = Random.Range(0, 2);
 
             // Initialize the spawn position in viewport coordinates
             Vector3 viewportPosition = Vector3.zero;
@@ -52,7 +53,8 @@ public class GameRunner : MonoBehaviour
             Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(viewportPosition);
 
             // Instantiate the object at the calculated position
-            Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity);
+            GameObject enemy = Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity);
+            enemy.GetComponent<Enemy>().Type = (EnemyType)randomType;
             _spawnTimer = 0;
         }
     }

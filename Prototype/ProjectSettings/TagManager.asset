@@ -8,6 +8,7 @@ TagManager:
   - BlastBall
   - Floor
   - Bullet
+  - BulletForPlayer
   layers:
   - Default
   - TransparentFX

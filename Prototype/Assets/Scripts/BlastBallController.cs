@@ -16,7 +16,7 @@ public class BlastBallController : MonoBehaviour
                     ForceMode.Impulse);
                  if (collision.gameObject.tag == "Enemy")
                     {
-                         collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 3;
+                         collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 5;
                     }
              }
 
