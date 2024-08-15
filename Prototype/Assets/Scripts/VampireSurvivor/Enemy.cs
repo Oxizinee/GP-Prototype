@@ -12,13 +12,13 @@ public class Enemy : MonoBehaviour
     public bool _isGrounded, _isStunned;
     public float Speed = 5;
 
-    private GameObject _player;
+    public GameObject Player;
     private Vector3 _input;
     private float _stunTimer;
 
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         if (_isStunned || !isGrounded()) return;  
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
     }
 
     public bool isGrounded()

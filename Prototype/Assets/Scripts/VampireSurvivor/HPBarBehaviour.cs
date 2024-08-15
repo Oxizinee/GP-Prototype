@@ -42,12 +42,14 @@ public class HPBarBehaviour : MonoBehaviour
             //HpBarGO.rotation = Quaternion.Euler(HpBarGO.eulerAngles.x,HpBarGO.eulerAngles.y,0);
             //HPpivot.rotation = Quaternion.Euler(HPpivot.eulerAngles.x,0,HPpivot.eulerAngles.z);
             HPpivot.localScale = new Vector3(Mathf.Clamp(CurrentHP, 0, FullHp) / FullHp,HPpivot.localScale.y, HPpivot.localScale.z);
+            if (CurrentHP <= 0)
+            {
+                Destroy(gameObject);
+                GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent++;
+            }
         }
 
 
-        if(CurrentHP <= 0) 
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }
