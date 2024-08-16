@@ -370,7 +370,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
@@ -1298,7 +1298,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
@@ -1448,7 +1448,8 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1575913489466269136, guid: de4bccf2269a6f74b8f59247c8faa35e, type: 3}
   EnemiesPresent: {fileID: 450884648}
   EnemiesKilled: {fileID: 1522059035}
-  ListOfEnemies: []
+  EnemiesKilledNumber: 0
+  EnemiesPresentNmber: 0
 --- !u!4 &1578714305
 Transform:
   m_ObjectHideFlags: 0

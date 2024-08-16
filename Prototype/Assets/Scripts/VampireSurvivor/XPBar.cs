@@ -18,8 +18,12 @@ public class XPBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        XPbar.fillAmount =  XPCurrent/ XPMax;
+        XPbar.fillAmount = XPCurrent / XPMax;
+        OnLevelUp();
+    }
 
+    private void OnLevelUp()
+    {
         if (XPCurrent >= XPMax)
         {
             Level++;

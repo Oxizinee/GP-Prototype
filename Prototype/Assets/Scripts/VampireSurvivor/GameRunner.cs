@@ -35,7 +35,7 @@ public class GameRunner : MonoBehaviour
         if (_spawnTimer >= 3)
         {
             int side = Random.Range(0, 4);
-            int randomType = Random.Range(0, 2);
+            int randomType = Random.Range(0, 3);
 
             // Initialize the spawn position in viewport coordinates
             Vector3 viewportPosition = Vector3.zero;

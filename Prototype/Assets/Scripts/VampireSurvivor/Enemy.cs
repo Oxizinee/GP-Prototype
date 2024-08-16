@@ -15,12 +15,11 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public EnemyType Type;
-    public bool _isGrounded, _isStunned, _canShoot = true;
+    public bool _isGrounded, _isStunned, _canShoot = true, _canCharge = true, _stunCharging;
     public float Speed = 5;
 
     public GameObject Player, BulletPrefab;
-    private Vector3 _input;
-    [SerializeField]private float _stunTimer, _shootingTimer;
+    [SerializeField]private float _stunTimer, _shootingTimer, _chargerTimer, _inChargeTimer;
 
     void Start()
     {
@@ -45,7 +44,54 @@ public class Enemy : MonoBehaviour
         Move();
         StunBehaviour();
         IceEnemyBehaviour();
+        ChargingEnemyBehaviour();
 
+    }
+
+    private void ChargingEnemyBehaviour()
+    {
+        if (Type == EnemyType.Charging)
+        {
+            GetComponent<LineRenderer>().SetPosition(0, transform.position);
+
+            if (Vector3.Distance(Player.transform.position, transform.position) <= 10 && _canCharge && Vector3.Distance(Player.transform.position, transform.position) >= 8)
+            {
+                _isStunned = true;
+                _stunCharging = true;
+                _canCharge = false;
+            }
+
+            if (_stunCharging)
+            {
+                GetComponent<LineRenderer>().SetPosition(1, Player.transform.position);
+
+                Speed = 30;
+                _inChargeTimer += Time.deltaTime;
+
+                if (_inChargeTimer >= 0.8f)
+                {
+                    _stunCharging = false;
+                    _inChargeTimer = 0;
+                }
+
+            }
+            if (!_stunCharging)
+            {
+                GetComponent<LineRenderer>().SetPosition(1, transform.position);
+                Speed = 5;
+            }
+
+            if (!_canCharge)
+            {
+                _chargerTimer += Time.deltaTime;
+                if (_chargerTimer >= 3)
+                {
+                    //_stunCharging = false;
+                    _canCharge = true;
+                    _chargerTimer = 0;
+                }
+            }
+        }
     }
 
     private void IceEnemyBehaviour()
@@ -54,6 +100,7 @@ public class Enemy : MonoBehaviour
         {
             if (Vector3.Distance(Player.transform.position, transform.position) <= 10 && _canShoot)
             {
+                _isStunned=true;
                 GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
                 Vector3 direction = Player.transform.position - transform.position;
                 bullet.transform.rotation = Quaternion.LookRotation(direction);

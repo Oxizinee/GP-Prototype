@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2;
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, _shootingTimer;
     public GameObject BulletPrefab, BombPrefab;
     public Material InvincibleMat;
 
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private CharacterController _characterController;
 
     private Material _deafultMat;
-    private float _verticalVel, _gravity = 12, _invincibilityTimer;
+    private float _verticalVel, _gravity = 12, _invincibilityTimer; //_shootingTimer;
     private bool _canDash = true, _invincible = false;
     private Vector2 _movementInput;
     private Vector3 _moveVector;
@@ -56,6 +56,21 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(BulletPrefab, transform.position, transform.rotation);
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            _shootingTimer += Time.deltaTime;
+
+            if (_shootingTimer >= 1)
+            {
+                Instantiate(BulletPrefab, transform.position, transform.rotation);
+                _shootingTimer = 0;
+            }
+        }
+        else
+        {
+            _shootingTimer = 0;
         }
     }
     private void Dash()
