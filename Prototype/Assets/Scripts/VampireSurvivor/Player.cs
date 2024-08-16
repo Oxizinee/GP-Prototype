@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, _shootingTimer;
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2;
     public GameObject BulletPrefab, BombPrefab;
     public Material InvincibleMat;
 
@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     private CharacterController _characterController;
 
     private Material _deafultMat;
-    private float _verticalVel, _gravity = 12, _invincibilityTimer; //_shootingTimer;
-    private bool _canDash = true, _invincible = false;
+    private float _verticalVel, _gravity = 12, _invincibilityTimer, _shootingTimer, _bombCooldownTimer;
+    private bool _canDash = true, _invincible = false, _canShootBomb = true;
     private Vector2 _movementInput;
     private Vector3 _moveVector;
 
@@ -46,9 +46,20 @@ public class Player : MonoBehaviour
 
     private void ShootBomb()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && _canShootBomb)
         {
             Instantiate(BombPrefab, transform.position, transform.rotation);
+            _canShootBomb = false;
+        }
+
+        if (!_canShootBomb)
+        {
+            _bombCooldownTimer += Time.deltaTime;
+            if (_bombCooldownTimer >= 3)
+            {
+                _canShootBomb = true;
+                _bombCooldownTimer = 0;
+            }
         }
     }
     private void ShootBullet()
