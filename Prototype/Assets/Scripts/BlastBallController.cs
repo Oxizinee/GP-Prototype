@@ -9,24 +9,30 @@ public class BlastBallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            Debug.Log("Bomb Hit  +" + collision.gameObject.name);
-            if (collision.rigidbody != null)
+        Debug.Log("Bomb Hit  +" + collision.gameObject.name);
+        if (collision.rigidbody != null)
+        {
+            Collider[] insideBlastRadius = Physics.OverlapSphere(transform.position,7);
+            foreach (Collider collider in insideBlastRadius)
             {
-                collision.rigidbody.AddForce(new Vector3(transform.forward.x, collision.transform.position.y, transform.forward.z) * Force,
-                    ForceMode.Impulse);
-                 if (collision.gameObject.tag == "Enemy")
-                    {
-                         collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 5;
-                    }
-             }
+                Rigidbody rb = collider.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddExplosionForce(800, transform.position, 7, 3);
 
-            Destroy(gameObject);
+                    if (rb.gameObject.tag == "Enemy")
+                    {
+                      rb.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 5;
+                    }
+                }
+            }
+        }
+        Destroy(gameObject);
     }
 
     
     void Start()
     {
-        
     }
 
     // Update is called once per frame
