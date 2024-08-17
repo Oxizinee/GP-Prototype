@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4898979971953198903}
   - component: {fileID: 8045728158307704493}
   - component: {fileID: 7309716700455295162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HpTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2931200100778925940}
   - component: {fileID: 323464628587572772}
   - component: {fileID: 4059332783725474675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -220,6 +220,7 @@ MonoBehaviour:
   _stunTimer: 0
   _shootingTimer: 0
   _chargerTimer: 0
+  _inChargeTimer: 0
 --- !u!114 &2931200100778925940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +319,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5144272
+        value: 0.3671646
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -380,7 +381,7 @@ GameObject:
   - component: {fileID: 7054064339806364907}
   - component: {fileID: 7953577979495136086}
   - component: {fileID: 1734017135451457392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HpBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6099185910854173720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

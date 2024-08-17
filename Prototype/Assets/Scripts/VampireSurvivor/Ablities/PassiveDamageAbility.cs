@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu]
+public class PassiveDamageAbility : Ability
+{
+    public float TimeBetweenBullets = 1;
+    public float Damage = 4;
+    public GameObject BulletPrefab;
+    public LayerMask EnemyLayerMask;
+
+    private float _timer;
+    public override void Active(GameObject parent)
+    {
+        //Debug.Log("abilityActive");
+        _timer += Time.deltaTime;
+
+        if (_timer >= TimeBetweenBullets)
+        {
+
+            Vector3 closestEnemy = Vector3.zero;
+            float closestEnemyDistance = Mathf.Infinity;
+
+            Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, 10, EnemyLayerMask);
+            foreach (Collider c in enemiesInRadius)
+            {
+                if (c == null) continue;
+
+                float distance = Vector3.Distance(c.transform.position, parent.transform.position);
+
+                if (distance < closestEnemyDistance)
+                {
+                    closestEnemy = c.transform.position;
+                    closestEnemyDistance = distance;
+                }
+            }
+
+            if (closestEnemy != Vector3.zero)
+            {
+                GameObject go = Instantiate(BulletPrefab, parent.transform.position, Quaternion.identity);
+                Vector3 direction = closestEnemy - parent.transform.position;
+                go.transform.rotation = Quaternion.LookRotation(direction);
+                _timer = 0;
+            }
+        }
+    }
+}

@@ -12,18 +12,19 @@ public class AblityHolder : MonoBehaviour
         locked
     }
 
-    AbilityState State = AbilityState.locked;
+    AbilityState State = AbilityState.unlocked;
 
     // Update is called once per frame
     void Update()
     {
-        if (State == AbilityState.locked)
+        switch (State)
         {
-            return;
+            case AbilityState.unlocked:
+                Ability.Active(gameObject);
+                break;
+            case AbilityState.locked:
+                break;
         }
-        else
-        {
-            Ability.Active();
-        }
+
     }
 }

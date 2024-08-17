@@ -9,6 +9,6 @@ public class Ability: ScriptableObject
     
     public string Name;
 
-    public virtual void Active() { }
+    public virtual void Active(GameObject parent) { }
 
 }

@@ -6,6 +6,7 @@ public class BulletMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public float Speed = 10;
+    public float Damage = 2;
     private float _timer;
     void Start()
     {

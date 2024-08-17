@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Bullet")
         {
             _isStunned =true;
-            GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - 2;
+            GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - other.GetComponent<BulletMovement>().Damage;
             Destroy(other.gameObject);
         }
        
