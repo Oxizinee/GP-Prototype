@@ -19,12 +19,19 @@ public class HPBarBehaviour : MonoBehaviour
     public Transform HpBarGO;
 
     private GameRunner _gameRunner;
+    private XPBar _levelScript;
 
     void Start()
     {
+        _gameRunner = FindFirstObjectByType<GameRunner>();
+        _levelScript = FindFirstObjectByType<XPBar>();
+
+        if (Type == OwnerType.Enemy)
+        {
+            FullHp = 8 + ((_levelScript.Level + 1) * 2);
+        }
         CurrentHP = FullHp;
 
-        _gameRunner = FindFirstObjectByType<GameRunner>();
     }
 
     // Update is called once per frame
