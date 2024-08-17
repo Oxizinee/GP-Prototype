@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: PassiveDamage
   m_EditorClassIdentifier: 
   Name: Passive Damage
+  TimeBetweenBullets: 1
+  Damage: 4
+  BulletPrefab: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
