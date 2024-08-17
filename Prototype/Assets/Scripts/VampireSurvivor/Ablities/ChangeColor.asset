@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d8472e5f4a5a24f9f91b25f63d35a3, type: 3}
   m_Name: ChangeColor
   m_EditorClassIdentifier: 
-  State: 0
   Name: Change Color
+  newColor: {fileID: 2100000, guid: 912fd202144a94b4db29f96e8eafdde2, type: 2}

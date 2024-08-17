@@ -12,7 +12,7 @@ public class ButtonBehaviour : MonoBehaviour
     private void OnEnable()
     {
         _abilityHolder = FindAnyObjectByType<AblityHolder>();
-        RandomAbility = Random.Range(0, _abilityHolder.LockedAbilities.Count - 1);
+        RandomAbility = Random.Range(0, _abilityHolder.LockedAbilities.Count);
 
         GetComponentInChildren<Text>().text = _abilityHolder.LockedAbilities[RandomAbility].Name;
     }
