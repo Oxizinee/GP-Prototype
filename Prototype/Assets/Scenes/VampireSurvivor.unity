@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4300526}
   - component: {fileID: 4300525}
   - component: {fileID: 4300524}
+  - component: {fileID: 4300527}
   m_Layer: 5
   m_Name: Button (Legacy) (2)
   m_TagString: Untagged
@@ -206,8 +207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 361757066}
-        m_TargetAssemblyTypeName: ChooseAbility, Assembly-CSharp
+      - m_Target: {fileID: 4300527}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -256,6 +257,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4300522}
   m_CullTransparentMesh: 1
+--- !u!114 &4300527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e920fc36c7026428a1ec8289eb0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomAbility: 0
 --- !u!1 &4308837
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,50 +450,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360053735}
   m_CullTransparentMesh: 1
---- !u!1 &361757064
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 361757065}
-  - component: {fileID: 361757066}
-  m_Layer: 0
-  m_Name: ButtonScript
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &361757065
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361757064}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8639083, y: -4.1808457, z: -0.49374866}
-  m_LocalScale: {x: 0.0519919, y: 0.08911844, z: 0.09202047}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1786946355}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &361757066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361757064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171dc9a0f670a6b43a760034e774b0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &450884646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1230,7 @@ GameObject:
   - component: {fileID: 1004735800}
   - component: {fileID: 1004735799}
   - component: {fileID: 1004735798}
+  - component: {fileID: 1004735801}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -1331,8 +1302,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 361757066}
-        m_TargetAssemblyTypeName: ChooseAbility, Assembly-CSharp
+      - m_Target: {fileID: 1004735801}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1381,6 +1352,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004735796}
   m_CullTransparentMesh: 1
+--- !u!114 &1004735801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004735796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e920fc36c7026428a1ec8289eb0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomAbility: 0
 --- !u!1 &1029824266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1377,7 @@ GameObject:
   - component: {fileID: 1029824270}
   - component: {fileID: 1029824269}
   - component: {fileID: 1029824268}
+  - component: {fileID: 1029824271}
   m_Layer: 5
   m_Name: Button (Legacy) (1)
   m_TagString: Untagged
@@ -1464,8 +1449,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 361757066}
-        m_TargetAssemblyTypeName: ChooseAbility, Assembly-CSharp
+      - m_Target: {fileID: 1029824271}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1514,6 +1499,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029824266}
   m_CullTransparentMesh: 1
+--- !u!114 &1029824271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029824266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e920fc36c7026428a1ec8289eb0af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomAbility: 0
 --- !u!1 &1062325775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,8 +2350,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b22b1d0cee9e34fa1df11e8087d350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Abilities:
+  LockedAbilities:
+  - {fileID: 11400000, guid: 587a63841df726f45aceba9795ad78b8, type: 2}
   - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
+  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
+  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
+  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
+  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
+  UnlockedAbilities: []
 --- !u!1 &1736745024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,7 +2588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1786946355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2601,7 +2605,6 @@ RectTransform:
   - {fileID: 1004735797}
   - {fileID: 1029824267}
   - {fileID: 4300523}
-  - {fileID: 361757065}
   m_Father: {fileID: 1069451962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

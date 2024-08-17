@@ -30,10 +30,7 @@ public class XPBar : MonoBehaviour
             //stop the game
             Time.timeScale = 0;
             LevelUpMenu.SetActive(true);
-
-            //Level++;
-            //XPCurrent = 0;
-            //XPMax = XPMax + 5;
+            
         }
     }
 }

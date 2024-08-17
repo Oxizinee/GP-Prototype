@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChooseAbility : MonoBehaviour
+public class ButtonBehaviour : MonoBehaviour
 {
     private AblityHolder _abilityHolder;
+    public int RandomAbility;
     private XPBar _xpBarScript;
+
+    private void OnEnable()
+    {
+        _abilityHolder = FindAnyObjectByType<AblityHolder>();
+        RandomAbility = Random.Range(0, _abilityHolder.LockedAbilities.Count - 1);
+
+        GetComponentInChildren<Text>().text = _abilityHolder.LockedAbilities[RandomAbility].Name;
+    }
+   
 
     public void Start()
     {
@@ -17,7 +27,7 @@ public class ChooseAbility : MonoBehaviour
     public void OnButtonClick()
     {
 
-        Ability abilityToUnlock = _abilityHolder.LockedAbilities[gameObject.GetComponent<ButtonBehaviour>().RandomAbility];
+        Ability abilityToUnlock = _abilityHolder.LockedAbilities[GetComponent<ButtonBehaviour>().RandomAbility];
 
         _abilityHolder.LockedAbilities.Remove(abilityToUnlock);
         _abilityHolder.UnlockedAbilities.Add(abilityToUnlock);
@@ -28,5 +38,4 @@ public class ChooseAbility : MonoBehaviour
         _xpBarScript.XPMax = _xpBarScript.XPMax + 5;
         Time.timeScale = 1;
     }
-
 }

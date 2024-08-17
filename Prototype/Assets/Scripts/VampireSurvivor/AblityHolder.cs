@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class AblityHolder : MonoBehaviour
 {
-    public Ability[] Abilities;
+    public List<Ability> LockedAbilities = new List<Ability>();
 
+    public List<Ability> UnlockedAbilities;
+
+    private void Start()
+    {
+        UnlockedAbilities = new List<Ability>();
+    }
     // Update is called once per frame
     void Update()
     {
-        foreach (Ability ability in Abilities)
+        foreach (Ability ability in UnlockedAbilities)
         {
-            switch (ability.State)
-            {
-                case AbilityState.unlocked:
-                    {
-                        ability.Active(gameObject);
-                    }
-                    break;
-                case AbilityState.locked:
-                    break;
-            }
+           ability.Active(gameObject);
+                
         }
 
     }
