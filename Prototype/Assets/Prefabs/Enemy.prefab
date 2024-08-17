@@ -215,6 +215,9 @@ MonoBehaviour:
   _canCharge: 1
   _stunCharging: 0
   Speed: 5
+  BasicImpMat: {fileID: 2100000, guid: 7e5254cc80250284caa5d7ee36901779, type: 2}
+  IceImpMat: {fileID: 2100000, guid: b2e4d2fdf748b8a4f9e24cbb8f6ea98b, type: 2}
+  ChargingImpMat: {fileID: 2100000, guid: 044f4f6c3cdf4bf40868d13c95e0a881, type: 2}
   Player: {fileID: 0}
   BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
   _stunTimer: 0

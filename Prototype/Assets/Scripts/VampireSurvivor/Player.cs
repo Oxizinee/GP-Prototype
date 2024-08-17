@@ -26,6 +26,16 @@ public class Player : MonoBehaviour
         {
             GetComponent<HPBarBehaviour>().CurrentHP--;
         }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "BulletForPlayer")
+        {
+            GetComponent<HPBarBehaviour>().CurrentHP--;
+            Destroy(other.gameObject);
+        }
     }
     void Start()
     {

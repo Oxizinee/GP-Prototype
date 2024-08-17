@@ -18,12 +18,33 @@ public class Enemy : MonoBehaviour
     public bool _isGrounded, _isStunned, _canShoot = true, _canCharge = true, _stunCharging;
     public float Speed = 5;
 
+    public Material BasicImpMat, IceImpMat, ChargingImpMat;
+
     public GameObject Player, BulletPrefab;
     [SerializeField]private float _stunTimer, _shootingTimer, _chargerTimer, _inChargeTimer;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+
+        switch (Type)
+        {
+            case EnemyType.Basic:
+                {
+                    GetComponent<MeshRenderer>().sharedMaterial = BasicImpMat;
+                    break;
+                }
+           case EnemyType.Ice:
+                {
+                    GetComponent<MeshRenderer>().sharedMaterial = IceImpMat;
+                    break;
+                }
+           case EnemyType.Charging: 
+                {
+                    GetComponent<MeshRenderer>().sharedMaterial = ChargingImpMat;
+                    break;
+                }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
