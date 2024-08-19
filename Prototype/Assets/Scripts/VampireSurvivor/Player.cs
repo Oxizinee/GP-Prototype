@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy" && !_invincible)
+        if (collision.gameObject.tag == "Enemy" && !_invincible && !collision.gameObject.GetComponent<Enemy>()._isStunned)
         {
             GetComponent<HPBarBehaviour>().CurrentHP--;
         }

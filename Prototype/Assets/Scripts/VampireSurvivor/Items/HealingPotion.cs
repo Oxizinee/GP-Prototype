@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HealingPotion : Item
 {
-    private bool _isActive = true;
-    private float _timer;
+   [SerializeField] private bool _isActive = true;
+    [SerializeField] private float _timer;
     public override void Active(GameObject parent)
     {
         if (Input.GetKeyDown(KeyToActivate) && _isActive)

@@ -2597,6 +2597,7 @@ MonoBehaviour:
   EnemiesKilled: {fileID: 1522059035}
   ItemsToSpawn:
   - {fileID: 5512795464809988706, guid: 069ffa4d14310cb4f8e99cbfa2ed5b59, type: 3}
+  - {fileID: 5512795464809988706, guid: 8f91515bac35c4f4892c0e728c167c8b, type: 3}
   _timer: 0
   EnemiesKilledNumber: 0
   EnemiesPresentNmber: 0
