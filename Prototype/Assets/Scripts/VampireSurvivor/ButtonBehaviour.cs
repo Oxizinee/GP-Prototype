@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonBehaviour : MonoBehaviour
+public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private AblityHolder _abilityHolder;
     public int RandomAbility;
+    public Text DescriptionText;
     private XPBar _xpBarScript;
-
+    private bool _isHovered;
     private void OnEnable()
     {
         _abilityHolder = FindAnyObjectByType<AblityHolder>();
@@ -24,6 +27,13 @@ public class ButtonBehaviour : MonoBehaviour
         _xpBarScript = FindAnyObjectByType<XPBar>();
     }
 
+    private void Update()
+    {
+        if (_isHovered)
+        {
+            DescriptionText.text = _abilityHolder.LockedAbilities[RandomAbility].Description;
+        }
+    }
     public void OnButtonClick()
     {
 
@@ -37,5 +47,15 @@ public class ButtonBehaviour : MonoBehaviour
         _xpBarScript.XPCurrent = 0;
         _xpBarScript.XPMax = _xpBarScript.XPMax + 5;
         Time.timeScale = 1;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _isHovered = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _isHovered = false;
     }
 }

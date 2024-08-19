@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Ability: ScriptableObject 
 {
     public string Name;
-
+    public string Description;
     public virtual void Active(GameObject parent) { }
 
 }

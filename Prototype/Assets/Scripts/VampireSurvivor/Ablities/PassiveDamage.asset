@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: PassiveDamage
   m_EditorClassIdentifier: 
   Name: Passive Damage
+  Description: Your character will shoot a bullet on its own every second towards
+    the closest enemy
   TimeBetweenBullets: 1
   Damage: 4
   BulletPrefab: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}

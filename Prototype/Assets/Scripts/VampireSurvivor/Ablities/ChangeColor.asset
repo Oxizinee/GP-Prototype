@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ChangeColor
   m_EditorClassIdentifier: 
   Name: Change Color
+  Description: Changes the color of your character to blue
   newColor: {fileID: 2100000, guid: 912fd202144a94b4db29f96e8eafdde2, type: 2}
