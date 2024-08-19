@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b21eec2ddd4f7345ab50af8ebcf1351, type: 3}
-  m_Name: PassiveDamage
+  m_Script: {fileID: 11500000, guid: e9661b828b0555940b78a07208e4b833, type: 3}
+  m_Name: MachineGun
   m_EditorClassIdentifier: 
-  Name: Passive Damage
-  Description: Your character will shoot a bullet on its own every second towards
-    the closest enemy - the effect can stack
-  TimeBetweenBullets: 3
-  Damage: 10
+  Name: Machine Gun Left Right
+  Description: You shoot a bullet to left and right every 0.5 seconds
   BulletPrefab: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
+  TimeBetweenBullets: 0.5
+  Damage: 5
+  Direction: 90

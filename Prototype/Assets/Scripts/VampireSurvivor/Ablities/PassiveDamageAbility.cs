@@ -41,6 +41,7 @@ public class PassiveDamageAbility : Ability
                 GameObject go = Instantiate(BulletPrefab, parent.transform.position, Quaternion.identity);
                 Vector3 direction = closestEnemy - parent.transform.position;
                 go.transform.rotation = Quaternion.LookRotation(direction);
+                go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().PassiveDamage;
                 _timer = 0;
             }
         }

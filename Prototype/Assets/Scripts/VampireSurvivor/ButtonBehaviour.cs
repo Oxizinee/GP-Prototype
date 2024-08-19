@@ -33,6 +33,8 @@ public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             DescriptionText.text = _abilityHolder.LockedAbilities[RandomAbility].Description;
         }
+
+        GetComponentInChildren<Text>().text = _abilityHolder.LockedAbilities[RandomAbility].Name;
     }
     public void OnButtonClick()
     {

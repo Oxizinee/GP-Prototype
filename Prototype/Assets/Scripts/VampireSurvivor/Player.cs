@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2;
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10;
     public GameObject BulletPrefab, BombPrefab;
     public Material InvincibleMat;
 
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(BulletPrefab, transform.position, transform.rotation);
+            GameObject go = Instantiate(BulletPrefab, transform.position, transform.rotation);
         }
 
         if (Input.GetMouseButton(0))
@@ -85,8 +85,8 @@ public class Player : MonoBehaviour
 
             if (_shootingTimer >= 1)
             {
-                Instantiate(BulletPrefab, transform.position, transform.rotation);
-                _shootingTimer = 0;
+                GameObject go = Instantiate(BulletPrefab, transform.position, transform.rotation);
+               _shootingTimer = 0;
             }
         }
         else
