@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class GameRunner : MonoBehaviour
     public GameObject PauseScreen, EnemyPrefab;
     public Text EnemiesPresent, EnemiesKilled;
     private bool _isPaused;
+
+    public GameObject[] ItemsToSpawn;
+    public float _timer;
 
     public float EnemiesKilledNumber, EnemiesPresentNmber;
 
@@ -23,6 +27,14 @@ public class GameRunner : MonoBehaviour
     {
         PauseGame();
         SpawnEnemies();
+
+        _timer += Time.deltaTime;
+
+        if (_timer >= 30)
+        {
+            Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], new Vector3(Random.Range(-10, 10), 1, Random.Range(-10,10)), Quaternion.identity);
+            _timer = 0;
+        }
 
         EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
         EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;
