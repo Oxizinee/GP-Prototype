@@ -3224,6 +3224,14 @@ PrefabInstance:
       propertyPath: ItemsHolding.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
     - target: {fileID: 4871774673667340080, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.833657

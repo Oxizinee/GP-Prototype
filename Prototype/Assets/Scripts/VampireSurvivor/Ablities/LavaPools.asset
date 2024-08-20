@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9a34e811309cb47a7d85d360a85d8a, type: 3}
+  m_Name: LavaPools
+  m_EditorClassIdentifier: 
+  Name: Lava Pools
+  Description: Spawns lava pools randomly every 10 seconds within x range(a circular
+    radius) of the player lasting for 6 seconds. The lave pools have a circle shape
+    with an x radius) and deal 10 damage per second.
+  CooldownTime: 10
+  Range: 15
+  LavaPrefab: {fileID: 8391967833089155506, guid: 4bd16c8aa29b2454b9134e621df55769, type: 3}
