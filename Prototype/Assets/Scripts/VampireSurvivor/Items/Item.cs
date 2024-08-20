@@ -10,4 +10,6 @@ public class Item : ScriptableObject
     public float CooldownTimer = 0;
     public virtual void Active(GameObject parent) { }
     public virtual void Cooldown() { }
+
+    public virtual void PassiveUpdate(GameObject parent) { }
 }

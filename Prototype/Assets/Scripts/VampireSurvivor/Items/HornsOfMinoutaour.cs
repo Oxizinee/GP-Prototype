@@ -8,7 +8,6 @@ public class HornsOfMinoutaour : Item
     public LayerMask LayerMask;
     public override void Active(GameObject parent)
     {
-        parent.GetComponent<Player>().HornsActive = true;
         if (IsActive)
         {
             Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, 10, LayerMask);
@@ -34,5 +33,10 @@ public class HornsOfMinoutaour : Item
                 CooldownTimer = 0;
             }
         }
+    }
+
+    public override void PassiveUpdate(GameObject parent)
+    {
+        parent.GetComponent<Player>().HornsActive = true;
     }
 }

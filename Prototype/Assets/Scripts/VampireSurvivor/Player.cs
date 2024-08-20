@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10;
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10, EnemyDamage = 1;
     public GameObject BulletPrefab, BombPrefab, FieldOfView;
     public Material InvincibleMat;
     public bool HornsActive;
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && !_invincible && !collision.gameObject.GetComponent<Enemy>()._isStunned)
         {
-            GetComponent<HPBarBehaviour>().CurrentHP--;
+            GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - EnemyDamage;
 
             if (HornsActive)
             {

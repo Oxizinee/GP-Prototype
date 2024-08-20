@@ -31,4 +31,9 @@ public class DoubleEdgedSword : Item
             }
         }
     }
+
+    public override void PassiveUpdate(GameObject parent)
+    {
+        parent.GetComponent<Player>().EnemyDamage = 2;
+    }
 }

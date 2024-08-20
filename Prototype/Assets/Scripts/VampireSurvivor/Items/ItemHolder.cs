@@ -33,6 +33,8 @@ public class ItemHolder : MonoBehaviour
 
             foreach (Item item in ItemsHolding)
             {
+                item.PassiveUpdate(gameObject);
+
                 if (!item.IsActive)
                 {
                     item.Cooldown();
