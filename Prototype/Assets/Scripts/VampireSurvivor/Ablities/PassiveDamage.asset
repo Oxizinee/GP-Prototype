@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b21eec2ddd4f7345ab50af8ebcf1351, type: 3}
   m_Name: PassiveDamage
   m_EditorClassIdentifier: 
-  Name: Passive Damage
+  Name: Fire Balls
   Description: Your character will shoot a bullet on its own every second towards
     the closest enemy - the effect can stack
   TimeBetweenBullets: 3

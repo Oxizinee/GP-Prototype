@@ -9,7 +9,7 @@ public class HealingPotion : Item
     [SerializeField] private float _timer;
     public override void Active(GameObject parent)
     {
-        if (Input.GetKeyDown(KeyToActivate) && _isActive)
+        if (_isActive)
         {
             parent.GetComponent<HPBarBehaviour>().CurrentHP += HalfHP(parent.GetComponent<HPBarBehaviour>().FullHp);
             _isActive = false;

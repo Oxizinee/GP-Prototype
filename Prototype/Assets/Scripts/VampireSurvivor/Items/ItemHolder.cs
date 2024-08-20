@@ -16,9 +16,19 @@ public class ItemHolder : MonoBehaviour
     {
         if (ItemsHolding != null)
         {
-            foreach (var item in ItemsHolding)
+            if(Input.GetKeyDown(KeyCode.Alpha1))
             {
-                item.Active(gameObject);
+                ItemsHolding[0].Active(gameObject);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ItemsHolding[1].Active(gameObject);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ItemsHolding[2].Active(gameObject);
             }
         }
     }

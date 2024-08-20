@@ -10,7 +10,7 @@ public class HornsOfMinoutaour : Item
     public LayerMask LayerMask;
     public override void Active(GameObject parent)
     {
-        if (Input.GetKeyDown(KeyToActivate) && _canActivate)
+        if (_canActivate)
         {
             Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, 10, LayerMask);
             foreach (Collider c in enemiesInRadius)

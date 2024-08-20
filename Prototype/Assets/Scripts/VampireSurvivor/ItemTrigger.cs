@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemTrigger : MonoBehaviour
@@ -8,7 +9,7 @@ public class ItemTrigger : MonoBehaviour
     public Item Item;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.GetComponent<ItemHolder>().ItemsHolding.Count <= 3 && !other.GetComponent<ItemHolder>().ItemsHolding.Contains(Item))
         {
             other.GetComponent<ItemHolder>().ItemsHolding.Add(Item);
             Destroy(gameObject);
