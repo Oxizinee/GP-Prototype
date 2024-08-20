@@ -2691,80 +2691,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656469349}
   m_CullTransparentMesh: 1
---- !u!1 &1719863340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 352296767054926, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-  m_PrefabInstance: {fileID: 7380235503593558873}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1719863348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719863340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a47d916f0b2ff4986e797b197b76c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  FullHp: 10
-  CurrentHP: 0
-  HPBar: {fileID: 464050369}
-  HPpivot: {fileID: 0}
-  HpBarGO: {fileID: 0}
---- !u!114 &1719863349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719863340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7898ba800fa775b4990cd076a01591aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XPbar: {fileID: 1656469351}
-  XPCurrent: 0
-  XPMax: 2
-  Level: 0
-  LevelUpMenu: {fileID: 1786946354}
---- !u!114 &1719863350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719863340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b22b1d0cee9e34fa1df11e8087d350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LockedAbilities:
-  - {fileID: 11400000, guid: 587a63841df726f45aceba9795ad78b8, type: 2}
-  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
-  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
-  - {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
-  - {fileID: 11400000, guid: 9d9e08d41dce2aa4792f8a5352b79eac, type: 2}
-  - {fileID: 11400000, guid: b693060da8a1c7241a8c6058f42f1142, type: 2}
-  - {fileID: 11400000, guid: e71ac5230391aa84f8dc8dde24de3707, type: 2}
-  UnlockedAbilities: []
---- !u!114 &1719863357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719863340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fe6ce377b26c9a499ac034cb0ded912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemsHolding: []
 --- !u!1 &1736745024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3218,14 +3144,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 352296767054926, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2782447489754114112, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4871774673667340080, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.833657
@@ -3266,42 +3184,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506812279840223849, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+    - target: {fileID: 6805030824579692797, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: HPBar
       value: 
       objectReference: {fileID: 464050369}
-    - target: {fileID: 5506812279840223849, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      propertyPath: BombPrefab
+    - target: {fileID: 8268555792913202615, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: XPbar
       value: 
-      objectReference: {fileID: 3255963329888112448, guid: b0d42aabc5fbc634ba6984712de1e4f2, type: 3}
-    - target: {fileID: 5506812279840223849, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      propertyPath: BulletPrefab
+      objectReference: {fileID: 1656469351}
+    - target: {fileID: 8268555792913202615, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LevelUpMenu
       value: 
-      objectReference: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}
-    - target: {fileID: 5506812279840223849, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      propertyPath: InvincibleMat
-      value: 
-      objectReference: {fileID: 2100000, guid: 03f9bc7ed52fd874f8cddc3095ddce0b, type: 2}
-    - target: {fileID: 5506812279840223849, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      propertyPath: MovementSpeed
-      value: 8
+      objectReference: {fileID: 1786946354}
+    - target: {fileID: 8388397345166799502, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 352296767054926, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 1719863357}
-    - targetCorrespondingSourceObject: {fileID: 352296767054926, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 1719863350}
-    - targetCorrespondingSourceObject: {fileID: 352296767054926, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      insertIndex: 7
-      addedObject: {fileID: 1719863349}
-    - targetCorrespondingSourceObject: {fileID: 352296767054926, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 1719863348}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -5,12 +5,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HornsOfMinoutaour : Item
 {
-   [SerializeField] private bool _canActivate = true;
-   [SerializeField] private float _timer;
     public LayerMask LayerMask;
     public override void Active(GameObject parent)
     {
-        if (_canActivate)
+        parent.GetComponent<Player>().HornsActive = true;
+        if (IsActive)
         {
             Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, 10, LayerMask);
             foreach (Collider c in enemiesInRadius)
@@ -19,16 +18,20 @@ public class HornsOfMinoutaour : Item
                 c.GetComponent<Enemy>()._isStunned = true;
             }
 
-            _canActivate = false;
+            IsActive = false;
         }
 
-        if (!_canActivate)
+    }
+
+    public override void Cooldown()
+    {
+        if (!IsActive)
         {
-            _timer += Time.deltaTime;
-            if (_timer > 90)
+            CooldownTimer += Time.deltaTime;
+            if (CooldownTimer > 90)
             {
-                _canActivate = true;
-                _timer = 0;
+                IsActive = true;
+                CooldownTimer = 0;
             }
         }
     }

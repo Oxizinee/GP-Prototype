@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c12cf909ae35e34fbb375213de2a872, type: 3}
-  m_Name: Horns
+  m_Script: {fileID: 11500000, guid: 37a281460defa5642ab4f7431c02c610, type: 3}
+  m_Name: DoubleEdgeSword
   m_EditorClassIdentifier: 
   Name: 
   Description: 
   IsActive: 1
   CooldownTimer: 0
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 64
+  SwordRaius: {fileID: 0}

@@ -30,6 +30,14 @@ public class ItemHolder : MonoBehaviour
             {
                 ItemsHolding[2].Active(gameObject);
             }
+
+            foreach (Item item in ItemsHolding)
+            {
+                if (!item.IsActive)
+                {
+                    item.Cooldown();
+                }
+            }
         }
     }
 }

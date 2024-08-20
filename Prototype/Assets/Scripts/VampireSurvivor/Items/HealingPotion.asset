@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Description: 
-  KeyToActivate: 49
+  IsActive: 0
+  CooldownTimer: 7.5997767
