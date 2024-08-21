@@ -18,6 +18,7 @@ public class HPBarBehaviour : MonoBehaviour
     public Transform HPpivot;
     public Transform HpBarGO;
 
+    private float _timer;
     private GameRunner _gameRunner;
     private XPBar _levelScript;
 
@@ -56,4 +57,5 @@ public class HPBarBehaviour : MonoBehaviour
 
         
     }
+
 }

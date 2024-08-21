@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LavaPoolBehaviour : MonoBehaviour
 {
+    public float TimeToDie = 6, Damage = 10;
     private float _timer = 0f, _dmgTimer = 0;
     private void OnTriggerStay(Collider other)
     {
@@ -13,8 +14,8 @@ public class LavaPoolBehaviour : MonoBehaviour
 
             if (_dmgTimer >= 1)
             {
-                other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - 10;
-                _timer = 0;
+                other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
+                _dmgTimer = 0;
             }
         }
     }
@@ -23,7 +24,7 @@ public class LavaPoolBehaviour : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        if (_timer >= 6)
+        if (_timer >= TimeToDie)
         {
             Destroy(gameObject);
         }
