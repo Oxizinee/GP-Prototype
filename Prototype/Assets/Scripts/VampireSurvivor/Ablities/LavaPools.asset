@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Lava Pools
   Description: Spawns lava pools randomly every 10 seconds within x range(a circular
     radius) of the player lasting for 6 seconds. The lave pools have a circle shape
-    with an x radius) and deal 10 damage per second.
+    with an x radius) and deal 10 damage per second - the effect can stack
   CooldownTime: 10
   Range: 15
   LavaPrefab: {fileID: 8391967833089155506, guid: 4bd16c8aa29b2454b9134e621df55769, type: 3}

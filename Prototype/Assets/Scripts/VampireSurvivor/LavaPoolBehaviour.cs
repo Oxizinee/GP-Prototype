@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class LavaPoolBehaviour : MonoBehaviour
 {
-    private float _timer = 0f;
-    private void OnTriggerEnter(Collider other)
+    private float _timer = 0f, _dmgTimer = 0;
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - 10;
+            _dmgTimer += Time.deltaTime;
+
+            if (_dmgTimer >= 1)
+            {
+                other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - 10;
+                _timer = 0;
+            }
         }
     }
 

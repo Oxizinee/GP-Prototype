@@ -3222,14 +3222,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463104347729444194, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: ItemsHolding.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4463104347729444194, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: ItemsHolding.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d1496c7193c8136408893f58663b4416, type: 2}
     - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: LockedAbilities.Array.size
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: LockedAbilities.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.data[11]
       value: 
       objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
     - target: {fileID: 4871774673667340080, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
