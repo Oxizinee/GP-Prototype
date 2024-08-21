@@ -8,6 +8,7 @@ public class BulletMovement : MonoBehaviour
     public float Speed = 10;
     public float Damage = 2;
     private float _timer;
+    public bool CanPierce = false;
     void Start()
     {
         

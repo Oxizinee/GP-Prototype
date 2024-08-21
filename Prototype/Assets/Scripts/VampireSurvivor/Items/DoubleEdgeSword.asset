@@ -16,4 +16,4 @@ MonoBehaviour:
   Description: 
   IsActive: 1
   CooldownTimer: 0
-  SwordRaius: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 149cc945983602f4f8e9548342266553, type: 3}

@@ -55,9 +55,17 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Bullet")
         {
             StunDuration = 0.5f;
-            _isStunned =true;
+            _isStunned = true;
             GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - other.GetComponent<BulletMovement>().Damage;
-            Destroy(other.gameObject);
+
+            if (!other.GetComponent<BulletMovement>().CanPierce)
+            {
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                other.GetComponent<BulletMovement>().CanPierce = false;
+            }
         }
        
     }
