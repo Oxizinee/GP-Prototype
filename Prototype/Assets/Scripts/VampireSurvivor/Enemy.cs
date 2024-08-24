@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Security;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     public float Speed = 5, StunDuration = 0.5f;
 
     public Material BasicImpMat, IceImpMat, ChargingImpMat, StunnedMat;
+
+    public GameObject FloatingText;
 
     private Material DeafultMat;
     public GameObject Player, BulletPrefab;
@@ -57,6 +60,7 @@ public class Enemy : MonoBehaviour
             StunDuration = 0.5f;
             _isStunned = true;
             GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - other.GetComponent<BulletMovement>().Damage;
+            ShowFloatingText(other.GetComponent<BulletMovement>().Damage,this.gameObject);
 
             if (!other.GetComponent<BulletMovement>().CanPierce)
             {
@@ -81,6 +85,11 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void ShowFloatingText(float DamageValue, GameObject Enemy)
+    {
+        GameObject text = Instantiate(FloatingText, Enemy.transform.position, Quaternion.identity, Enemy.transform);
+        text.GetComponent<TextMeshPro>().text =DamageValue.ToString();
+    }
     private void ChargingEnemyBehaviour()
     {
         if (Type == EnemyType.Charging)

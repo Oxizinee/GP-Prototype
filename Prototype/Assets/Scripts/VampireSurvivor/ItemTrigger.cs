@@ -17,7 +17,7 @@ public class ItemTrigger : MonoBehaviour
     }
     void Start()
     {
-        
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame

@@ -11,30 +11,25 @@ public class GameRunner : MonoBehaviour
     public Text EnemiesPresent, EnemiesKilled;
     private bool _isPaused;
 
-    public GameObject[] ItemsToSpawn;
-    public float _timer;
+    public float SpawnerTimer = 3, GameTime;
 
     public float EnemiesKilledNumber, EnemiesPresentNmber;
 
-    private float _spawnTimer, _offset = 0.3f;
+    [SerializeField]private float _spawnTimer, _offset = 0.3f;
     void Start()
     {
-        
+        SpawnerTimer = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameTime += Time.deltaTime;
+
         PauseGame();
         SpawnEnemies();
 
-        _timer += Time.deltaTime;
-
-        if (_timer >= 30)
-        {
-            Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], new Vector3(Random.Range(-10, 10), 1, Random.Range(-10,10)), Quaternion.identity);
-            _timer = 0;
-        }
+        SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.002f),0.5f,3);
 
         EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
         EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;
@@ -44,7 +39,7 @@ public class GameRunner : MonoBehaviour
     {
         _spawnTimer += Time.deltaTime;
 
-        if (_spawnTimer >= 3)
+        if (_spawnTimer >= SpawnerTimer)
         {
             int side = Random.Range(0, 4);
             int randomType = Random.Range(0, 3);

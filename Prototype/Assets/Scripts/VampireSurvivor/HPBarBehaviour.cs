@@ -13,12 +13,12 @@ public class HPBarBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public OwnerType Type;
-    public float FullHp = 10, CurrentHP;
+    public float FullHp = 10, CurrentHP, RandomNumber;
     public Image HPBar;
     public Transform HPpivot;
     public Transform HpBarGO;
+    public GameObject[] ItemsToSpawn;
 
-    private float _timer;
     private GameRunner _gameRunner;
     private XPBar _levelScript;
 
@@ -29,15 +29,18 @@ public class HPBarBehaviour : MonoBehaviour
 
         if (Type == OwnerType.Enemy)
         {
-            FullHp = 8 + ((_levelScript.Level + 1) * 2);
+            FullHp = 8 + ((_levelScript.Level + 1) * 2) + (_gameRunner.GameTime * 0.02f);
         }
         CurrentHP = FullHp;
+
+        RandomNumber = Random.Range(0, 5);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Type == OwnerType.Player)
         {
             HPBar.fillAmount = Mathf.Clamp(CurrentHP, 0, FullHp) / FullHp;
@@ -50,6 +53,10 @@ public class HPBarBehaviour : MonoBehaviour
                 _gameRunner.EnemiesKilledNumber++;
                 _gameRunner.EnemiesPresentNmber--;
                 Destroy(gameObject);
+                if (RandomNumber == 1)
+                {
+                    Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], transform.position, Quaternion.identity);
+                }
                 GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent++;
             }
         }

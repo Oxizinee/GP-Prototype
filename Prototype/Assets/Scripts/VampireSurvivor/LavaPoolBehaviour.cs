@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LavaPoolBehaviour : MonoBehaviour
@@ -15,6 +16,7 @@ public class LavaPoolBehaviour : MonoBehaviour
             if (_dmgTimer >= 1)
             {
                 other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
+                other.GetComponent<Enemy>().ShowFloatingText(Damage, other.gameObject);
                 _dmgTimer = 0;
             }
         }

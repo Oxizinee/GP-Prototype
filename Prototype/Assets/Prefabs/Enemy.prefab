@@ -220,6 +220,7 @@ MonoBehaviour:
   IceImpMat: {fileID: 2100000, guid: b2e4d2fdf748b8a4f9e24cbb8f6ea98b, type: 2}
   ChargingImpMat: {fileID: 2100000, guid: 044f4f6c3cdf4bf40868d13c95e0a881, type: 2}
   StunnedMat: {fileID: 2100000, guid: dd51b7c131d2ceb4492dad42d027e1d1, type: 2}
+  FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
   Player: {fileID: 0}
   BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
   _stunTimer: 0
@@ -241,9 +242,14 @@ MonoBehaviour:
   Type: 1
   FullHp: 10
   CurrentHP: 0
+  RandomNumber: 0
   HPBar: {fileID: 0}
   HPpivot: {fileID: 6099185910854173720}
   HpBarGO: {fileID: 7054064339806364907}
+  ItemsToSpawn:
+  - {fileID: 5512795464809988706, guid: 069ffa4d14310cb4f8e99cbfa2ed5b59, type: 3}
+  - {fileID: 5512795464809988706, guid: 8f91515bac35c4f4892c0e728c167c8b, type: 3}
+  - {fileID: 5512795464809988706, guid: 7d06254734983a4459f5d876baa334cf, type: 3}
 --- !u!54 &323464628587572772
 Rigidbody:
   m_ObjectHideFlags: 0

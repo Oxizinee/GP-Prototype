@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BlastBallController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float Force = 3;
+    public float Force = 3, Damage = 5;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,7 +23,8 @@ public class BlastBallController : MonoBehaviour
 
                     if (rb.gameObject.tag == "Enemy")
                     {
-                      rb.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 5;
+                      rb.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
+                        rb.GetComponent<Enemy>().ShowFloatingText(Damage, this.gameObject);
                     }
                 }
             }

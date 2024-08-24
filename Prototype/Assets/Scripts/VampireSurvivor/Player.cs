@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     private CharacterController _characterController;
 
     private Material _deafultMat;
-    private float _verticalVel, _gravity = 12, _invincibilityTimer, _shootingTimer, _bombCooldownTimer;
-    private bool _canDash = true, _invincible = false, _canShootBomb = true;
+    private float _verticalVel, _gravity = 12, _invincibilityTimer, _shootingTimer, _bombCooldownTimer, _shootingDelayTimer;
+    private bool _canDash = true, _invincible = false, _canShootBomb = true, _canShoot = true;
     private Vector2 _movementInput;
     private Vector3 _moveVector;
 
@@ -79,10 +79,25 @@ public class Player : MonoBehaviour
     }
     private void ShootBullet()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _canShoot)
         {
+
             GameObject go = Instantiate(BulletPrefab, transform.position, transform.rotation);
             go.GetComponent<BulletMovement>().CanPierce = CanPierceActive;
+
+            _canShoot = false;
+
+        }
+
+        if (!_canShoot)
+        {
+            _shootingDelayTimer += Time.deltaTime;
+
+            if (_shootingDelayTimer >= 0.5f)
+            {
+                _canShoot = true;
+                _shootingDelayTimer = 0;
+            }
         }
 
         if (Input.GetMouseButton(0))
