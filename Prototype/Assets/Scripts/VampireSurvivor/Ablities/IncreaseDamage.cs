@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Increase Damage")]
 public class IncreaseDamage : Ability
 {
     [SerializeField]private float _currentDamage;

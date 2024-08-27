@@ -9,7 +9,8 @@ public enum EnemyType
 {
     Basic,
     Ice,
-    Charging
+    Charging,
+    Big
 }
 
 public class Enemy : MonoBehaviour
@@ -21,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     public Material BasicImpMat, IceImpMat, ChargingImpMat, StunnedMat;
 
-    public GameObject FloatingText;
+    public GameObject FloatingText, HPBar;
 
     private Material DeafultMat;
     public GameObject Player, BulletPrefab;
@@ -46,6 +47,12 @@ public class Enemy : MonoBehaviour
            case EnemyType.Charging: 
                 {
                     GetComponent<MeshRenderer>().sharedMaterial = ChargingImpMat;
+                    break;
+                }
+            case EnemyType.Big:
+                {
+                    transform.localScale = transform.localScale * 1.4f;
+                    GetComponent<MeshRenderer>().sharedMaterial = BasicImpMat;
                     break;
                 }
         }
@@ -82,6 +89,8 @@ public class Enemy : MonoBehaviour
         StunBehaviour();
         IceEnemyBehaviour();
         ChargingEnemyBehaviour();
+
+        HPBar.transform.LookAt(Camera.main.transform.position);
 
     }
 

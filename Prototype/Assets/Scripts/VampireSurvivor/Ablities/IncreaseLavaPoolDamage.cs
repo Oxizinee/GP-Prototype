@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Increase Lava Pool Damage")]
 public class IncreaseLavaPoolDamage : Ability
 {
     private LavaPoolBehaviour[] _lavaPools;

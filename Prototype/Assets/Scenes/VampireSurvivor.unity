@@ -3474,7 +3474,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d1496c7193c8136408893f58663b4416, type: 2}
     - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: LockedAbilities.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: LockedAbilities.Array.data[7]
@@ -3508,6 +3508,10 @@ PrefabInstance:
       propertyPath: LockedAbilities.Array.data[14]
       value: 
       objectReference: {fileID: 11400000, guid: b396bfb0acbc70e4996e806dab2286e9, type: 2}
+    - target: {fileID: 4636604561010528664, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: LockedAbilities.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f0f1d12bc626244f93042d1f2650a78, type: 2}
     - target: {fileID: 4871774673667340080, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.833657

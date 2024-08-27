@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Piercing Bullets")]
 public class PiercingBulletAbility : Ability
 {
     public override void Active(GameObject parent)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Increase Lava Pool Timer")]
 public class IncreaseLavaPoolTimer : Ability
 {
     public LavaPoolBehaviour[] lavaPools;

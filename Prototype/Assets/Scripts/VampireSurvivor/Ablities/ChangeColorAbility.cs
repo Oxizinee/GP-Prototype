@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Change Color")]
 public class ChangeColorAbility : Ability
 {
     public Material newColor;

@@ -30,7 +30,7 @@ public class XPBar : MonoBehaviour
             //stop the game
             Time.timeScale = 0;
             LevelUpMenu.SetActive(true);
-            
         }
     }
+
 }

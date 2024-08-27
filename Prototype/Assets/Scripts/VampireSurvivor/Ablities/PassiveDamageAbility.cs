@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Passive Damage")]
 public class PassiveDamageAbility : Ability
 {
     public float TimeBetweenBullets = 1;

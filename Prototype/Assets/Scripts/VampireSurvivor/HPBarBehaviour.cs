@@ -13,7 +13,7 @@ public class HPBarBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public OwnerType Type;
-    public float FullHp = 10, CurrentHP, RandomNumber;
+    public float FullHp = 10, CurrentHP;
     public Image HPBar;
     public Transform HPpivot;
     public Transform HpBarGO;
@@ -30,10 +30,13 @@ public class HPBarBehaviour : MonoBehaviour
         if (Type == OwnerType.Enemy)
         {
             FullHp = 8 + ((_levelScript.Level + 1) * 2) + (_gameRunner.GameTime * 0.02f);
+            if(GetComponent<Enemy>().Type == EnemyType.Big) 
+            {
+                FullHp = 50;
+            }
         }
         CurrentHP = FullHp;
 
-        RandomNumber = Random.Range(0, 5);
 
     }
 
@@ -53,11 +56,17 @@ public class HPBarBehaviour : MonoBehaviour
                 _gameRunner.EnemiesKilledNumber++;
                 _gameRunner.EnemiesPresentNmber--;
                 Destroy(gameObject);
-                if (RandomNumber == 1)
+
+                if (GetComponent<Enemy>().Type == EnemyType.Big)
                 {
                     Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], transform.position, Quaternion.identity);
+                    GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent = GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent + 4;
                 }
-                GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent++;
+                else
+                {
+                    GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent++;
+
+                }
             }
         }
 

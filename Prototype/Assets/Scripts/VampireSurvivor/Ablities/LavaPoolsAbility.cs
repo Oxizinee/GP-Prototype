@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Lava Pool")]
 public class LavaPoolsAbility : Ability
 {
     public float CooldownTime = 10, Range = 15;

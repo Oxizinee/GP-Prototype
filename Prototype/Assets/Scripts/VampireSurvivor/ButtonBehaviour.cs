@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private AblityHolder _abilityHolder;
+    private PathHolder _pathHolder;
     public int RandomAbility;
     public Text DescriptionText;
     private XPBar _xpBarScript;
@@ -15,6 +16,8 @@ public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void OnEnable()
     {
         _abilityHolder = FindAnyObjectByType<AblityHolder>();
+        _pathHolder = FindAnyObjectByType<PathHolder>();
+
         RandomAbility = Random.Range(0, _abilityHolder.LockedAbilities.Count);
 
         GetComponentInChildren<Text>().text = _abilityHolder.LockedAbilities[RandomAbility].Name;
@@ -24,6 +27,7 @@ public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void Start()
     {
         _abilityHolder = FindAnyObjectByType<AblityHolder>();
+        _pathHolder = FindAnyObjectByType<PathHolder>();
         _xpBarScript = FindAnyObjectByType<XPBar>();
     }
 
@@ -48,6 +52,11 @@ public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExit
         _xpBarScript.Level++;
         _xpBarScript.XPCurrent = 0;
         _xpBarScript.XPMax = _xpBarScript.XPMax + 5;
+
+        if (_pathHolder.ChoosenPath != null)
+        {
+            _pathHolder.ChoosenPath.OnLevelUp(_pathHolder.gameObject);
+        }
         Time.timeScale = 1;
     }
 

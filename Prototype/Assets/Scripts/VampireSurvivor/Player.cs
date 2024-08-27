@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10, EnemyDamage = 1;
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10, EnemyDamage = 1, BulletSpeed = 8, BulletDamage = 2, TimeBetweenBullets = 1;
     public GameObject BulletPrefab, BombPrefab, FieldOfView;
     public Material InvincibleMat;
     public bool HornsActive, CanPierceActive = false;
@@ -54,9 +54,18 @@ public class Player : MonoBehaviour
         Movement();
         Rotate();
 
-        Dash();
         ShootBullet();
-        ShootBomb();
+
+        if (GetComponent<PathHolder>().ChoosenPath == null)
+        {
+            ShootBomb();
+            Dash();
+        }
+        else
+        {
+            GetComponent<PathHolder>().ChoosenPath.Dash(this.gameObject);
+            GetComponent<PathHolder>().ChoosenPath.SpecialAttack(this.gameObject);
+        }
     }
 
     private void ShootBomb()
@@ -84,6 +93,8 @@ public class Player : MonoBehaviour
 
             GameObject go = Instantiate(BulletPrefab, transform.position, transform.rotation);
             go.GetComponent<BulletMovement>().CanPierce = CanPierceActive;
+            go.GetComponent<BulletMovement>().Damage = BulletDamage;
+            go.GetComponent<BulletMovement>().Speed = BulletSpeed;
 
             _canShoot = false;
 
@@ -93,7 +104,7 @@ public class Player : MonoBehaviour
         {
             _shootingDelayTimer += Time.deltaTime;
 
-            if (_shootingDelayTimer >= 0.5f)
+            if (_shootingDelayTimer >= TimeBetweenBullets)
             {
                 _canShoot = true;
                 _shootingDelayTimer = 0;
@@ -104,11 +115,13 @@ public class Player : MonoBehaviour
         {
             _shootingTimer += Time.deltaTime;
 
-            if (_shootingTimer >= 1)
+            if (_shootingTimer >= TimeBetweenBullets)
             {
                 GameObject go = Instantiate(BulletPrefab, transform.position, transform.rotation);
                 go.GetComponent<BulletMovement>().CanPierce = CanPierceActive;
-               _shootingTimer = 0;
+                go.GetComponent<BulletMovement>().Damage = BulletDamage;
+                go.GetComponent<BulletMovement>().Speed = BulletSpeed;
+                _shootingTimer = 0;
             }
         }
         else

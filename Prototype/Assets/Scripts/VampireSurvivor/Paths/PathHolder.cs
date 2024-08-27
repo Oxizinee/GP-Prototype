@@ -8,12 +8,12 @@ public class PathHolder : MonoBehaviour
     public Path ChoosenPath;
     void Start()
     {
-        
+        ChoosenPath.Level = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChoosenPath.Passive();
+        ChoosenPath.Passive(this.gameObject);
     }
 }

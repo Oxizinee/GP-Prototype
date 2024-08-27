@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Abilities/Machine Gun")]
 public class MachineGunAbility : Ability
 {
     public GameObject BulletPrefab;
