@@ -7,8 +7,11 @@ using UnityEngine;
 public class Pride : Path
 {
     public bool _canShoot = true, _canShoot2 = true;
-    public float NewRateOfFire = 0.5f;
-    private float _shootingDelayTimer, _shootingTimer, _shootingDelayTimer2, _shootingTimer2;
+    public float NewRateOfFire = 0.5f, MaxDistance = 20;
+    public GameObject LaserPrefab;
+
+    private float _shootingDelayTimer, _shootingTimer, _shootingDelayTimer2, _shootingTimer2, _specialAttackTimer;
+    private bool _canUseSpecialAttack = true;
 
     public override void Dash(GameObject parent)
     {
@@ -16,6 +19,21 @@ public class Pride : Path
     }
     public override void SpecialAttack(GameObject parent)
     {
+        if (Input.GetMouseButtonDown(1) && _canUseSpecialAttack)
+        {
+            Instantiate(LaserPrefab, parent.transform.position, parent.transform.rotation, parent.transform);
+            _canUseSpecialAttack = false;
+        }
+
+        if (!_canUseSpecialAttack)
+        {
+            _specialAttackTimer += Time.deltaTime;
+            if (_specialAttackTimer >= 30)
+            {
+                _canUseSpecialAttack = true;
+                _specialAttackTimer = 0;
+            }
+        }
     }
     public override void Passive(GameObject parent)
     {

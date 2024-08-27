@@ -2829,6 +2829,7 @@ MonoBehaviour:
   EnemiesPresentNmber: 0
   _spawnTimer: 0
   _offset: 0.3
+  _bigSpawnerTimer: 0
 --- !u!4 &1578714305
 Transform:
   m_ObjectHideFlags: 0

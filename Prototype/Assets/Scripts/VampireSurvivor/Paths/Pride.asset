@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: Pride
   m_EditorClassIdentifier: 
   Name: The path of pride
-  Level: 0
+  Level: 1
+  _canShoot: 1
+  _canShoot2: 1
+  NewRateOfFire: 0.5
+  MaxDistance: 20
+  LaserPrefab: {fileID: 5503990818358555720, guid: 7937924259f39014eb52c9e344214dc5, type: 3}
