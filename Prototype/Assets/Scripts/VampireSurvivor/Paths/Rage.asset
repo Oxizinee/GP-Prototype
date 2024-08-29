@@ -14,3 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: The path of Rage
   Level: 0
+  _enemiesKilled: 5
+  _enemiesToLvlUp: 10
+  NewMovementSpeed: 5
+  Radius: 3
+  IsSpinning: 1
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _deafultMovementSpeed: 8
+  _timer: 0.2416799

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10, EnemyDamage = 1, BulletSpeed = 8, BulletDamage = 2, TimeBetweenBullets = 1;
     public GameObject BulletPrefab, BombPrefab, FieldOfView;
     public Material InvincibleMat;
-    public bool HornsActive, CanPierceActive = false;
+    public bool HornsActive, CanPierceActive = false, CanShoot = true;
 
     private CharacterController _characterController;
 
@@ -88,6 +88,8 @@ public class Player : MonoBehaviour
     }
     private void ShootBullet()
     {
+        if (!CanShoot) return;
+
         if (Input.GetMouseButtonDown(0) && _canShoot)
         {
 

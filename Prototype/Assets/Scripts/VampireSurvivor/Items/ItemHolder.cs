@@ -8,6 +8,7 @@ public class ItemHolder : MonoBehaviour
     // Start is called before the first frame update
     public List<Item> ItemsHolding = new List<Item>();
     public List<GameObject> IconLists = new List<GameObject>();
+    public bool CanUse = true;
     void Start()
     {
         
@@ -16,7 +17,7 @@ public class ItemHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ItemsHolding != null)
+        if (ItemsHolding != null && CanUse)
         {
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {

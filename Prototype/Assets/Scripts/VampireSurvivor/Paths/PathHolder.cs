@@ -9,7 +9,7 @@ public class PathHolder : MonoBehaviour
     void Start()
     {
         ChoosenPath.Level = 0;
-        ChoosenPath.OnStart();
+        ChoosenPath.OnStart(this.gameObject);
     }
 
     // Update is called once per frame

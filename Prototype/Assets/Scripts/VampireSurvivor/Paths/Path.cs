@@ -9,7 +9,7 @@ public class Path : ScriptableObject
     public virtual void Passive(GameObject parent) { }
     public virtual void SpecialAttack(GameObject parent) { }
     public virtual void Dash(GameObject parent) { }
-    public virtual void OnStart() { }
+    public virtual void OnStart(GameObject parent) { }
     public virtual void OnLevelUp(GameObject parent) { }
 
 }

@@ -3647,7 +3647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abc7179f9c51eb42865534f9ac30357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChoosenPath: {fileID: 11400000, guid: 86b5aa1f0543a6d48909db3b0cf52535, type: 2}
+  ChoosenPath: {fileID: 11400000, guid: aee4bc8834bb3ae4fa7419c9ee1d0049, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
