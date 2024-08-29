@@ -9,6 +9,7 @@ public class PathHolder : MonoBehaviour
     void Start()
     {
         ChoosenPath.Level = 0;
+        ChoosenPath.OnStart();
     }
 
     // Update is called once per frame

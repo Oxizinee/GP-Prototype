@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Paths/Rage")]
 public class Rage : Path
 {
+    public int _enemiesKilled, _enemiesToLvlUp = 10;
     private GameRunner _gameRunner;
     public override void Dash(GameObject parent)
     {
@@ -13,15 +14,21 @@ public class Rage : Path
 
     public override void Passive(GameObject parent)
     {
-    }
+       _enemiesKilled = (int)_gameRunner.EnemiesKilledNumber;
 
-    public override void OnLevelUp(GameObject player)
-    {
-        _gameRunner = FindAnyObjectByType<GameRunner>();
+        parent.GetComponent<Player>().BulletDamage = 2 + Level;
 
-        if (_gameRunner.EnemiesKilledNumber % 10 == 0)
+
+        if (_enemiesKilled >= _enemiesToLvlUp)
         {
             Level++;
+            _enemiesToLvlUp = _enemiesToLvlUp + 10;
         }
     }
+
+    public override void OnStart()
+    {
+        _gameRunner = FindAnyObjectByType<GameRunner>();
+    }
+    
 }
