@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float Speed = 10;
+    public float Speed = 10, BulletLifeSpan = 9, StunDuration = 0.5f;
     public float Damage = 2;
     private float _timer;
     public bool CanPierce = false;
@@ -20,7 +20,7 @@ public class BulletMovement : MonoBehaviour
         _timer += Time.deltaTime;
         transform.position += transform.forward * Speed * Time.deltaTime;
 
-        if (_timer > 9)
+        if (_timer > BulletLifeSpan)
         {
             Destroy(gameObject);
         }

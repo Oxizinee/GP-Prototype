@@ -62,6 +62,24 @@ public class Rage : Path
             Level++;
             _enemiesToLvlUp = _enemiesToLvlUp + 10;
         }
+
+
+        if (Level >= 1)
+        {
+            parent.GetComponent<Player>().BulletSpeed = 12;
+            parent.GetComponent<Player>().BulletLifeSpan = 5;
+
+            if (Level >= 2)
+            {
+                parent.GetComponent<Player>().BulletStunDuration = 0.8f; 
+
+                if (Level >= 3)
+                {
+                    parent.GetComponent<Player>().CanPierceActive = true;
+
+                }
+            }
+        }
     }
 
     public override void OnStart(GameObject parent)

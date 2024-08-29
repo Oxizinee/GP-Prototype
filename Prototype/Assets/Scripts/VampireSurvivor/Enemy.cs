@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            StunDuration = 0.5f;
+            StunDuration = other.GetComponent<BulletMovement>().StunDuration;
             _isStunned = true;
             GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - other.GetComponent<BulletMovement>().Damage;
             ShowFloatingText(other.GetComponent<BulletMovement>().Damage,this.gameObject);
