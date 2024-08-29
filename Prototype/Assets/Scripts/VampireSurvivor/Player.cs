@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
             _shootingTimer = 0;
         }
     }
-    private void Dash()
+    public void Dash()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
         {

@@ -9,13 +9,32 @@ public class Pride : Path
     public bool _canShoot = true, _canShoot2 = true;
     public float NewRateOfFire = 0.5f, MaxDistance = 20;
     public GameObject LaserPrefab;
+    public int CurrentDashCharges = 3, MaxDashCharges = 3;
 
-    private float _shootingDelayTimer, _shootingTimer, _shootingDelayTimer2, _shootingTimer2, _specialAttackTimer;
+    private float _shootingDelayTimer, _shootingTimer, _shootingDelayTimer2, _shootingTimer2, _specialAttackTimer, _rechargeTimer;
     private bool _canUseSpecialAttack = true;
 
     public override void Dash(GameObject parent)
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && CurrentDashCharges > 0)
+        {
+            parent.GetComponent<CharacterController>().Move(parent.transform.forward * parent.GetComponent<Player>().DashDistance);
+            CurrentDashCharges--;
+        }
 
+        RechargeCharges();
+    }
+    private void RechargeCharges()
+    {
+        if (CurrentDashCharges < MaxDashCharges)
+        {
+            _rechargeTimer += Time.deltaTime;
+            if (_rechargeTimer >= 8)
+            {
+                CurrentDashCharges++;
+                _rechargeTimer = 0f;
+            }
+        }
     }
     public override void SpecialAttack(GameObject parent)
     {
