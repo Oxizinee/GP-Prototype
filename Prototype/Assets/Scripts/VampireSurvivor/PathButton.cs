@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class PathButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Path PathToChoose;
+    private ChoosenPathHolder _choosenPathHolder;
+
     void Start()
     {
-        
+        _choosenPathHolder = FindAnyObjectByType<ChoosenPathHolder>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public void OnButtonClick()
     {
+        if (PathToChoose != null)
+        {
+            _choosenPathHolder.Path = PathToChoose;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
