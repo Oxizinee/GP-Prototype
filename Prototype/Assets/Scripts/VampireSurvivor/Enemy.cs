@@ -4,6 +4,7 @@ using System.Net.Security;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 public enum EnemyType
 {
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     public Material BasicImpMat, IceImpMat, ChargingImpMat, StunnedMat;
 
-    public GameObject FloatingText, HPBar;
+    public GameObject FloatingText, HPBar, BloodSplatterPrefab;
 
     private Material DeafultMat;
     public GameObject Player, BulletPrefab;
@@ -31,7 +32,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-
         switch (Type)
         {
             case EnemyType.Basic:
@@ -67,7 +67,9 @@ public class Enemy : MonoBehaviour
             StunDuration = other.GetComponent<BulletMovement>().StunDuration;
             _isStunned = true;
             GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - other.GetComponent<BulletMovement>().Damage;
-            ShowFloatingText(other.GetComponent<BulletMovement>().Damage,this.gameObject);
+            ShowFloatingText(other.GetComponent<BulletMovement>().Damage, this.gameObject);
+
+            SpawnBloodSplatter();
 
             if (!other.GetComponent<BulletMovement>().CanPierce)
             {
@@ -78,8 +80,16 @@ public class Enemy : MonoBehaviour
                 other.GetComponent<BulletMovement>().CanPierce = false;
             }
         }
-       
+
     }
+
+    public void SpawnBloodSplatter()
+    {
+        Vector3 oppositeDirection = -transform.forward;
+        Quaternion oppositeRotation = Quaternion.LookRotation(oppositeDirection);
+        Instantiate(BloodSplatterPrefab, transform.position, oppositeRotation);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -91,6 +101,7 @@ public class Enemy : MonoBehaviour
         ChargingEnemyBehaviour();
 
         HPBar.transform.LookAt(Camera.main.transform.position);
+        transform.LookAt(Player.transform.position);
 
     }
 

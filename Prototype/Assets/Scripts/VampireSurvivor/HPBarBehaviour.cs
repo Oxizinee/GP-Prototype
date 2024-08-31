@@ -53,6 +53,7 @@ public class HPBarBehaviour : MonoBehaviour
             HPpivot.localScale = new Vector3(Mathf.Clamp(CurrentHP, 0, FullHp) / FullHp,HPpivot.localScale.y, HPpivot.localScale.z);
             if (CurrentHP <= 0)
             {
+                GetComponent<Enemy>().SpawnBloodSplatter();
                 _gameRunner.EnemiesKilledNumber++;
                 _gameRunner.EnemiesPresentNmber--;
                 Destroy(gameObject);

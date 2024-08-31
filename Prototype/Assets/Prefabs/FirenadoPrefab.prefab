@@ -53,18 +53,24 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 12
+      - m_Value: 50
         m_Name: Duration
-        m_Overridden: 0
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 8.594425, y: 1.2567837, z: 0.1351316, w: 0}
+      - m_Value: {x: 8.474191, y: 1.2392015, z: 0.13324112, w: 0}
         m_Name: TornadoCoreColor
-        m_Overridden: 0
+        m_Overridden: 1
+      - m_Value: {x: 13.766358, y: 3.138193, z: 0.73593634, w: 0}
+        m_Name: InnerLayerColor
+        m_Overridden: 1
+      - m_Value: {x: 135.58707, y: 7.8241534, z: 1.2791022, w: 0}
+        m_Name: TornadoLayer1Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -133,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeToDie: 6
   Damage: 10
+  id: 0
 --- !u!136 &3435267663278899858
 CapsuleCollider:
   m_ObjectHideFlags: 0

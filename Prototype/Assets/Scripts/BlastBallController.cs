@@ -25,6 +25,7 @@ public class BlastBallController : MonoBehaviour
                     {
                       rb.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
                         rb.GetComponent<Enemy>().ShowFloatingText(Damage, this.gameObject);
+                        rb.GetComponent<Enemy>().SpawnBloodSplatter();
                     }
                 }
             }

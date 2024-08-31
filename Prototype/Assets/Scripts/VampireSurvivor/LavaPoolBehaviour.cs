@@ -27,7 +27,8 @@ public class LavaPoolBehaviour : MonoBehaviour
             {
                 other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
                 other.GetComponent<Enemy>().ShowFloatingText(Damage, other.gameObject);
-                _dmgTimer = 0;
+                other.GetComponent<Enemy>().SpawnBloodSplatter();
+               _dmgTimer = 0;
             }
         }
     }

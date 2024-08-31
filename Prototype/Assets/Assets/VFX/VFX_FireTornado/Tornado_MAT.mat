@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tornado_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: e0a03d90c6aa13847873173b4d2073c5,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e0a03d90c6aa13847873173b4d2073c5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -69,7 +68,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 36.329643, g: 1.8298886, b: 0, a: 1}
+    - _Color: {r: 63.253593, g: 3.1860216, b: 0, a: 1}
     - _NoiseSpeed: {r: 0, g: -0.5, b: 0, a: 0}
     - _TwirlCenter: {r: 0.5, g: -0.5, b: 0, a: 0}
     - _TwirlSpeed: {r: 0, g: 0.5, b: 0, a: 0}
