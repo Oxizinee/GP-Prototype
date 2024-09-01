@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Machine Gun Up Down
   Description: You shoot a bullet to up and down every 0.5 seconds
-  BulletPrefab: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}
+  BulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}
   TimeBetweenBullets: 0.5
   Damage: 5
   Direction1: 180

@@ -6,11 +6,14 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(menuName = "Paths/Rage")]
 public class Rage : Path
 {
-    public float _enemiesKilled, _enemiesToLvlUp = 10, NewMovementSpeed = 5, Radius = 4;
+    public float _enemiesKilled, _enemiesToLvlUp = 10, NewMovementSpeed = 5;
     public bool IsSpinning;
     public LayerMask EnemyLayer;
+    public GameObject SpherePrefab;
+
+    private GameObject _sphere = null;
     private GameRunner _gameRunner;
-   [SerializeField] private float _deafultMovementSpeed, _timer;
+   [SerializeField] private float _deafultMovementSpeed, _timer, _radius;
     public override void Dash(GameObject parent)
     {
         parent.GetComponent<Player>().Dash();
@@ -25,6 +28,11 @@ public class Rage : Path
 
        if (IsSpinning)
         {
+            if (_sphere == null)
+            {
+                _sphere = Instantiate(SpherePrefab, parent.transform);
+            }
+
             _timer += Time.deltaTime;
 
             parent.GetComponent<ItemHolder>().CanUse = false;
@@ -32,7 +40,7 @@ public class Rage : Path
             parent.GetComponent<Player>().MovementSpeed = NewMovementSpeed;
 
 
-            Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, Radius, EnemyLayer);
+            Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, _radius, EnemyLayer);
             if (enemiesInRadius != null && _timer >= 0.5f)
             {
                 foreach (Collider c in enemiesInRadius)
@@ -44,6 +52,10 @@ public class Rage : Path
         }
        else
         {
+            if (_sphere != null)
+            {
+                Destroy( _sphere );
+            }
             _timer =  0;
             parent.GetComponent<ItemHolder>().CanUse = true;
             parent.GetComponent<Player>().CanShoot = true;
@@ -84,10 +96,12 @@ public class Rage : Path
 
     public override void OnStart(GameObject parent)
     {
+        _gameRunner = FindAnyObjectByType<GameRunner>();
         Level = 0;
         IsSpinning = false;
+        _radius = SpherePrefab.transform.localScale.x;
+        _enemiesKilled = 0;
         _deafultMovementSpeed = parent.GetComponent<Player>().MovementSpeed;
-        _gameRunner = FindAnyObjectByType<GameRunner>();
     }
     
 }

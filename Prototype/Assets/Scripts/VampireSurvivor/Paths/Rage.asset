@@ -17,10 +17,12 @@ MonoBehaviour:
   _enemiesKilled: 5
   _enemiesToLvlUp: 10
   NewMovementSpeed: 5
-  Radius: 3
-  IsSpinning: 1
+  IsSpinning: 0
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  SpherePrefab: {fileID: 549691611273444394, guid: c9f1eb29349ca164c84ac2c3f34e565d, type: 3}
+  _sphere: {fileID: 0}
   _deafultMovementSpeed: 8
-  _timer: 0.2416799
+  _timer: 0.0738161
+  _radius: 0

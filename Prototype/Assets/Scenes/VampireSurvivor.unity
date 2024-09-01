@@ -1646,7 +1646,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3491,6 +3491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3024560447446436950, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
+      propertyPath: ChoosenPath
+      value: 
+      objectReference: {fileID: 11400000, guid: aee4bc8834bb3ae4fa7419c9ee1d0049, type: 2}
     - target: {fileID: 4463104347729444194, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: IconLists.Array.data[0]
       value: 

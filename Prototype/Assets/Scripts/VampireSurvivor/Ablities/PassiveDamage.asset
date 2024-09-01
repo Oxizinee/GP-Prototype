@@ -17,7 +17,7 @@ MonoBehaviour:
     the closest enemy - the effect can stack
   TimeBetweenBullets: 3
   Damage: 10
-  BulletPrefab: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}
+  BulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
