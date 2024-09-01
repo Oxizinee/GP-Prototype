@@ -323,7 +323,7 @@ MonoBehaviour:
   Speed: 10
   BulletLifeSpan: 9
   StunDuration: 0.5
-  Damage: 2
+  Damage: 6
   CanPierce: 0
 --- !u!135 &8382861868157268550
 SphereCollider:

@@ -61,11 +61,11 @@ public class HPBarBehaviour : MonoBehaviour
                 if (GetComponent<Enemy>().Type == EnemyType.Big)
                 {
                     Instantiate(ItemsToSpawn[Random.Range(0, ItemsToSpawn.Length)], transform.position, Quaternion.identity);
-                    GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent = GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent + 4;
+                    GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent = GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent + 10;
                 }
                 else
                 {
-                    GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent++;
+                    GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent = GetComponent<Enemy>().Player.GetComponent<XPBar>().XPCurrent + 2;
 
                 }
             }

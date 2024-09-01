@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Active Shots
   Description: Increase speed of basic bullets
+  NewSpeed: 25

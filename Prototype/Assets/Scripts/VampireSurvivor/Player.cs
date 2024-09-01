@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10, EnemyDamage = 1, BulletSpeed = 8, BulletDamage = 2, TimeBetweenBullets = 1, 
+    public float MovementSpeed = 10, JumpHeight = 8, DashDistance = 5, DashCooldown = 2, PassiveDamage = 10, EnemyDamage = 1, BulletSpeed = 12, BulletDamage = 6, TimeBetweenBullets = 1, 
         BulletLifeSpan = 9, BulletStunDuration = 0.5f;
     public GameObject BulletPrefab, BombPrefab, FieldOfView;
     public Material InvincibleMat;

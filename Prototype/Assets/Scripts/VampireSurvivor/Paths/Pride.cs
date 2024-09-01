@@ -47,7 +47,7 @@ public class Pride : Path
         if (!_canUseSpecialAttack)
         {
             _specialAttackTimer += Time.deltaTime;
-            if (_specialAttackTimer >= 30)
+            if (_specialAttackTimer >= 8)
             {
                 _canUseSpecialAttack = true;
                 _specialAttackTimer = 0;

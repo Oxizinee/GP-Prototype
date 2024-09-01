@@ -29,7 +29,7 @@ public class GameRunner : MonoBehaviour
         PauseGame();
         SpawnEnemies();
 
-        SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.002f),0.5f,3);
+        SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.02f),0.5f,3);
 
         EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
         EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;

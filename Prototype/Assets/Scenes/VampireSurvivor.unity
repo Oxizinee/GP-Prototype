@@ -449,11 +449,11 @@ Transform:
   m_GameObject: {fileID: 4308837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.49984843, w: 0.86611295}
-  m_LocalPosition: {x: 94.86634, y: -2.286998, z: 3.92}
-  m_LocalScale: {x: 60.10976, y: 0.92376965, z: 166.1725}
+  m_LocalPosition: {x: 98.7, y: -1.649998, z: 0}
+  m_LocalScale: {x: 60.109764, y: 0.9237697, z: 166.1725}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7380235503593558885}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 59.98}
 --- !u!1 &60239141
 GameObject:
@@ -3494,7 +3494,7 @@ PrefabInstance:
     - target: {fileID: 3024560447446436950, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: ChoosenPath
       value: 
-      objectReference: {fileID: 11400000, guid: aee4bc8834bb3ae4fa7419c9ee1d0049, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4463104347729444194, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
       propertyPath: IconLists.Array.data[0]
       value: 
@@ -3565,17 +3565,9 @@ PrefabInstance:
       objectReference: {fileID: 1786946354}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4871774673667340080, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4308841}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
---- !u!4 &7380235503593558885 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4871774673667340080, guid: 176b6b15642bccb428fdc18abf32ba0a, type: 3}
-  m_PrefabInstance: {fileID: 7380235503593558873}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3586,6 +3578,7 @@ SceneRoots:
   - {fileID: 1564286062}
   - {fileID: 1773624832}
   - {fileID: 1062325779}
+  - {fileID: 4308841}
   - {fileID: 7380235503593558873}
   - {fileID: 1069451962}
   - {fileID: 1970632011}
