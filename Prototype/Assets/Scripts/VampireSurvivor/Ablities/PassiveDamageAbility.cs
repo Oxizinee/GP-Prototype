@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using IMPossible.Controller;
+using IMPossible.Missle;
 
 [CreateAssetMenu(menuName = "Abilities/Passive Damage")]
 public class PassiveDamageAbility : Ability
@@ -42,7 +43,7 @@ public class PassiveDamageAbility : Ability
                 GameObject go = Instantiate(BulletPrefab, new Vector3(parent.transform.position.x, parent.transform.localScale.y / 2, parent.transform.position.z), Quaternion.identity);
                 Vector3 direction = closestEnemy - parent.transform.position;
                 go.transform.rotation = Quaternion.LookRotation(direction);
-                go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().PassiveDamage;
+                go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().PassiveDamage;
                 _timer = 0;
             }
         }

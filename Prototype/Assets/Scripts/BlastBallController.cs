@@ -1,3 +1,4 @@
+using IMPossible.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -23,7 +24,7 @@ public class BlastBallController : MonoBehaviour
 
                     if (rb.gameObject.tag == "Enemy")
                     {
-                      rb.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
+                      rb.gameObject.GetComponent<Health>().TakeDamage(Damage);
                         rb.GetComponent<Enemy>().ShowFloatingText(Damage, this.gameObject);
                         rb.GetComponent<Enemy>().SpawnBloodSplatter();
                     }

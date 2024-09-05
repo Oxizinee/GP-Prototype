@@ -1,0 +1,52 @@
+using IMPossible.Combat;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace IMPossible.Missle
+{
+    public class BasicBullet : MonoBehaviour
+    {
+        public float Speed { get; set; } = 10;
+        public float BulletLifeSpan { get; set; } = 9;
+        public float StunDuration { get; set; } = 0.5f;
+        public float Damage { get; set; } = 2;
+        public bool CanPierce { get; set; } = false;
+
+        private float _timer;
+
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
+                collision.gameObject.GetComponent<Enemy>()._isStunned = true;
+                collision.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                collision.gameObject.GetComponent<Enemy>().ShowFloatingText(Damage, collision.gameObject);
+
+                collision.gameObject.GetComponent<Enemy>().SpawnBloodSplatter();
+
+                if (CanPierce)
+                {
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    CanPierce = false;
+                }
+            }
+        }
+        // Update is called once per frame
+        void Update()
+        {
+            _timer += Time.deltaTime;
+            transform.position += transform.forward * Speed * Time.deltaTime;
+
+            if (_timer > BulletLifeSpan)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using IMPossible.Controller;
+using IMPossible.Missle;
 
 [CreateAssetMenu(menuName = "Paths/Pride")]
 public class Pride : Path
@@ -81,9 +82,9 @@ public class Pride : Path
         {
 
             GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-            go.GetComponent<BulletMovement>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-            go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().BulletDamage;
-            go.GetComponent<BulletMovement>().Speed = parent.GetComponent<Player>().BulletSpeed;
+            go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
+            go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
+            go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
 
 
             _canShoot2 = false;
@@ -108,9 +109,9 @@ public class Pride : Path
             if (_shootingTimer2 >= parent.GetComponent<Player>().TimeBetweenBullets)
             {
                 GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-                go.GetComponent<BulletMovement>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-                go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().BulletDamage;
-                go.GetComponent<BulletMovement>().Speed = parent.GetComponent<Player>().BulletSpeed;
+                go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
+                go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
+                go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
                 _shootingTimer2 = 0;
             }
         }
@@ -126,9 +127,9 @@ public class Pride : Path
         {
 
             GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-            go.GetComponent<BulletMovement>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-            go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().BulletDamage;
-            go.GetComponent<BulletMovement>().Speed = parent.GetComponent<Player>().BulletSpeed;
+            go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
+            go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
+            go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
 
             _canShoot = false;
 
@@ -152,9 +153,9 @@ public class Pride : Path
             if (_shootingTimer >= parent.GetComponent<Player>().TimeBetweenBullets)
             {
                 GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-                go.GetComponent<BulletMovement>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-                go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().BulletDamage;
-                go.GetComponent<BulletMovement>().Speed = parent.GetComponent<Player>().BulletSpeed;
+                go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
+                go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
+                go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
                 _shootingTimer = 0;
             }
         }

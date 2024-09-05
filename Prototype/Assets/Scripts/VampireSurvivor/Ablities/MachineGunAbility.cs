@@ -1,6 +1,8 @@
+using IMPossible.Controller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IMPossible.Missle;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(menuName = "Abilities/Machine Gun")]
@@ -18,8 +20,8 @@ public class MachineGunAbility : Ability
            GameObject go1 = Instantiate(BulletPrefab, new Vector3(parent.transform.position.x, parent.transform.localScale.y / 2, parent.transform.position.z), Quaternion.Euler(0, Direction1, 0));
            GameObject go2 = Instantiate(BulletPrefab, new Vector3(parent.transform.position.x, parent.transform.localScale.y / 2, parent.transform.position.z), Quaternion.Euler(0, Direction2,0));
 
-            go1.GetComponent<BulletMovement>().Damage = Damage;
-            go2.GetComponent<BulletMovement>().Damage = Damage;
+            go1.GetComponent<BasicBullet>().Damage = Damage;
+            go2.GetComponent<BasicBullet>().Damage = Damage;
 
             _timer = 0;
         }

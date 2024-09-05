@@ -1,3 +1,4 @@
+using IMPossible.Missle;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,11 +13,11 @@ namespace IMPossible.Combat
         public void Shoot(GameObject BulletPrefab, bool CanPierce, float Damage, float Speed, float Duration, float StunDuration, float BulletCooldown)
         {
             GameObject go = Instantiate(BulletPrefab, new Vector3(transform.position.x, transform.localScale.y/2,transform.position.z), transform.rotation);
-            go.GetComponent<BulletMovement>().CanPierce = CanPierce;
-            go.GetComponent<BulletMovement>().Damage = Damage;
-            go.GetComponent<BulletMovement>().Speed = Speed;
-            go.GetComponent<BulletMovement>().BulletLifeSpan = Duration;
-            go.GetComponent<BulletMovement>().StunDuration = StunDuration;
+            go.GetComponent<BasicBullet>().CanPierce = CanPierce;
+            go.GetComponent<BasicBullet>().Damage = Damage;
+            go.GetComponent<BasicBullet>().Speed = Speed;
+            go.GetComponent<BasicBullet>().BulletLifeSpan = Duration;
+            go.GetComponent<BasicBullet>().StunDuration = StunDuration;
             _bulletCooldown = BulletCooldown;
             
             CanShoot = false;
