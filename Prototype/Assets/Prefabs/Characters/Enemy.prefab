@@ -494,13 +494,7 @@ MonoBehaviour:
   _stunCharging: 0
   Speed: 3
   StunDuration: 0.5
-  BasicImpMat: {fileID: 2100000, guid: 7e5254cc80250284caa5d7ee36901779, type: 2}
-  IceImpMat: {fileID: 2100000, guid: b2e4d2fdf748b8a4f9e24cbb8f6ea98b, type: 2}
-  ChargingImpMat: {fileID: 2100000, guid: 044f4f6c3cdf4bf40868d13c95e0a881, type: 2}
-  StunnedMat: {fileID: 2100000, guid: dd51b7c131d2ceb4492dad42d027e1d1, type: 2}
-  FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
   HPBar: {fileID: 6000968621898348169, guid: de4bccf2269a6f74b8f59247c8faa35e, type: 3}
-  BloodSplatterPrefab: {fileID: 3397551241818298056, guid: 89977998b14ef8044b9b83be0f945a23, type: 3}
   Player: {fileID: 0}
   BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
   _stunTimer: 0
@@ -520,6 +514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
+  IsDead: 0
+  FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
+  BloodSplatterPrefab: {fileID: 3397551241818298056, guid: 89977998b14ef8044b9b83be0f945a23, type: 3}
 --- !u!136 &4822912971633752869
 CapsuleCollider:
   m_ObjectHideFlags: 0

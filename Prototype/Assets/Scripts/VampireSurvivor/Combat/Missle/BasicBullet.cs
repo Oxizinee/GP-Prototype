@@ -23,13 +23,11 @@ namespace IMPossible.Missle
                 collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
                 collision.gameObject.GetComponent<Enemy>()._isStunned = true;
                 collision.gameObject.GetComponent<Health>().TakeDamage(Damage);
-                collision.gameObject.GetComponent<Enemy>().ShowFloatingText(Damage, collision.gameObject);
 
-                collision.gameObject.GetComponent<Enemy>().SpawnBloodSplatter();
 
-                if (CanPierce)
+                if (!CanPierce)
                 {
-                    Destroy(collision.gameObject);
+                    Destroy(gameObject);
                 }
                 else
                 {

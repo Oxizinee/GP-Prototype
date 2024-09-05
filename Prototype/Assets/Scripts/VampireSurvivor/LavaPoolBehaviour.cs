@@ -1,3 +1,4 @@
+using IMPossible.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,9 +26,7 @@ public class LavaPoolBehaviour : MonoBehaviour
 
             if (_dmgTimer >= 1)
             {
-                other.GetComponent<HPBarBehaviour>().CurrentHP = other.GetComponent<HPBarBehaviour>().CurrentHP - Damage;
-                other.GetComponent<Enemy>().ShowFloatingText(Damage, other.gameObject);
-                other.GetComponent<Enemy>().SpawnBloodSplatter();
+                other.GetComponent<Health>().TakeDamage(Damage);
                _dmgTimer = 0;
             }
         }

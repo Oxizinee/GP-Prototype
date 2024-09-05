@@ -22,11 +22,8 @@ public class Enemy : MonoBehaviour
     public bool _isGrounded, _isStunned, _canShoot = true, _canCharge = true, _stunCharging;
     public float Speed = 5, StunDuration = 0.5f;
 
-    public Material BasicImpMat, IceImpMat, ChargingImpMat, StunnedMat;
+    public GameObject HPBar;
 
-    public GameObject FloatingText, HPBar, BloodSplatterPrefab;
-
-    private Material DeafultMat;
     public GameObject Player, BulletPrefab;
     [SerializeField]private float _stunTimer, _shootingTimer, _chargerTimer, _inChargeTimer;
 
@@ -42,16 +39,7 @@ public class Enemy : MonoBehaviour
                 }
         }
 
-       // DeafultMat = GetComponentInChildren<MeshRenderer>().sharedMaterial;
     }
-    public void SpawnBloodSplatter()
-    {
-        Vector3 oppositeDirection = -transform.forward;
-        Quaternion oppositeRotation = Quaternion.LookRotation(oppositeDirection);
-        Instantiate(BloodSplatterPrefab, transform.position, oppositeRotation);
-    }
-
-    // Update is called once per frame
     void Update()
     {
         isGrounded();
@@ -60,17 +48,9 @@ public class Enemy : MonoBehaviour
         StunBehaviour();
         IceEnemyBehaviour();
         ChargingEnemyBehaviour();
-
-        HPBar.transform.LookAt(Camera.main.transform.position);
-        transform.LookAt(Player.transform.position);
-
     }
 
-    public void ShowFloatingText(float DamageValue, GameObject Enemy)
-    {
-        GameObject text = Instantiate(FloatingText, Enemy.transform.position, Quaternion.identity, Enemy.transform);
-        text.GetComponent<TextMeshPro>().text =DamageValue.ToString();
-    }
+    
     private void ChargingEnemyBehaviour()
     {
         if (Type == EnemyType.Charging)
@@ -147,7 +127,6 @@ public class Enemy : MonoBehaviour
     {
         if (_isStunned)
         {
-           // GetComponentInChildren<MeshRenderer>().sharedMaterial = StunnedMat;
             _stunTimer += Time.deltaTime;
             if (_stunTimer >= StunDuration)
             {
@@ -155,17 +134,15 @@ public class Enemy : MonoBehaviour
                 _stunTimer = 0;
             }
         }
-
-        else
-        {
-            //GetComponentInChildren<MeshRenderer>().sharedMaterial = DeafultMat;
-        }
     }
 
     private void Move()
     {
-        if (_isStunned || !isGrounded()) return;  
+        if (_isStunned || !isGrounded() || GetComponent<Health>().IsDead) return;  
+
         transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
+        HPBar.transform.LookAt(Camera.main.transform.position);
+        transform.LookAt(Player.transform.position);
     }
 
     public bool isGrounded()
