@@ -3555,6 +3555,50 @@ PrefabInstance:
       propertyPath: IconLists.Array.data[2]
       value: 
       objectReference: {fileID: 1023186902}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f0f1d12bc626244f93042d1f2650a78, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d9e08d41dce2aa4792f8a5352b79eac, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: de5283a885f503b42b7f5121a0d76270, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: f65f5aaedc905a0418327be6e90c3bbe, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: b693060da8a1c7241a8c6058f42f1142, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: e71ac5230391aa84f8dc8dde24de3707, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: cf9e90c7b35ac014e947f3701c87e681, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: b396bfb0acbc70e4996e806dab2286e9, type: 2}
+    - target: {fileID: 7635526952217150393, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: LockedAbilities.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -49,6 +49,7 @@ namespace IMPossible.Movement
             if (GetComponent<CharacterController>().isGrounded && Input.GetKey(KeyCode.Space)) //Jump
             {
                 _verticalVel = JumpHeight;
+                GetComponent<Animator>().SetTrigger("Jump");
             }
             else
             {
@@ -67,19 +68,15 @@ namespace IMPossible.Movement
         {
             Vector3 mouseScreenPosition = Input.mousePosition;
 
-            // Convert mouse position to world space, make sure to set an appropriate depth (z distance from camera)
             Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
 
-            // Assuming the character is on a flat plane at y = 0
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             float distanceToPlane;
 
             if (plane.Raycast(ray, out distanceToPlane))
             {
-                // Get the point on the plane where the mouse is pointing
                 Vector3 targetPoint = ray.GetPoint(distanceToPlane);
 
-                // Get the direction from the character to the target point
                 Vector3 direction = targetPoint - transform.position;
                 direction.y = 0f;  // Keep the direction in the XZ plane
 
