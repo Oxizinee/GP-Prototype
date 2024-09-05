@@ -23,6 +23,17 @@ namespace IMPossible.Movement
                     CanDash = true;
                 }
             }
+
+            UpdateAnimator();
+        }
+
+        private void UpdateAnimator()
+        {
+            Vector3 velocity = GetComponent<CharacterController>().velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.magnitude;
+
+            GetComponent<Animator>().SetFloat("Blend", speed);
         }
 
         public void Move(float Speed, float JumpHeight)

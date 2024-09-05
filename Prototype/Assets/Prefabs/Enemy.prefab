@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 2931200100778925940}
   - component: {fileID: 323464628587572772}
   - component: {fileID: 4059332783725474675}
-  - component: {fileID: -1408887042777751507}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -383,18 +382,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &-1408887042777751507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575913489466269136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a1743fe71b4184a89c074ce2779786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1755652863752562063
 GameObject:
   m_ObjectHideFlags: 0

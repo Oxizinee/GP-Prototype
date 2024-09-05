@@ -15,8 +15,8 @@ public class MachineGunAbility : Ability
 
         if (_timer > TimeBetweenBullets)
         {
-           GameObject go1 = Instantiate(BulletPrefab, parent.transform.position, Quaternion.Euler(0, Direction1, 0));
-           GameObject go2 = Instantiate(BulletPrefab, parent.transform.position, Quaternion.Euler(0, Direction2,0));
+           GameObject go1 = Instantiate(BulletPrefab, new Vector3(parent.transform.position.x, parent.transform.localScale.y / 2, parent.transform.position.z), Quaternion.Euler(0, Direction1, 0));
+           GameObject go2 = Instantiate(BulletPrefab, new Vector3(parent.transform.position.x, parent.transform.localScale.y / 2, parent.transform.position.z), Quaternion.Euler(0, Direction2,0));
 
             go1.GetComponent<BulletMovement>().Damage = Damage;
             go2.GetComponent<BulletMovement>().Damage = Damage;

@@ -39,7 +39,7 @@ public class PassiveDamageAbility : Ability
 
             if (closestEnemy != Vector3.zero)
             {
-                GameObject go = Instantiate(BulletPrefab, parent.transform.position, Quaternion.identity);
+                GameObject go = Instantiate(BulletPrefab, new Vector3(parent.transform.position.x, parent.transform.localScale.y / 2, parent.transform.position.z), Quaternion.identity);
                 Vector3 direction = closestEnemy - parent.transform.position;
                 go.transform.rotation = Quaternion.LookRotation(direction);
                 go.GetComponent<BulletMovement>().Damage = parent.GetComponent<Player>().PassiveDamage;
