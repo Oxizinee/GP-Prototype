@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using IMPossible.Controller;
 
 [CreateAssetMenu(menuName = "Paths/Rage")]
 public class Rage : Path

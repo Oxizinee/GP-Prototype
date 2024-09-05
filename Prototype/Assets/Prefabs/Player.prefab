@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8268555792913202615}
   - component: {fileID: 6805030824579692797}
   - component: {fileID: 5506812279840223849}
+  - component: {fileID: 6189379698438022699}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -262,13 +263,27 @@ MonoBehaviour:
   TimeBetweenBullets: 1
   BulletLifeSpan: 9
   BulletStunDuration: 0.5
-  BulletPrefab: {fileID: 3255963329888112448, guid: e3b5ec3940e33ae40858c6ab2773ae33, type: 3}
+  BulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}
   BombPrefab: {fileID: 3255963329888112448, guid: b0d42aabc5fbc634ba6984712de1e4f2, type: 3}
   FieldOfView: {fileID: 8388397345166799502}
   InvincibleMat: {fileID: 2100000, guid: 03f9bc7ed52fd874f8cddc3095ddce0b, type: 2}
   HornsActive: 0
   CanPierceActive: 0
   CanShoot: 1
+--- !u!114 &6189379698438022699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352296767054926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91a1743fe71b4184a89c074ce2779786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterMovementSpeed: 8
+  CharacterJumpHeight: 8
 --- !u!1 &2782447489754114112
 GameObject:
   m_ObjectHideFlags: 0

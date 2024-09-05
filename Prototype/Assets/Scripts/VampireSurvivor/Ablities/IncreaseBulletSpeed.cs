@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IMPossible.Controller;
 
 [CreateAssetMenu(menuName = "Abilities/Increase Bullet Speed")]
 public class IncreaseBulletSpeed : Ability

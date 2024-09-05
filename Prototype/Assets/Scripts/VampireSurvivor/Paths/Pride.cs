@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using IMPossible.Controller;
 
 [CreateAssetMenu(menuName = "Paths/Pride")]
 public class Pride : Path
