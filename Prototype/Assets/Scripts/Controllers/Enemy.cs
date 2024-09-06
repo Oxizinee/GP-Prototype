@@ -1,5 +1,6 @@
 using IMPossible.Combat;
-using IMPossible.Core;
+using IMPossible.Movement;
+using IMPossible.Resources;
 using UnityEngine;
 public enum EnemyType
 {
@@ -13,7 +14,7 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public EnemyType Type;
-    public bool _isGrounded, _isStunned, _canCharge = true, _stunCharging;
+    public bool _isStunned, _canCharge = true, _stunCharging;
     public float Speed = 5, StunDuration = 0.5f, InRadius = 10;
 
     public GameObject HPBar;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+
         switch (Type)
         {
             case EnemyType.Big:
@@ -39,9 +41,9 @@ public class Enemy : MonoBehaviour
     {
         if(GetComponent<Health>().IsDead) return;
 
-        isGrounded();
-
         Move();
+
+
         StunBehaviour();
         IceEnemyBehaviour();
         ChargingEnemyBehaviour();
@@ -128,34 +130,11 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        if (_isStunned || !isGrounded()) return;  
-
-        transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
-
-        HPBar.transform.LookAt(Camera.main.transform.position);
-        transform.LookAt(Player.transform.position);
+        if (_isStunned) return;  
+        GetComponent<EnemyMover>().Move(Player, Speed);
     }
 
-    public bool isGrounded()
-    {
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z), -Vector3.up, Color.red);
-        RaycastHit hit;
-        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), -Vector3.up, out hit, 0.8f))
-        {
-            if (hit.collider.tag == "Floor")
-            {
-                _isGrounded = true;
-                return true;
-            }
-            return false;
-        }
-        else
-        {
-                _isGrounded = false;
-                return false;
-           
-        }
-    }
+   
 
     private void OnDrawGizmos()
     {

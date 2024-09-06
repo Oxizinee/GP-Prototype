@@ -13,7 +13,7 @@ namespace IMPossible.Combat
             go.GetComponent<BasicBullet>().CanPierce = CanPierce;
             go.GetComponent<BasicBullet>().Damage = Damage;
             go.GetComponent<BasicBullet>().Speed = Speed;
-            go.GetComponent<BasicBullet>().BulletLifeSpan = Duration;
+            go.GetComponent<BasicBullet>().LifeSpan = Duration;
             go.GetComponent<BasicBullet>().StunDuration = StunDuration;
             _bulletCooldown = BulletCooldown;
             

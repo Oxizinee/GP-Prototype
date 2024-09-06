@@ -1,3 +1,4 @@
+using IMPossible.Combat.Missle;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/Increase Lava Pool Damage")]
 public class IncreaseLavaPoolDamage : Ability
 {
-    private LavaPoolBehaviour[] _lavaPools;
+    private LavaPool[] _lavaPools;
     public float NewDamage = 18;
     public override void Active(GameObject parent)
     {
 
-        _lavaPools = FindObjectsByType<LavaPoolBehaviour>(FindObjectsSortMode.None);
+        _lavaPools = FindObjectsByType<LavaPool>(FindObjectsSortMode.None);
         if (_lavaPools != null)
         {
             foreach (var pool in _lavaPools)

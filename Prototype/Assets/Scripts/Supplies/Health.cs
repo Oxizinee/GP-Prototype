@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace IMPossible.Core
+namespace IMPossible.Resources
 {
     public class Health : MonoBehaviour
     {

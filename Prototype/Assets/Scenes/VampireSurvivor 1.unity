@@ -771,6 +771,7 @@ GameObject:
   - component: {fileID: 464050368}
   - component: {fileID: 464050370}
   - component: {fileID: 464050369}
+  - component: {fileID: 464050371}
   m_Layer: 5
   m_Name: HpSliderTop
   m_TagString: Untagged
@@ -835,6 +836,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464050367}
   m_CullTransparentMesh: 1
+--- !u!114 &464050371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464050367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2786ba65029ce204798fb87f06dc31fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &622850073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,7 +3542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1364394313216664311, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: HP
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2705628479458193748, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: HPBar
@@ -3564,8 +3577,29 @@ PrefabInstance:
     - {fileID: 5598295144000260520, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8715922468260275423}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+--- !u!1 &8715922468260275409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+  m_PrefabInstance: {fileID: 8715922468260275408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8715922468260275423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8715922468260275409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abc7179f9c51eb42865534f9ac30357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChoosenPath: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

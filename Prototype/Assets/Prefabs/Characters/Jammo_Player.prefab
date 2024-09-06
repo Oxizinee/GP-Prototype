@@ -2037,11 +2037,10 @@ GameObject:
   - component: {fileID: 7534953489361986049}
   - component: {fileID: 2344260260663069690}
   - component: {fileID: 384050859329524857}
-  - component: {fileID: 8852567551823234743}
   - component: {fileID: 6039235373863400495}
   - component: {fileID: 7635526952217150393}
-  - component: {fileID: 4996323104392719725}
   - component: {fileID: 1364394313216664311}
+  - component: {fileID: 7084675452128804330}
   m_Layer: 7
   m_Name: Jammo_Player
   m_TagString: Player
@@ -2190,19 +2189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282f9ab60dccd147971c896d46ec349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8852567551823234743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3541754002163558908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abc7179f9c51eb42865534f9ac30357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChoosenPath: {fileID: 0}
 --- !u!114 &6039235373863400495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,23 +2236,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
   - {fileID: 11400000, guid: 5fea5caa667dc654e86d88fb8d9f7576, type: 2}
   UnlockedAbilities: []
---- !u!114 &4996323104392719725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3541754002163558908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7898ba800fa775b4990cd076a01591aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XPbar: {fileID: 0}
-  XPCurrent: 0
-  XPMax: 2
-  Level: 0
-  LevelUpMenu: {fileID: 0}
 --- !u!114 &1364394313216664311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2279,10 +2248,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07caeb825bdaf8449812ed037494637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 100
   IsDead: 0
   FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
   BloodSplatterPrefab: {fileID: 3397551241818298056, guid: 89977998b14ef8044b9b83be0f945a23, type: 3}
+--- !u!114 &7084675452128804330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541754002163558908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d2f7060b21b194c96ba6efa0f6283d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingLevel: 1
+  ChoosenPath: {fileID: 0}
 --- !u!1 &3921334144448749991
 GameObject:
   m_ObjectHideFlags: 0

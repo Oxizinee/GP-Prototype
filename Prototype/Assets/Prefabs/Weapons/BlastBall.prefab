@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3991247348730464651}
   - component: {fileID: 5373288634225662709}
   - component: {fileID: -7622075404156022855}
-  - component: {fileID: 8212526127263523017}
   m_Layer: 8
   m_Name: BlastBall
   m_TagString: BlastBall
@@ -119,17 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a989bf67e08b96a4589f0c037e7fbbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Force: 10
-  Damage: 5
---- !u!114 &8212526127263523017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3255963329888112448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd71683c00756944a43918a9b0aefba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  Force: 800
+  Speed: 5

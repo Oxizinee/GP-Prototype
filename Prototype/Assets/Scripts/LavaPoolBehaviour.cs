@@ -1,4 +1,4 @@
-using IMPossible.Core;
+using IMPossible.Resources;
 using UnityEngine;
 using UnityEngine.VFX;
 

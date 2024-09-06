@@ -1,3 +1,4 @@
+using IMPossible.Combat.Missle;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/Increase Lava Pool Timer")]
 public class IncreaseLavaPoolTimer : Ability
 {
-    public LavaPoolBehaviour[] lavaPools;
+    public LavaPool[] lavaPools;
     public float NewTime = 12;
     public override void Active(GameObject parent)
     {
 
-        lavaPools = FindObjectsByType <LavaPoolBehaviour>(FindObjectsSortMode.None);
+        lavaPools = FindObjectsByType <LavaPool>(FindObjectsSortMode.None);
         if (lavaPools != null)
         {
             foreach(var pool in lavaPools)
