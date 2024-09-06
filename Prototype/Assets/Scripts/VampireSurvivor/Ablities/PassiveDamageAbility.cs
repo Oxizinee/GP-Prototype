@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using IMPossible.Controller;
-using IMPossible.Missle;
+using IMPossible.Combat.Missle;
 
 [CreateAssetMenu(menuName = "Abilities/Passive Damage")]
 public class PassiveDamageAbility : Ability

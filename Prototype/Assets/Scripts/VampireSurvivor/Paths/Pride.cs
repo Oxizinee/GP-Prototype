@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using IMPossible.Controller;
-using IMPossible.Missle;
+using IMPossible.Combat.Missle;
 
 [CreateAssetMenu(menuName = "Paths/Pride")]
 public class Pride : Path

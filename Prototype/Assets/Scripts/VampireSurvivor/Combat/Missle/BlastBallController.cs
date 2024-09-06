@@ -1,10 +1,7 @@
-using IMPossible.Combat;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using IMPossible.Core;
 
-namespace IMPossible.Missle
+namespace IMPossible.Combat.Missle
 {
     public class BlastBallController : MonoBehaviour
     {
@@ -24,7 +21,7 @@ namespace IMPossible.Missle
                     {
                         rb.AddExplosionForce(800, transform.position, 7, 3);
 
-                        if (rb.gameObject.tag == "Enemy")
+                        if (rb.gameObject.tag == "Enemy" && rb.gameObject.GetComponent<Health>().CanBeAttacked())
                         {
                             rb.gameObject.GetComponent<Health>().TakeDamage(Damage);
                         }
@@ -32,17 +29,6 @@ namespace IMPossible.Missle
                 }
             }
             Destroy(gameObject);
-        }
-
-
-        void Start()
-        {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

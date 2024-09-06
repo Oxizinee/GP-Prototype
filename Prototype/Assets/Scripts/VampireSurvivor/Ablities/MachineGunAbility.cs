@@ -2,7 +2,7 @@ using IMPossible.Controller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using IMPossible.Missle;
+using IMPossible.Combat.Missle;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(menuName = "Abilities/Machine Gun")]

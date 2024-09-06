@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace IMPossible.Combat
+namespace IMPossible.Core
 {
     public class Health : MonoBehaviour
     {
@@ -24,11 +22,15 @@ namespace IMPossible.Combat
                 IsDead = true;
             }
         }
-
+        public bool CanBeAttacked()
+        {
+            return !IsDead;
+        }
         private void Die()
         {
             if (IsDead) return;
             GetComponent<Animator>().SetTrigger("Die");
+            Destroy(gameObject, 4);
         }
 
         private void ShowFloatingText(float DamageValue)

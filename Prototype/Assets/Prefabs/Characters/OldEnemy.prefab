@@ -212,16 +212,15 @@ MonoBehaviour:
   Type: 0
   _isGrounded: 0
   _isStunned: 0
-  _canShoot: 1
   _canCharge: 1
   _stunCharging: 0
   Speed: 3
   StunDuration: 0.5
+  InRadius: 10
   HPBar: {fileID: 6000968621898348169}
   Player: {fileID: 0}
   BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
   _stunTimer: 0
-  _shootingTimer: 0
   _chargerTimer: 0
   _inChargeTimer: 0
 --- !u!114 &2931200100778925940
@@ -500,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6000968621898348169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011462282, y: 0.95854765, z: 0.28202367, w: -0.03895824}
+  m_LocalRotation: {x: -0.1463433, y: 0.80701774, z: 0.52625245, w: 0.22442015}
   m_LocalPosition: {x: 0, y: 1.361, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

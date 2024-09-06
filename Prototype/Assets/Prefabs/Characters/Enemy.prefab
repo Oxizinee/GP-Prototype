@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 4822912971633752869}
   - component: {fileID: 5300053842149953135}
   - component: {fileID: -7383342761262023148}
+  - component: {fileID: 6360782912486168433}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -489,16 +490,15 @@ MonoBehaviour:
   Type: 0
   _isGrounded: 0
   _isStunned: 0
-  _canShoot: 1
   _canCharge: 1
   _stunCharging: 0
   Speed: 3
   StunDuration: 0.5
+  InRadius: 12
   HPBar: {fileID: 6000968621898348169, guid: de4bccf2269a6f74b8f59247c8faa35e, type: 3}
   Player: {fileID: 0}
   BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
   _stunTimer: 0
-  _shootingTimer: 0
   _chargerTimer: 0
   _inChargeTimer: 0
 --- !u!114 &4995228024507667376
@@ -671,3 +671,15 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6360782912486168433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931298151966786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9282f9ab60dccd147971c896d46ec349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

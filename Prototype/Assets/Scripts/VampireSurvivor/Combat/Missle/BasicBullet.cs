@@ -1,9 +1,7 @@
-using IMPossible.Combat;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using IMPossible.Core;
 
-namespace IMPossible.Missle
+namespace IMPossible.Combat.Missle
 {
     public class BasicBullet : MonoBehaviour
     {
@@ -18,23 +16,39 @@ namespace IMPossible.Missle
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "Enemy")
+           if (collision.gameObject.GetComponent<Health>() != null && collision.gameObject.GetComponent<Health>().CanBeAttacked())
             {
-                collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
-                collision.gameObject.GetComponent<Enemy>()._isStunned = true;
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
+                    collision.gameObject.GetComponent<Enemy>()._isStunned = true;
+                }
+
                 collision.gameObject.GetComponent<Health>().TakeDamage(Damage);
-
-
-                if (!CanPierce)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    CanPierce = false;
-                }
+                PiercingBehaviour();
             }
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.GetComponent<Health>() != null && other.gameObject.GetComponent<Health>().CanBeAttacked())
+            {
+                other.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                PiercingBehaviour();
+            }
+        }
+        public void PiercingBehaviour()
+        {
+            if (!CanPierce)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                CanPierce = false;
+            }
+        }
+
+     
         // Update is called once per frame
         void Update()
         {

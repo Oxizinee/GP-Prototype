@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using IMPossible.Movement;
 using IMPossible.Combat;
-using UnityEngine.UI;
 
 namespace IMPossible.Controller
 {
@@ -16,29 +12,20 @@ namespace IMPossible.Controller
         public GameObject BulletPrefab, BombPrefab, FieldOfView;
         public bool HornsActive, CanPierceActive = false, CanShoot = true;
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Enemy>()._isStunned)
-            {
-                GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - EnemyDamage;
+        //private void OnCollisionEnter(Collision collision)
+        //{
+        //    if (collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Enemy>()._isStunned)
+        //    {
+        //        GetComponent<HPBarBehaviour>().CurrentHP = GetComponent<HPBarBehaviour>().CurrentHP - EnemyDamage;
 
-                if (HornsActive)
-                {
-                    collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 60;
-                }
-            }
+        //        if (HornsActive)
+        //        {
+        //            collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 60;
+        //        }
+        //    }
 
-        }
+        //}
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.tag == "BulletForPlayer")
-            {
-                GetComponent<HPBarBehaviour>().CurrentHP--;
-                Destroy(other.gameObject);
-            }
-        }
-   
         // Update is called once per frame
         void Update()
         {

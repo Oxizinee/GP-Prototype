@@ -1,12 +1,6 @@
 using IMPossible.Combat;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Security;
-using TMPro;
+using IMPossible.Core;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.VFX;
-
 public enum EnemyType
 {
     Basic,
@@ -19,13 +13,13 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public EnemyType Type;
-    public bool _isGrounded, _isStunned, _canShoot = true, _canCharge = true, _stunCharging;
-    public float Speed = 5, StunDuration = 0.5f;
+    public bool _isGrounded, _isStunned, _canCharge = true, _stunCharging;
+    public float Speed = 5, StunDuration = 0.5f, InRadius = 10;
 
     public GameObject HPBar;
 
     public GameObject Player, BulletPrefab;
-    [SerializeField]private float _stunTimer, _shootingTimer, _chargerTimer, _inChargeTimer;
+    [SerializeField]private float _stunTimer, _chargerTimer, _inChargeTimer;
 
     void Start()
     {
@@ -34,6 +28,7 @@ public class Enemy : MonoBehaviour
         {
             case EnemyType.Big:
                 {
+                    GetComponent<Health>().HP = 50;
                     transform.localScale = transform.localScale * 1.4f;
                     break;
                 }
@@ -42,6 +37,8 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
+        if(GetComponent<Health>().IsDead) return;
+
         isGrounded();
 
         Move();
@@ -57,7 +54,7 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
 
-            if (Vector3.Distance(Player.transform.position, transform.position) <= 10 && _canCharge && Vector3.Distance(Player.transform.position, transform.position) >= 8)
+            if (IsInRadius(InRadius) && _canCharge && Vector3.Distance(Player.transform.position, transform.position) >= 8)
             {
                 StunDuration = 0.5f;
                 _isStunned = true;
@@ -102,25 +99,18 @@ public class Enemy : MonoBehaviour
     {
         if (Type == EnemyType.Ice)
         {
-            if (Vector3.Distance(Player.transform.position, transform.position) <= 10 && _canShoot)
+            if (IsInRadius(InRadius) && GetComponent<Fighter>().CanShoot)
             {
                 StunDuration = 0.5f;
-                _isStunned=true;
-                GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
-                Vector3 direction = Player.transform.position - transform.position;
-                bullet.transform.rotation = Quaternion.LookRotation(direction);
-                _canShoot = false;
-            }
-            if (!_canShoot)
-            {
-                _shootingTimer += Time.deltaTime;
-                if (_shootingTimer >= 3)
-                {
-                    _canShoot = true;
-                    _shootingTimer = 0;
-                }
+                _isStunned = true;
+                GetComponent<Fighter>().Shoot(BulletPrefab, false, 2, 10, 9, 0.5f, 3);
             }
         }
+    }
+
+    private bool IsInRadius(float radius)
+    {
+        return Vector3.Distance(Player.transform.position, transform.position) <= radius;
     }
 
     private void StunBehaviour()
@@ -138,9 +128,10 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        if (_isStunned || !isGrounded() || GetComponent<Health>().IsDead) return;  
+        if (_isStunned || !isGrounded()) return;  
 
         transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Speed * Time.deltaTime);
+
         HPBar.transform.LookAt(Camera.main.transform.position);
         transform.LookAt(Player.transform.position);
     }
@@ -164,5 +155,12 @@ public class Enemy : MonoBehaviour
                 return false;
            
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z), InRadius);
+      
     }
 }
