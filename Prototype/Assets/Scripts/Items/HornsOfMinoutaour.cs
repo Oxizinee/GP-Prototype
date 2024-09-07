@@ -14,8 +14,8 @@ public class HornsOfMinoutaour : Item
             Collider[] enemiesInRadius = Physics.OverlapSphere(parent.transform.position, 10, LayerMask);
             foreach (Collider c in enemiesInRadius)
             {
-                c.GetComponent<Enemy>().StunDuration = 2;
-                c.GetComponent<Enemy>()._isStunned = true;
+               // c.GetComponent<Enemy>().StunDuration = 2;
+                //c.GetComponent<Enemy>()._isStunned = true;
             }
 
             IsActive = false;

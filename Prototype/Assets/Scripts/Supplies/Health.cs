@@ -15,7 +15,6 @@ namespace IMPossible.Resources
             HP = Mathf.Max(HP - damage, 0);
             ShowFloatingText(damage);
             SpawnBloodSplatter();
-            Debug.Log("Health " + HP);
 
             if(HP == 0) 
             {

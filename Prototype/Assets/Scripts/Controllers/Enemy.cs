@@ -14,13 +14,11 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public EnemyType Type;
-    public bool _isStunned, _canCharge = true, _stunCharging;
-    public float Speed = 5, StunDuration = 0.5f, InRadius = 10;
-
-    public GameObject HPBar;
+    public bool _canCharge = true, _stunCharging;
+    public float Speed = 5, InRadius = 10;
 
     public GameObject Player, BulletPrefab;
-    [SerializeField]private float _stunTimer, _chargerTimer, _inChargeTimer;
+    [SerializeField]private float _chargerTimer, _inChargeTimer;
 
     void Start()
     {
@@ -39,12 +37,10 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if(!GetComponent<Health>().CanBeAttacked()) return;
+        if(!GetComponent<Health>().CanBeAttacked() || GetComponent<Fighter>().IsStunned) return;
 
         Move();
 
-
-        StunBehaviour();
         IceEnemyBehaviour();
         ChargingEnemyBehaviour();
     }
@@ -58,8 +54,7 @@ public class Enemy : MonoBehaviour
 
             if (IsInRadius(InRadius) && _canCharge && Vector3.Distance(Player.transform.position, transform.position) >= 8)
             {
-                StunDuration = 0.5f;
-                _isStunned = true;
+                GetComponent<Fighter>().GetStunned(0.5f);
                 _stunCharging = true;
                 _canCharge = false;
             }
@@ -96,47 +91,25 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
     private void IceEnemyBehaviour()
     {
         if (Type == EnemyType.Ice)
         {
             if (IsInRadius(InRadius) && GetComponent<Fighter>().CanShoot)
             {
-                StunDuration = 0.5f;
-                _isStunned = true;
-                GetComponent<Fighter>().Shoot(BulletPrefab, false, 2, 10, 9, 0.5f, 3);
+                GetComponent<Fighter>().Shoot(BulletPrefab, false, 2, 10, 9, 0.5f, 3, 0.8f);
             }
         }
     }
-
     private bool IsInRadius(float radius)
     {
         return Vector3.Distance(Player.transform.position, transform.position) <= radius;
     }
-
-    private void StunBehaviour()
-    {
-        if (_isStunned)
-        {
-            _stunTimer += Time.deltaTime;
-            if (_stunTimer >= StunDuration)
-            {
-                _isStunned = false;
-                _stunTimer = 0;
-            }
-        }
-    }
-
     private void Move()
     {
-        if (_isStunned) return;  
         GetComponent<EnemyMover>().Move(Player, Speed);
     }
-
-   
-
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z), InRadius);
