@@ -491,16 +491,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  _isStunned: 0
   _canCharge: 1
   _stunCharging: 0
   Speed: 3
-  StunDuration: 0.5
   InRadius: 12
-  HPBar: {fileID: 6000968621898348169, guid: de4bccf2269a6f74b8f59247c8faa35e, type: 3}
   Player: {fileID: 0}
   BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
-  _stunTimer: 0
   _chargerTimer: 0
   _inChargeTimer: 0
 --- !u!114 &4995228024507667376
@@ -709,7 +705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingLevel: 1
-  _experienceToGive: 2
+  _sinPath: 7
+  _progression: {fileID: 11400000, guid: 5b7c2d872d303d440874b34e1db7e459, type: 2}
 --- !u!1 &1438157519601450616
 GameObject:
   m_ObjectHideFlags: 0

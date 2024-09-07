@@ -8,11 +8,11 @@ namespace IMPossible.Stats
     {
         [Range(1, 99)]
         [SerializeField] private int _startingLevel = 1;
-        [SerializeField] private int _experienceToGive = 10;
-
-        public float RewardExperience()
+        [SerializeField] private SinPath _sinPath = SinPath.Sinless;
+        [SerializeField] private Progression _progression = null;
+        public float GetStat(Stat stat)
         {
-            return _experienceToGive;
+            return _progression.GetStat(stat, _sinPath, _startingLevel);
         }
     }
 

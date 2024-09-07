@@ -1,7 +1,7 @@
 ﻿
 namespace IMPossible.Stats
 {
-    public enum Stats
+    public enum Stat
     {
         Health,
         Experience

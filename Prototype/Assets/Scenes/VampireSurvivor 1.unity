@@ -3572,6 +3572,18 @@ PrefabInstance:
       propertyPath: IconLists.Array.data[2]
       value: 
       objectReference: {fileID: 1023186902}
+    - target: {fileID: 7084675452128804330, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: _sinPath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084675452128804330, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: _progression
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b7c2d872d303d440874b34e1db7e459, type: 2}
+    - target: {fileID: 7084675452128804330, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: _startingLevel
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2705628479458193748, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
     - {fileID: 5598295144000260520, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}

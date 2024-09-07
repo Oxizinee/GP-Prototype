@@ -10,6 +10,10 @@ namespace IMPossible.Resources
         public float HP = 10;
         private bool IsDead = false;
         public GameObject FloatingText, BloodSplatterPrefab;
+        private void Start()
+        {
+            HP = GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
         public void TakeDamage(GameObject instigator, float damage)
         {
             HP = Mathf.Max(HP - damage, 0);
@@ -39,7 +43,7 @@ namespace IMPossible.Resources
             Experience experience = instigator.GetComponent<Experience>();
             if(experience == null) { return; }
 
-            experience.GainExperience(GetComponent<BaseStats>().RewardExperience());
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.Experience));
         }
 
         private void ShowFloatingText(float DamageValue)
