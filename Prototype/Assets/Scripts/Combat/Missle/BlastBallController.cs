@@ -24,7 +24,7 @@ namespace IMPossible.Combat.Missle
 
                         if (rb.gameObject.tag == "Enemy" && rb.gameObject.GetComponent<Health>().CanBeAttacked())
                         {
-                            rb.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                            rb.gameObject.GetComponent<Health>().TakeDamage(Shooter, Damage);
                         }
                     }
                 }

@@ -10,6 +10,7 @@ namespace IMPossible.Movement
         private void Update()
         {
             isGrounded();
+            UpdateAnimator();
         }
         public void Move(GameObject player, float speed)
         {
@@ -17,7 +18,14 @@ namespace IMPossible.Movement
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.LookAt(player.transform.position);
         }
+        private void UpdateAnimator()
+        {
+            Vector3 velocity = GetComponent<Rigidbody>().velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.magnitude;
 
+            GetComponent<Animator>().SetFloat("Speed", speed);
+        }
         private bool isGrounded()
         {
             Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z), -Vector3.up, Color.red);

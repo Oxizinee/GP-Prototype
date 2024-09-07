@@ -430,6 +430,8 @@ GameObject:
   - component: {fileID: 5300053842149953135}
   - component: {fileID: -7383342761262023148}
   - component: {fileID: 6360782912486168433}
+  - component: {fileID: -497561863812004353}
+  - component: {fileID: -7794958105490619876}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -489,7 +491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  _isGrounded: 0
   _isStunned: 0
   _canCharge: 1
   _stunCharging: 0
@@ -515,7 +516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
-  IsDead: 0
   FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
   BloodSplatterPrefab: {fileID: 3397551241818298056, guid: 89977998b14ef8044b9b83be0f945a23, type: 3}
 --- !u!136 &4822912971633752869
@@ -684,6 +684,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282f9ab60dccd147971c896d46ec349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-497561863812004353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931298151966786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd64ae78b9291b47afd093a096148c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7794958105490619876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931298151966786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d2f7060b21b194c96ba6efa0f6283d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingLevel: 1
+  _experienceToGive: 2
 --- !u!1 &1438157519601450616
 GameObject:
   m_ObjectHideFlags: 0

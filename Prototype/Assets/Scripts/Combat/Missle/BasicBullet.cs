@@ -1,5 +1,6 @@
 using UnityEngine;
 using IMPossible.Resources;
+using UnityEngine.Rendering;
 
 namespace IMPossible.Combat.Missle
 {
@@ -10,7 +11,16 @@ namespace IMPossible.Combat.Missle
         public float StunDuration { get; set; } = 0.5f;
         public float Damage { get; set; } = 2;
         public bool CanPierce { get; set; } = false;
-
+        public GameObject Shooter { get; set; } = null;
+        public void SetProperties(GameObject shooter, float speed, float lifeSpan, float stunDuration,float damage, bool canPierce)
+        {
+            Shooter = shooter;
+            Speed = speed;
+            LifeSpan = lifeSpan;
+            StunDuration = stunDuration;
+            Damage = damage;
+            CanPierce = canPierce;
+        }
         private void OnCollisionEnter(Collision collision)
         {
            if (collision.gameObject.GetComponent<Health>() != null && collision.gameObject.GetComponent<Health>().CanBeAttacked())
@@ -20,7 +30,7 @@ namespace IMPossible.Combat.Missle
                     collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
                     collision.gameObject.GetComponent<Enemy>()._isStunned = true;
                 }
-                collision.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                collision.gameObject.GetComponent<Health>().TakeDamage(Shooter, Damage);
                 PiercingBehaviour();
             }
         }
@@ -28,7 +38,7 @@ namespace IMPossible.Combat.Missle
         {
             if (other.gameObject.GetComponent<Health>() != null && other.gameObject.GetComponent<Health>().CanBeAttacked())
             {
-                other.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                other.gameObject.GetComponent<Health>().TakeDamage(Shooter, Damage);
                 PiercingBehaviour();
             }
         }
@@ -37,7 +47,7 @@ namespace IMPossible.Combat.Missle
         {
             DestroyAfterTime();
         }
-        public void PiercingBehaviour()
+        private void PiercingBehaviour()
         {
             if (!CanPierce)
             {
@@ -56,9 +66,11 @@ namespace IMPossible.Combat.Missle
             transform.position += transform.forward * Speed * Time.deltaTime;
         }
 
-        public void DestroyAfterTime()
+        private void DestroyAfterTime()
         {
             Destroy(gameObject, LifeSpan);
         }
+
+        
     }
 }

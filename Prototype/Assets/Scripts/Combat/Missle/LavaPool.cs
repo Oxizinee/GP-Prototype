@@ -25,7 +25,7 @@ namespace IMPossible.Combat.Missle
 
                 if (_dmgTimer >= 1)
                 {
-                    other.GetComponent<Health>().TakeDamage(Damage);
+                    other.GetComponent<Health>().TakeDamage(gameObject, Damage);
                     _dmgTimer = 0;
                 }
             }

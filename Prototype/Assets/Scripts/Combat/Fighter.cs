@@ -10,13 +10,8 @@ namespace IMPossible.Combat
         public void Shoot(GameObject BulletPrefab, bool CanPierce, float Damage, float Speed, float Duration, float StunDuration, float BulletCooldown)
         {
             GameObject go = Instantiate(BulletPrefab, new Vector3(transform.position.x, transform.localScale.y/2,transform.position.z), transform.rotation);
-            go.GetComponent<BasicBullet>().CanPierce = CanPierce;
-            go.GetComponent<BasicBullet>().Damage = Damage;
-            go.GetComponent<BasicBullet>().Speed = Speed;
-            go.GetComponent<BasicBullet>().LifeSpan = Duration;
-            go.GetComponent<BasicBullet>().StunDuration = StunDuration;
+            go.GetComponent<BasicBullet>().SetProperties(gameObject, Speed, Duration, StunDuration, Damage, CanPierce);
             _bulletCooldown = BulletCooldown;
-            
             CanShoot = false;
         }
 

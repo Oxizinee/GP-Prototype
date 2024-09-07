@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if(GetComponent<Health>().IsDead) return;
+        if(!GetComponent<Health>().CanBeAttacked()) return;
 
         Move();
 

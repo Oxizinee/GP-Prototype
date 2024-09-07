@@ -1,3 +1,4 @@
+using IMPossible.Stats;
 using TMPro;
 using UnityEngine;
 
@@ -7,9 +8,9 @@ namespace IMPossible.Resources
     {
         // Start is called before the first frame update
         public float HP = 10;
-        public bool IsDead = false;
+        private bool IsDead = false;
         public GameObject FloatingText, BloodSplatterPrefab;
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             HP = Mathf.Max(HP - damage, 0);
             ShowFloatingText(damage);
@@ -19,7 +20,7 @@ namespace IMPossible.Resources
             if(HP == 0) 
             {
                 Die();
-                IsDead = true;
+                AwardExperience(instigator);
             }
         }
         public bool CanBeAttacked()
@@ -31,6 +32,15 @@ namespace IMPossible.Resources
             if (IsDead) return;
             GetComponent<Animator>().SetTrigger("Die");
             Destroy(gameObject, 4);
+            IsDead = true;
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            if(experience == null) { return; }
+
+            experience.GainExperience(GetComponent<BaseStats>().RewardExperience());
         }
 
         private void ShowFloatingText(float DamageValue)
