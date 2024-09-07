@@ -1,3 +1,4 @@
+using IMPossible.Stats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,15 +9,15 @@ namespace IMPossible.Resources
     public class HealthDisplay : MonoBehaviour
     {
         private Health _health;
-        private float _maxHealth;
+        private GameObject _player;
         private void Start()
         {
-            _health = GameObject.FindWithTag("Player").GetComponent<Health>();
-            _maxHealth = _health.HP;
+            _player = GameObject.FindWithTag("Player");
+            _health = _player.GetComponent<Health>();
         }
         void Update()
         {
-            GetComponent<Image>().fillAmount = Mathf.Clamp(_health.HP, 0, _maxHealth) / _maxHealth;
+            GetComponent<Image>().fillAmount = Mathf.Clamp(_health.HP, 0, _player.GetComponent<BaseStats>().GetStat(Stat.Health)) / _player.GetComponent<BaseStats>().GetStat(Stat.Health);
         }
     }
 }

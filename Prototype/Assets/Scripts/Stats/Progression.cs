@@ -11,25 +11,45 @@ namespace IMPossible.Stats
     public class Progression :ScriptableObject
     {
         [SerializeField] ProgressionSinPath[] SinPaths = null;
-
+            Dictionary<SinPath, Dictionary<Stat, float[]>> _lookupTable = null;
         public float GetStat(Stat stat, SinPath sinPath, int level)
         {
-            foreach (ProgressionSinPath progressionPath in SinPaths)
+            BuildLookup();
+
+            float[] levels = _lookupTable[sinPath][stat];
+            
+            if (levels.Length < level)
             {
-                if (progressionPath.SinPath != sinPath) continue;
-                {
-                    foreach (ProgressionStat progressionStat in progressionPath.ProgressionStats)
-                    {
-                        if(progressionStat.Stat != stat) continue;
-                        if (progressionStat.Levels.Length < level) continue;
-                        return progressionStat.Levels[level - 1];
-                    }
-                }
+                return 0;
             }
-            return 0;
+            return levels[level - 1];
         }
 
+        public int GetLevels(Stat stat, SinPath sinPath)
+        {
+            BuildLookup();
 
+            float[] levels = _lookupTable[sinPath][stat];
+            return levels.Length;
+        }
+        private void BuildLookup()
+        {
+            if(_lookupTable != null) return; 
+
+            _lookupTable = new Dictionary<SinPath, Dictionary<Stat, float[]>>();
+
+            foreach(ProgressionSinPath progressionSinPath in SinPaths)
+            {
+                var statLookupTable = new Dictionary<Stat,float[]>();
+
+                foreach (ProgressionStat progressionStat in progressionSinPath.ProgressionStats)
+                {
+                    statLookupTable[progressionStat.Stat] = progressionStat.Levels;
+                }
+
+                _lookupTable[progressionSinPath.SinPath] = statLookupTable;
+            }
+        }
 
         [System.Serializable]
         class ProgressionSinPath
