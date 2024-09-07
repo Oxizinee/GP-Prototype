@@ -34,16 +34,16 @@ namespace IMPossible.Controller
 
             BasicAttack();
 
-            if (GetComponent<PathHolder>().ChoosenPath == null)
-            {
+            //if (GetComponent<PathHolder>().ChoosenPath == null)
+            //{
                 SpecialAttack();
                 Dash();
-            }
-            else
-            {
-                GetComponent<PathHolder>().ChoosenPath.Dash(this.gameObject);
-                GetComponent<PathHolder>().ChoosenPath.SpecialAttack(this.gameObject);
-            }
+            //}
+            //else
+            //{
+            //    GetComponent<PathHolder>().ChoosenPath.Dash(this.gameObject);
+            //    GetComponent<PathHolder>().ChoosenPath.SpecialAttack(this.gameObject);
+            //}
         }
 
         private void SpecialAttack()

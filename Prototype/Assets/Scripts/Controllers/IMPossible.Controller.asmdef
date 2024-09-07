@@ -1,0 +1,18 @@
+{
+    "name": "IMPossible.Controller",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cff1e838da851944e843ecfe226ac17e",
+        "GUID:0a907557f8839b942a187693b5782993",
+        "GUID:92390434bf54a6d45a2f38b5fcc6dc55"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

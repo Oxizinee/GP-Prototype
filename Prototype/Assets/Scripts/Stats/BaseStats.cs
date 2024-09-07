@@ -15,4 +15,5 @@ namespace IMPossible.Stats
             return _experienceToGive;
         }
     }
+
 }

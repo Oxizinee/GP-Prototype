@@ -25,11 +25,11 @@ namespace IMPossible.Combat.Missle
         {
            if (collision.gameObject.GetComponent<Health>() != null && collision.gameObject.GetComponent<Health>().CanBeAttacked())
             {
-                if (collision.gameObject.tag == "Enemy")
-                {
-                    collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
-                    collision.gameObject.GetComponent<Enemy>()._isStunned = true;
-                }
+                //if (collision.gameObject.tag == "Enemy")
+                //{
+                //    collision.gameObject.GetComponent<Enemy>().StunDuration = StunDuration;
+                //    collision.gameObject.GetComponent<Enemy>()._isStunned = true;
+                //}
                 collision.gameObject.GetComponent<Health>().TakeDamage(Shooter, Damage);
                 PiercingBehaviour();
             }
