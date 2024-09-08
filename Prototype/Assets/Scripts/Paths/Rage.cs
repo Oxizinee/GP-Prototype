@@ -36,7 +36,7 @@ public class Rage : Path
 
             _timer += Time.deltaTime;
 
-            parent.GetComponent<ItemHolder>().CanUse = false;
+           // parent.GetComponent<ItemHolder>().CanUse = false;
             parent.GetComponent<Player>().CanShoot = false;
             parent.GetComponent<Player>().MovementSpeed = NewMovementSpeed;
 
@@ -58,7 +58,7 @@ public class Rage : Path
                 Destroy( _sphere );
             }
             _timer =  0;
-            parent.GetComponent<ItemHolder>().CanUse = true;
+          //  parent.GetComponent<ItemHolder>().CanUse = true;
             parent.GetComponent<Player>().CanShoot = true;
             parent.GetComponent<Player>().MovementSpeed = _deafultMovementSpeed;
         }

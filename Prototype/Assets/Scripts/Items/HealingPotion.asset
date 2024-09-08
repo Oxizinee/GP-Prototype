@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f355f37f924be7b40a35c62d50494efc, type: 3}
+  m_Script: {fileID: 11500000, guid: ad5b3b135424a7c46914fe329a2635c9, type: 3}
   m_Name: HealingPotion
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  IsActive: 0
-  CooldownTimer: 7.5997767
-  Icon: {fileID: 21300000, guid: 5f211c91ab2e0a04d94cb06603b9784a, type: 3}
+  _itemID: 
+  _displayName: Healing Potion
+  _description: Use this to heal yourself
+  _icon: {fileID: 21300000, guid: 5f211c91ab2e0a04d94cb06603b9784a, type: 3}
+  _pickup: {fileID: 4741908973412232404, guid: 069ffa4d14310cb4f8e99cbfa2ed5b59, type: 3}
