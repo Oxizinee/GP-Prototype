@@ -8,9 +8,37 @@ namespace IMPossible.Inventory
     public class Inventory : MonoBehaviour
     {
         // Start is called before the first frame update
-        public List<InventoryItem> ItemsHolding = new List<InventoryItem>(3);
+        public List<InventoryItem> ItemsHolding;
         public List<GameObject> IconLists = new List<GameObject>();
         public bool CanUse = true;
+
+        [SerializeField] private int _inventoryMaxSize = 3;
+
+        private void Awake()
+        {
+            ItemsHolding = new List<InventoryItem>();
+            ItemsHolding.Capacity = 3;
+        }
+        public bool HasFreeSpace()
+        {
+            if(ItemsHolding.Count < 3) return true;
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AlreadyHasIt(InventoryItem item)
+        {
+            for (int i = 0; i < ItemsHolding.Count; i++)
+            {
+                if (object.ReferenceEquals(ItemsHolding[i], item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         void Update()
         {
             //if (ItemsHolding != null && CanUse)

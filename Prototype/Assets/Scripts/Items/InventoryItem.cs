@@ -35,6 +35,8 @@ namespace IMPossible.Inventory
             if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
             return itemLookupCache[itemID];
         }
+
+       
         public Pickup SpawnPickup(Vector3 position)
         {
             var pickup = Instantiate(_pickup);

@@ -16,16 +16,25 @@ namespace IMPossible.Inventory
         }
         private void OnTriggerEnter(Collider other)
         {
-            //if (other.gameObject.tag == "Player" && other.GetComponent<ItemHolder>().ItemsHolding.Count <= 3 && !other.GetComponent<ItemHolder>().ItemsHolding.Contains(Item))
-            //{
-            //    other.GetComponent<ItemHolder>().ItemsHolding.Add(Item);
-            //    Destroy(gameObject);
-            //}
+            if (other.gameObject.tag == "Player")
+            {
+                PickUp();
+            }
         }
 
         public void Setup(InventoryItem item)
         {
             Item = item;
+        }
+
+        public void PickUp()
+        {
+            if (_inventory.HasFreeSpace() && !_inventory.AlreadyHasIt(Item))
+            {
+                _inventory.ItemsHolding.Add(Item);
+                print(Item.GetDisplayName() + " has been picked up!");
+                Destroy(gameObject);
+            }
         }
     }
 }

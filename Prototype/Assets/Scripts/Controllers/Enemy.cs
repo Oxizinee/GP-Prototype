@@ -1,4 +1,5 @@
 using IMPossible.Combat;
+using IMPossible.Inventory;
 using IMPossible.Movement;
 using IMPossible.Resources;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
             case EnemyType.Big:
                 {
                     GetComponent<Health>().HP = 50;
+                    gameObject.AddComponent<PickupSpawner>();
                     transform.localScale = transform.localScale * 1.4f;
                     break;
                 }

@@ -1,3 +1,4 @@
+using IMPossible.Inventory;
 using IMPossible.Stats;
 using System;
 using TMPro;
@@ -45,8 +46,17 @@ namespace IMPossible.Resources
         {
             if (IsDead) return;
             GetComponent<Animator>().SetTrigger("Die");
+            DropLoot();
             Destroy(gameObject, 4);
             IsDead = true;
+        }
+
+        private void DropLoot()
+        {
+            if (GetComponent<PickupSpawner>() != null)
+            {
+                GetComponent<PickupSpawner>().DropLoot();
+            }
         }
 
         private void AwardExperience(GameObject instigator)
