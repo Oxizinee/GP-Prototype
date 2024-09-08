@@ -7,19 +7,24 @@ namespace IMPossible.Stats
 {
     public class Experience :MonoBehaviour
     {
-        public float EXP = 0;
+        private float _EXP = 0;
 
         public event Action OnExperienceGained;
         
         public void GainExperience(float experience)
         {
-            EXP += experience;
+            _EXP += experience;
             OnExperienceGained();
         }
 
         public float GetPoints()
         {
-            return EXP;
+            return _EXP;
+        }
+
+        public float ResetPoints()
+        {
+            return _EXP = 0;
         }
     }
 }

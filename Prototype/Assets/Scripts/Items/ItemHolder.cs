@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ItemHolder : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<Item> ItemsHolding = new List<Item>();
+    public List<InventoryItem> ItemsHolding = new List<InventoryItem>();
     public List<GameObject> IconLists = new List<GameObject>();
     public bool CanUse = true;
     void Start()
@@ -34,7 +34,7 @@ public class ItemHolder : MonoBehaviour
                 ItemsHolding[2].Active(gameObject);
             }
 
-            foreach (Item item in ItemsHolding)
+            foreach (InventoryItem item in ItemsHolding)
             {
                 item.PassiveUpdate(gameObject);
 

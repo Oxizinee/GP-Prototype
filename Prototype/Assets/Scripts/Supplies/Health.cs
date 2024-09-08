@@ -1,4 +1,5 @@
 using IMPossible.Stats;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,13 +8,23 @@ namespace IMPossible.Resources
     public class Health : MonoBehaviour
     {
         // Start is called before the first frame update
+        [SerializeField] private float _regenerationPercentage = 70;
+
         public float HP = 10;
         private bool IsDead = false;
         public GameObject FloatingText, BloodSplatterPrefab;
         private void Start()
         {
+            GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
             HP = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
+
+        private void RegenerateHealth()
+        {
+            float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (_regenerationPercentage / 100);
+            HP = Mathf.Max(HP, regenHealthPoints);
+        }
+
         public void TakeDamage(GameObject instigator, float damage)
         {
             HP = Mathf.Max(HP - damage, 0);

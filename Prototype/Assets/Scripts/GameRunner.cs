@@ -1,3 +1,4 @@
+using IMPossible.Stats;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,14 @@ public class GameRunner : MonoBehaviour
     public float SpawnerTimer = 3, GameTime;
 
     public float EnemiesKilledNumber, EnemiesPresentNmber;
+    private BaseStats _baseStats;
 
     [SerializeField]private float _spawnTimer, _offset = 0.3f, _bigSpawnerTimer;
     void Start()
     {
         SpawnerTimer = 3;
+        _baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
+        _baseStats.OnLevelUp += PauseGame;
     }
 
     // Update is called once per frame
@@ -26,7 +30,7 @@ public class GameRunner : MonoBehaviour
     {
         GameTime += Time.deltaTime;
 
-        PauseGame();
+     //   PauseGame();
         SpawnEnemies();
 
         SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.02f),0.5f,3);
@@ -110,20 +114,9 @@ public class GameRunner : MonoBehaviour
 
     private void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _isPaused = !_isPaused;
-        }
-
-        if (_isPaused)
-        {
-            PauseScreen.SetActive(true);
-            Time.timeScale = 0;
-        }
-        else
-        {
-            PauseScreen.SetActive(false);
-            Time.timeScale = 1;
-        }
+        
+          //  PauseScreen.SetActive(true);
+            //Time.timeScale = 0;
+        
     }
 }

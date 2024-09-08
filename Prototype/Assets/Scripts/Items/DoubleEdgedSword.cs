@@ -5,7 +5,7 @@ using UnityEngine;
 using IMPossible.Controller;
 
 [CreateAssetMenu]
-public class DoubleEdgedSword : Item
+public class DoubleEdgedSword : InventoryItem
 {
     // Start is called before the first frame update
     public override void Active(GameObject parent)

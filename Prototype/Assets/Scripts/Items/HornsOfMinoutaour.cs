@@ -4,7 +4,7 @@ using UnityEngine;
 using IMPossible.Controller;
 
 [CreateAssetMenu]
-public class HornsOfMinoutaour : Item
+public class HornsOfMinoutaour : InventoryItem
 {
     public LayerMask LayerMask;
     public override void Active(GameObject parent)

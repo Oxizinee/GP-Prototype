@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Item Item;
+    public InventoryItem Item;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" && other.GetComponent<ItemHolder>().ItemsHolding.Count <= 3 && !other.GetComponent<ItemHolder>().ItemsHolding.Contains(Item))

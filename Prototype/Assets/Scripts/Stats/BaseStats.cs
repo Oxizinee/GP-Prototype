@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,13 +15,16 @@ namespace IMPossible.Stats
         [SerializeField] private GameObject _levelUpParticles = null;
 
         [SerializeField]private int _currentLevel = 0;
+        private Experience _experience;
+
+        public event Action OnLevelUp;
         private void Start()
         {
             _currentLevel = CalculateLevel();
-            Experience experience = GetComponent<Experience>(); 
-            if(experience != null)
+            _experience = GetComponent<Experience>(); 
+            if(_experience != null)
             {
-                experience.OnExperienceGained += UpdateLevel;
+                _experience.OnExperienceGained += UpdateLevel;
             }
         }
         private void UpdateLevel()
@@ -30,11 +34,13 @@ namespace IMPossible.Stats
             {
                 _currentLevel = newLevel;
                 Instantiate(_levelUpParticles, transform.position, transform.rotation, transform);
+                _experience.ResetPoints();
+                OnLevelUp();
             }
         }
         public float GetStat(Stat stat)
         {
-            return _progression.GetStat(stat, _sinPath, GetLevel());
+            return _progression.GetStat(stat, _sinPath, GetLevel()) + GetAdditiveModifier(stat);
         }
 
         public int GetLevel()
@@ -61,6 +67,19 @@ namespace IMPossible.Stats
                 }
             }
             return maxLevel + 1;
+        }
+
+        private float GetAdditiveModifier(Stat stat)
+        {
+            float total = 0;
+            foreach(IModifierProvider provider in GetComponents<IModifierProvider>()) 
+            {
+                foreach(float modifiers in provider.GetAdditiveModifier(stat))
+                {
+                    total += modifiers;
+                }
+            }
+            return total;
         }
     }
 

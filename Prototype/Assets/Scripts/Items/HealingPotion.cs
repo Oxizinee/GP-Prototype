@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class HealingPotion : Item
+public class HealingPotion : InventoryItem
 {
     public override void Active(GameObject parent)
     {
