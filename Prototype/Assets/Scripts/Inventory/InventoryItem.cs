@@ -36,7 +36,10 @@ namespace IMPossible.Inventory
             return itemLookupCache[itemID];
         }
 
-       
+       public virtual void Use(GameObject user)
+        {
+            Debug.Log("Using action: " + this);
+        }
         public Pickup SpawnPickup(Vector3 position)
         {
             var pickup = Instantiate(_pickup);

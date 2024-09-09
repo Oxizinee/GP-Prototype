@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3256062902687256936}
   - component: {fileID: 4741908973412232404}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: Horns_Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aff21a26782d9384b9cff12a8ac5bfca, type: 2}
+  - {fileID: 2100000, guid: 67a71bcee35c86f4587dc3d873e56a39, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a317765341865504cb64d2162440d68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: d1496c7193c8136408893f58663b4416, type: 2}
+  Item: {fileID: 11400000, guid: b2602200bfeb2ec4f97d6a2c0c5ed0f9, type: 2}

@@ -14,19 +14,20 @@ namespace IMPossible.Controller
         public GameObject BulletPrefab, BombPrefab, FieldOfView;
         public bool HornsActive, CanPierceActive = false, CanShoot = true;
 
+        private Inventory.Inventory _inventory;
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Fighter>().IsStunned)
             {
                 GetComponent<Health>().TakeDamage(collision.gameObject, 2);
-                //if (HornsActive)
-                //{
-                //    collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP = collision.gameObject.GetComponent<HPBarBehaviour>().CurrentHP - 60;
-                //}
             }
 
         }
-
+        private void Awake()
+        {
+           _inventory = GetComponent<Inventory.Inventory>();     
+        }
         // Update is called once per frame
         void Update()
         {
@@ -48,9 +49,17 @@ namespace IMPossible.Controller
             //    GetComponent<PathHolder>().ChoosenPath.SpecialAttack(this.gameObject);
             //}
 
-            if(Input.GetKeyDown(KeyCode.R))
+           UseItems();
+        }
+
+        private void UseItems()
+        {
+            for (int i = 0; i <= _inventory.ItemsHolding.Count -1 ; i++)
             {
-                GetComponent<ItemDropper>().DropItem(GetComponent<Inventory.Inventory>().ItemsHolding[0]);
+                if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+                {
+                    _inventory.Use(i, gameObject);
+                }
             }
         }
         private void SpecialAttack()

@@ -43,40 +43,25 @@ namespace IMPossible.Inventory
             }
             return false;
         }
-        void Update()
+
+        //Get the item from given index 
+        public InventoryItem GetItem(int index)
         {
-            //if (ItemsHolding != null && CanUse)
-            //{
-            //    if (Input.GetKeyDown(KeyCode.Alpha1))
-            //    {
-            //        ItemsHolding[0].Active(gameObject);
-            //    }
+            if (ItemsHolding[index] != null)
+            {
+                return ItemsHolding[index];
+            }
+            return null;
+        }
 
-            //    if (Input.GetKeyDown(KeyCode.Alpha2))
-            //    {
-            //        ItemsHolding[1].Active(gameObject);
-            //    }
-
-            //    if (Input.GetKeyDown(KeyCode.Alpha3))
-            //    {
-            //        ItemsHolding[2].Active(gameObject);
-            //    }
-
-            //    foreach (InventoryItem item in ItemsHolding)
-            //    {
-            //        item.PassiveUpdate(gameObject);
-
-            //        if (!item.IsActive)
-            //        {
-            //            item.Cooldown();
-            //        }
-            //    }
-
-            //    for (int i = 0; i < ItemsHolding.Count; i++)
-            //    {
-            //        IconLists[i].GetComponent<Image>().sprite = ItemsHolding[i].Icon;
-            //    }
-            //}
+        public bool Use(int index, GameObject user)
+        {
+            if (ItemsHolding[index] != null)
+            {
+                ItemsHolding[index].Use(user);
+                return true;
+            }
+            return false;
         }
     }
 }
