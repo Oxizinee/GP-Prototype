@@ -3674,9 +3674,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 60239141}
+    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1131752042}
+    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1023186902}
     - target: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_Name
       value: Jammo_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008781488088575093, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008781488088575093, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 60239141}
+    - target: {fileID: 5008781488088575093, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1131752042}
+    - target: {fileID: 5008781488088575093, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: UIIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1023186902}
+    - target: {fileID: 7534953489361986049, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: BulletSpeed
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

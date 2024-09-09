@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace IMPossible.Inventory
 {
@@ -32,6 +33,7 @@ namespace IMPossible.Inventory
             if (_inventory.HasFreeSpace() && !_inventory.AlreadyHasIt(Item))
             {
                 _inventory.ItemsHolding.Add(Item);
+                _inventory.AddIconToUI(Item);
                 print(Item.GetDisplayName() + " has been picked up!");
                 Destroy(gameObject);
             }

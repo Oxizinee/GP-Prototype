@@ -9,7 +9,7 @@ namespace IMPossible.Inventory
     {
         // Start is called before the first frame update
         public List<InventoryItem> ItemsHolding;
-        public List<GameObject> IconLists = new List<GameObject>();
+        public List<GameObject> UIIcons = new List<GameObject>();
         public bool CanUse = true;
 
         [SerializeField] private int _inventoryMaxSize = 3;
@@ -28,6 +28,10 @@ namespace IMPossible.Inventory
             }
         }
 
+        public void AddIconToUI(InventoryItem item)
+        {
+            UIIcons[ItemsHolding.Count - 1].GetComponent<Image>().sprite = item.GetIcon();
+        }
         public bool AlreadyHasIt(InventoryItem item)
         {
             for (int i = 0; i < ItemsHolding.Count; i++)

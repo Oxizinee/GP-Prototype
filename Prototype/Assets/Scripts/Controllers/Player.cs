@@ -2,6 +2,7 @@ using UnityEngine;
 using IMPossible.Movement;
 using IMPossible.Combat;
 using IMPossible.Resources;
+using IMPossible.Inventory;
 
 namespace IMPossible.Controller
 {
@@ -46,6 +47,11 @@ namespace IMPossible.Controller
             //    GetComponent<PathHolder>().ChoosenPath.Dash(this.gameObject);
             //    GetComponent<PathHolder>().ChoosenPath.SpecialAttack(this.gameObject);
             //}
+
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                GetComponent<ItemDropper>().DropItem(GetComponent<Inventory.Inventory>().ItemsHolding[0]);
+            }
         }
         private void SpecialAttack()
         {

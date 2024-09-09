@@ -29,7 +29,7 @@ namespace IMPossible.Inventory
         public void DropLoot()
         {
             _randomNumber = Random.Range(0, _itemsToSpawn.Length - 1);
-            _itemsToSpawn[_randomNumber].SpawnPickup(transform.position);
+            _itemsToSpawn[_randomNumber].SpawnPickup(new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z));
         }
 
     }
