@@ -17,3 +17,4 @@ MonoBehaviour:
   _description: 
   _icon: {fileID: 21300000, guid: 149cc945983602f4f8e9548342266553, type: 3}
   _pickup: {fileID: 4741908973412232404, guid: 7d06254734983a4459f5d876baa334cf, type: 3}
+  _targetingStrategy: {fileID: 11400000, guid: ac09fc4188cdf9646bd255ba1f28b4a9, type: 2}

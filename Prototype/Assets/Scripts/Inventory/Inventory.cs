@@ -43,6 +43,10 @@ namespace IMPossible.Inventory
             }
             return false;
         }
+        public void RemoveItem(InventoryItem item)
+        {
+
+        }
 
         //Get the item from given index 
         public InventoryItem GetItem(int index)

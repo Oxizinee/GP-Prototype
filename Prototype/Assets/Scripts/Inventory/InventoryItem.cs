@@ -1,3 +1,4 @@
+using IMPossible.Inventory.Strategies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace IMPossible.Inventory
         [SerializeField][TextArea] private string _description = null;
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private Pickup _pickup = null;
-
+        [SerializeField] TargetingStrategy _targetingStrategy;
         static Dictionary<string, InventoryItem> itemLookupCache;
         public static InventoryItem GetFromID(string itemID)
         {
@@ -36,9 +37,10 @@ namespace IMPossible.Inventory
             return itemLookupCache[itemID];
         }
 
-       public virtual void Use(GameObject user)
+       public void Use(GameObject user)
         {
             Debug.Log("Using action: " + this);
+            _targetingStrategy.StartTargeting(user, TargetAcquired);
         }
         public Pickup SpawnPickup(Vector3 position)
         {
@@ -65,5 +67,12 @@ namespace IMPossible.Inventory
             return _description;
         }
 
+        private void TargetAcquired(IEnumerable<GameObject> targets)
+        {
+            foreach (var target in targets)
+            {
+                Debug.Log("Target Aquired " + target.name);
+            }
+        }
     }
 }
