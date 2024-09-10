@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace IMPossible.Resources
+namespace IMPossible.Supplies
 {
     public class HealthDisplay : MonoBehaviour
     {

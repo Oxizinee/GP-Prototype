@@ -1,7 +1,7 @@
 using IMPossible.Combat;
 using IMPossible.Inventory;
 using IMPossible.Movement;
-using IMPossible.Resources;
+using IMPossible.Supplies;
 using UnityEngine;
 public enum EnemyType
 {

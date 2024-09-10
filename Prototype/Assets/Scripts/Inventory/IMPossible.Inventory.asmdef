@@ -1,7 +1,9 @@
 {
     "name": "IMPossible.Inventory",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:0a907557f8839b942a187693b5782993"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -1,10 +1,9 @@
-using IMPossible.Inventory;
 using IMPossible.Stats;
 using System;
 using TMPro;
 using UnityEngine;
 
-namespace IMPossible.Resources
+namespace IMPossible.Supplies
 {
     public class Health : MonoBehaviour
     {
@@ -46,17 +45,26 @@ namespace IMPossible.Resources
         {
             if (IsDead) return;
             GetComponent<Animator>().SetTrigger("Die");
-            DropLoot();
+            //DropLoot();
             Destroy(gameObject, 4);
             IsDead = true;
         }
 
-        private void DropLoot()
+        //private void DropLoot()
+        //{
+        //    if (GetComponent<PickupSpawner>() != null)
+        //    {
+        //        GetComponent<PickupSpawner>().DropLoot();
+        //    }
+        //}
+        public void Heal(float healPoints)
         {
-            if (GetComponent<PickupSpawner>() != null)
-            {
-                GetComponent<PickupSpawner>().DropLoot();
-            }
+            HP = Mathf.Min(HP + healPoints, GetMaxHealth());
+        }
+
+        public float GetMaxHealth()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         private void AwardExperience(GameObject instigator)

@@ -14,33 +14,15 @@ namespace IMPossible.Inventory
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private Pickup _pickup = null;
         [SerializeField] TargetingStrategy _targetingStrategy;
-        static Dictionary<string, InventoryItem> itemLookupCache;
-        public static InventoryItem GetFromID(string itemID)
-        {
-            if (itemLookupCache == null)
-            {
-                itemLookupCache = new Dictionary<string, InventoryItem>();
-                var itemList = Resources.LoadAll<InventoryItem>("");
-                foreach (var item in itemList)
-                {
-                    if (itemLookupCache.ContainsKey(item._itemID))
-                    {
-                        Debug.LogError(string.Format("Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {0} and {1}", itemLookupCache[item._itemID], item));
-                        continue;
-                    }
-
-                    itemLookupCache[item._itemID] = item;
-                }
-            }
-
-            if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
-            return itemLookupCache[itemID];
-        }
-
+        [SerializeField] FilteringStrategy[] _filteringStrategies;
+        [SerializeField] EffectStrategy[] _effectStrategies;
        public void Use(GameObject user)
         {
             Debug.Log("Using action: " + this);
-            _targetingStrategy.StartTargeting(user, TargetAcquired);
+            _targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) => 
+                {
+                TargetAcquired(user, targets);
+                });
         }
         public Pickup SpawnPickup(Vector3 position)
         {
@@ -67,12 +49,24 @@ namespace IMPossible.Inventory
             return _description;
         }
 
-        private void TargetAcquired(IEnumerable<GameObject> targets)
+        private void TargetAcquired(GameObject user, IEnumerable<GameObject> targets)
         {
-            foreach (var target in targets)
+            Debug.Log("Target Aquired ");
+
+            foreach(var filterStrategy in _filteringStrategies)
             {
-                Debug.Log("Target Aquired " + target.name);
+                targets = filterStrategy.Filter(targets);
             }
+
+            foreach (var effect in _effectStrategies)
+            {
+                effect.StartEffect(user, targets, EffectFinished);
+            }
+        }
+
+        private void EffectFinished()
+        {
+
         }
     }
 }

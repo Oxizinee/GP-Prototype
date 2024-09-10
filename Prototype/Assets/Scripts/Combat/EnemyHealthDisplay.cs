@@ -1,4 +1,4 @@
-﻿using IMPossible.Resources;
+﻿using IMPossible.Supplies;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 

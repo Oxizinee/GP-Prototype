@@ -17,7 +17,7 @@ namespace IMPossible.Inventory
         private void Awake()
         {
             ItemsHolding = new List<InventoryItem>();
-            ItemsHolding.Capacity = 3;
+            ItemsHolding.Capacity = _inventoryMaxSize;
         }
         public bool HasFreeSpace()
         {

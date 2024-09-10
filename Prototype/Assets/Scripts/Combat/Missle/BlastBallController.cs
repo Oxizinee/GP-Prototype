@@ -1,5 +1,5 @@
 using UnityEngine;
-using IMPossible.Resources;
+using IMPossible.Supplies;
 using UnityEngine.Rendering;
 
 namespace IMPossible.Combat.Missle

@@ -1,7 +1,7 @@
 using UnityEngine;
 using IMPossible.Movement;
 using IMPossible.Combat;
-using IMPossible.Resources;
+using IMPossible.Supplies;
 using IMPossible.Inventory;
 
 namespace IMPossible.Controller
@@ -85,11 +85,7 @@ namespace IMPossible.Controller
                 GetComponent<Mover>().Dash(DashDistance);
             }
         }
-        public static Ray GetMouseRay()
-        {
-            return Camera.main.ScreenPointToRay(Input.mousePosition);
-        }
-
+      
     }
 
 }
