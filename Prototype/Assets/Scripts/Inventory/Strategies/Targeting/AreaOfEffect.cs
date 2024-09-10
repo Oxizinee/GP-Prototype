@@ -40,6 +40,7 @@ namespace IMPossible.Inventory.Strategies.Targeting
                     {
                         // Absorb the whole mouse click
                         yield return new WaitWhile(() => Input.GetMouseButton(0));
+                        data.SetTargetedPoint(raycastHit.point);
                         _circleInstance.SetActive(false);
                         data.SetTargets(GetEnemiesInRadius(raycastHit.point));
                         finished();

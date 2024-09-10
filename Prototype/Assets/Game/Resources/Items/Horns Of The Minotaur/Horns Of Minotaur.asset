@@ -16,6 +16,7 @@ MonoBehaviour:
   _description: 
   _icon: {fileID: 21300000, guid: 0eec43b3f91d1fc46ab41d465785a51a, type: 3}
   _pickup: {fileID: 4741908973412232404, guid: 8f91515bac35c4f4892c0e728c167c8b, type: 3}
+  _cooldownTime: 90
   _OnUse_targetingStrategy: {fileID: 11400000, guid: 6040fa5381b3bbd4f8dd2dc62ef19a01, type: 2}
   _OnUse_filteringStrategies:
   - {fileID: 11400000, guid: b01009eceeb46424f8b0ca68569d7d9c, type: 2}

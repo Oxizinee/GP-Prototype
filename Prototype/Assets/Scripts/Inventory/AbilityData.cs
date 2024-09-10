@@ -8,6 +8,7 @@ namespace IMPossible.Inventory
     public class AbilityData
     {
         private GameObject _user;
+        private Vector3 _targetedPoint;
         private IEnumerable<GameObject> _targets;
 
         public AbilityData(GameObject user)
@@ -28,6 +29,14 @@ namespace IMPossible.Inventory
         public GameObject GetUser()
         {
             return _user;
+        }
+        public void SetTargetedPoint(Vector3 point)
+        {
+            _targetedPoint = point;
+        }
+        public Vector3 GetTargetedPoint()
+        {
+            return _targetedPoint;
         }
     }
 }

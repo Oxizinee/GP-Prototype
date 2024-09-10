@@ -37,9 +37,9 @@ namespace IMPossible.Inventory.Strategies.Targeting
                     {
                         // Absorb the whole mouse click
                         yield return new WaitWhile(() => Input.GetMouseButton(0));
-
                         _circleInstance.SetActive(false);
-                        data.SetTargets(GetEnemiesInRadius(data.GetUser().transform.position));
+                    data.SetTargetedPoint(data.GetUser().transform.position);
+                    data.SetTargets(GetEnemiesInRadius(data.GetUser().transform.position));
                         finished();
                         break;
                     }

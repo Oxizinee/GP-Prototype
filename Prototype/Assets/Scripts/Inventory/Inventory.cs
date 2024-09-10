@@ -8,17 +8,9 @@ namespace IMPossible.Inventory
     public class Inventory : MonoBehaviour
     {
         // Start is called before the first frame update
-        public List<InventoryItem> ItemsHolding;
+        public Dictionary<int, InventoryItem> ItemsHolding = new Dictionary<int, InventoryItem>();
         public List<GameObject> UIIcons = new List<GameObject>();
         public bool CanUse = true;
-
-        [SerializeField] private int _inventoryMaxSize = 3;
-
-        private void Awake()
-        {
-            ItemsHolding = new List<InventoryItem>();
-            ItemsHolding.Capacity = _inventoryMaxSize;
-        }
         public bool HasFreeSpace()
         {
             if(ItemsHolding.Count < 3) return true;
@@ -51,7 +43,7 @@ namespace IMPossible.Inventory
         //Get the item from given index 
         public InventoryItem GetItem(int index)
         {
-            if (ItemsHolding[index] != null)
+            if (ItemsHolding.ContainsKey(index))
             {
                 return ItemsHolding[index];
             }
@@ -60,7 +52,7 @@ namespace IMPossible.Inventory
 
         public bool Use(int index, GameObject user)
         {
-            if (ItemsHolding[index] != null)
+            if (ItemsHolding.ContainsKey(index))
             {
                 ItemsHolding[index].Use(user);
                 return true;
@@ -72,7 +64,7 @@ namespace IMPossible.Inventory
         {
             if (ItemsHolding[index].GetData() == null) return false;
 
-            if (ItemsHolding[index] != null)
+            if (ItemsHolding.ContainsKey(index))
             {
                 ItemsHolding[index].GetPassiveEffect(user);
                 return true;

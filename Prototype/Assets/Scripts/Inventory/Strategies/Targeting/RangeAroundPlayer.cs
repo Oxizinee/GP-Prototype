@@ -32,6 +32,7 @@ namespace IMPossible.Inventory.Strategies.Targeting
 
             while (true)
             {
+                data.SetTargetedPoint(new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.position.y + 0.1f, data.GetUser().transform.position.z));
                 _circleInstance.transform.position = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.position.y + 0.1f, data.GetUser().transform.position.z);
                 data.SetTargets(GetEnemiesInRadius(data.GetUser().transform.position));
                 finished();

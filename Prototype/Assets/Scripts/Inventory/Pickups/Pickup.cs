@@ -32,7 +32,7 @@ namespace IMPossible.Inventory
         {
             if (_inventory.HasFreeSpace() && !_inventory.AlreadyHasIt(Item))
             {
-                _inventory.ItemsHolding.Add(Item);
+                _inventory.ItemsHolding.Add(_inventory.ItemsHolding.Count, Item);
                 _inventory.AddIconToUI(Item);
                 print(Item.GetDisplayName() + " has been picked up!");
                 Destroy(gameObject);

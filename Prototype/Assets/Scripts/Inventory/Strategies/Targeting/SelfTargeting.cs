@@ -17,6 +17,7 @@ namespace IMPossible.Inventory.Strategies.Targeting
             while (true)
             {
                 data.SetTargets(TargetPlayer(data.GetUser()));
+                data.SetTargetedPoint(data.GetUser().transform.position);
                 callWhenFinished();
                 break;
             }

@@ -1,3 +1,16 @@
 {
-	"name": "IMPossible.UI"
+    "name": "IMPossible.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8a08df4fe8e6ba2469c854fd6a9432f1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

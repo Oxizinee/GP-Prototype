@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Range Around Player
   m_EditorClassIdentifier: 
   _areaEffectRadius: 2
-  _circlePrefab: {fileID: 579637021141792066, guid: cdf5682afc9a81f40bf2a870cf83ae27, type: 3}
+  _circlePrefab: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}

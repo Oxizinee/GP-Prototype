@@ -14,6 +14,7 @@ namespace IMPossible.Inventory
 
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private Pickup _pickup = null;
+        [SerializeField] private float _cooldownTime = 0;
 
         private AbilityData _data = null;
 
@@ -28,13 +29,21 @@ namespace IMPossible.Inventory
         [SerializeField] TargetingStrategy _Passive_targetingStrategy;
         [SerializeField] FilteringStrategy[] _Passive_filteringStrategies;
         [SerializeField] EffectStrategy[] _Passive_effectStrategies;
+
         public void Use(GameObject user)
         {
+            CooldownStorage cooldownStorage = user.GetComponent<CooldownStorage>();
+            if (cooldownStorage.GetTimeRemaining(this) > 0)
+            {
+                return; //if cooldown is still above 0 return - dont let the player use it
+            }
+
             _data = new AbilityData(user);
             _OnUse_targetingStrategy.StartTargeting(_data,() => 
                 {
                 TargetAquired(_data, _OnUse_filteringStrategies, _OnUse_effectStrategies);
                 });
+            cooldownStorage.StartCooldown(this, _cooldownTime);
         }
         public void GetPassiveEffect(GameObject user)
         {
