@@ -11,14 +11,14 @@ namespace IMPossible.Inventory.Strategies.Effects
         [SerializeField] private float _damageAmount;
         private float _healAmount;
 
-        public override void StartEffect(GameObject user, IEnumerable<GameObject> targets, Action callWhenFinished)
+        public override void StartEffect(AbilityData data, Action callWhenFinished)
         {
-            _healAmount = HalfHP(user.GetComponent<Health>().GetMaxHealth());
-            foreach (var target in targets)
+            _healAmount = HalfHP(data.GetUser().GetComponent<Health>().GetMaxHealth());
+            foreach (var target in data.GetTargets())
             {
                 if (_damageAmount < 0)
                 {
-                    target.GetComponent<Health>().TakeDamage(user, -_damageAmount);
+                    target.GetComponent<Health>().TakeDamage(data.GetUser(), -_damageAmount);
                 }
                 else
                 {

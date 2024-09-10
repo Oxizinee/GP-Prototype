@@ -10,9 +10,9 @@ namespace IMPossible.Inventory.Strategies.Effects
     {
         [SerializeField] private float _stunDuration;
 
-        public override void StartEffect(GameObject user, IEnumerable<GameObject> targets, Action callWhenFinished)
+        public override void StartEffect(AbilityData data, Action callWhenFinished)
         {
-            foreach (var target in targets)
+            foreach (var target in data.GetTargets())
             {
                target.GetComponent<Fighter>().GetStunned(_stunDuration);
             }

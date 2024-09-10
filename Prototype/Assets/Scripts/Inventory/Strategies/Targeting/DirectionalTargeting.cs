@@ -9,7 +9,7 @@ namespace IMPossible.Inventory.Strategies.Targeting
     {
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _areaEffectRadius;
-        public override void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> callWhenFinished)
+        public override void StartTargeting(AbilityData data, Action callWhenFinished)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -21,10 +21,11 @@ namespace IMPossible.Inventory.Strategies.Targeting
             {
                 Vector3 targetPoint = ray.GetPoint(distanceToPlane);
 
-                direction = targetPoint - user.transform.position;
+                direction = targetPoint - data.GetUser().transform.position;
                 direction.y = 0f;  // Keep the direction in the XZ plane
             }
-            callWhenFinished(GetEnemiesInRadius(direction));
+            data.SetTargets(GetEnemiesInRadius(direction));
+            callWhenFinished();
         }
 
         private IEnumerable<GameObject> GetEnemiesInRadius(Vector3 point)

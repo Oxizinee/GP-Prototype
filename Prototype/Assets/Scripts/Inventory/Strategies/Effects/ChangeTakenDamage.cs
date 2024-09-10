@@ -9,9 +9,10 @@ namespace IMPossible.Inventory.Strategies.Effects
     public class ChangeTakenDamage : EffectStrategy
     {
         [SerializeField] private float _newMultiplication;
-        public override void StartEffect(GameObject user, IEnumerable<GameObject> targets, Action callWhenFinished)
+        public override void StartEffect(AbilityData data, Action callWhenFinished)
         {
-            user.GetComponent<Health>().ChangeMulltiplication(_newMultiplication);
+            data.GetUser().GetComponent<Health>().ChangeMulltiplication(_newMultiplication);
+            callWhenFinished();
         }
     }
 }

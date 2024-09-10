@@ -12,12 +12,12 @@ namespace IMPossible.Inventory.Strategies.Targeting
         [SerializeField] private GameObject _circlePrefab;
 
         private GameObject _circleInstance;
-        public override void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> callWhenFinished)
+        public override void StartTargeting(AbilityData data, Action callWhenFinished)
         {
-            user.GetComponent<MonoBehaviour>().StartCoroutine(Targeting(user,callWhenFinished));
+            data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(Targeting(data,callWhenFinished));
         }
 
-        private IEnumerator Targeting(GameObject user, Action<IEnumerable<GameObject>> finished)
+        private IEnumerator Targeting(AbilityData data, Action finished)
         {
             if (_circleInstance == null)
             {
@@ -32,13 +32,15 @@ namespace IMPossible.Inventory.Strategies.Targeting
 
             while (true)
             {
-                    _circleInstance.transform.position = new Vector3(user.transform.position.x, user.transform.position.y + 0.1f, user.transform.position.z);
+                    _circleInstance.transform.position = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.position.y + 0.1f, data.GetUser().transform.position.z);
                     if (Input.GetMouseButtonDown(0))
                     {
                         // Absorb the whole mouse click
                         yield return new WaitWhile(() => Input.GetMouseButton(0));
+
                         _circleInstance.SetActive(false);
-                        finished(GetEnemiesInRadius(user.transform.position));
+                        data.SetTargets(GetEnemiesInRadius(data.GetUser().transform.position));
+                        finished();
                         break;
                     }
                 yield return null;

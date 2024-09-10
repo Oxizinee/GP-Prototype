@@ -1,4 +1,5 @@
 using IMPossible.Inventory.Strategies;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace IMPossible.Inventory
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private Pickup _pickup = null;
 
+        private AbilityData _data = null;
+
         [Header("On use strategies")]
         [SerializeField] TargetingStrategy _OnUse_targetingStrategy;
         [SerializeField] FilteringStrategy[] _OnUse_filteringStrategies;
@@ -27,19 +30,20 @@ namespace IMPossible.Inventory
         [SerializeField] EffectStrategy[] _Passive_effectStrategies;
         public void Use(GameObject user)
         {
-            Debug.Log("Using action: " + this);
-            _OnUse_targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) => 
+            _data = new AbilityData(user);
+            _OnUse_targetingStrategy.StartTargeting(_data,() => 
                 {
-                OnUseTargetAcquired(user, targets);
+                TargetAquired(_data, _OnUse_filteringStrategies, _OnUse_effectStrategies);
                 });
         }
         public void GetPassiveEffect(GameObject user)
         {
+            if(user == null) return;    
             if( _hasPassiveEffect )
             {
-                _Passive_targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) =>
+                _Passive_targetingStrategy.StartTargeting(_data,() =>
                 {
-                    PassiveTargetAcquired(user, targets);
+                    TargetAquired(_data, _Passive_filteringStrategies, _Passive_effectStrategies);
                 }); 
             }
         }
@@ -62,36 +66,27 @@ namespace IMPossible.Inventory
         {
             return _description;
         }
-        private void PassiveTargetAcquired(GameObject user, IEnumerable<GameObject> targets)
+        private void TargetAquired(AbilityData data, FilteringStrategy[] filtering, EffectStrategy[] effects)
         {
-            foreach (var filterStrategy in _Passive_filteringStrategies)
+            foreach(var filterStrategy in filtering)
             {
-                targets = filterStrategy.Filter(targets);
+                data.SetTargets(filterStrategy.Filter(data.GetTargets()));
             }
 
-            foreach (var effect in _Passive_effectStrategies)
+            foreach (var effect in effects)
             {
-                effect.StartEffect(user, targets, EffectFinished);
-            }
-        }
-        private void OnUseTargetAcquired(GameObject user, IEnumerable<GameObject> targets)
-        {
-            Debug.Log("Target Aquired ");
-
-            foreach(var filterStrategy in _OnUse_filteringStrategies)
-            {
-                targets = filterStrategy.Filter(targets);
-            }
-
-            foreach (var effect in _OnUse_effectStrategies)
-            {
-                effect.StartEffect(user, targets, EffectFinished);
+                effect.StartEffect(data, EffectFinished);
             }
         }
 
         private void EffectFinished()
         {
 
+        }
+
+        public AbilityData GetData()
+        {
+            return _data;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace IMPossible.Inventory.Strategies
 {
     public abstract class TargetingStrategy : ScriptableObject
     {
-        public abstract void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> callWhenFinished);
+        public abstract void StartTargeting(AbilityData data, Action callWhenFinished);
     }
 }

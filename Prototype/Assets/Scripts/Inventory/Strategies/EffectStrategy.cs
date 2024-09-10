@@ -7,6 +7,6 @@ namespace IMPossible.Inventory.Strategies
 {
     public abstract class EffectStrategy : ScriptableObject
     {
-        public abstract void StartEffect(GameObject user, IEnumerable<GameObject> targets, Action callWhenFinished);
+        public abstract void StartEffect(AbilityData data, Action callWhenFinished);
     }
 }
