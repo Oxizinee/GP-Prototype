@@ -61,6 +61,11 @@ namespace IMPossible.Controller
                     _inventory.Use(i, gameObject);
                 }
             }
+
+            for (int i = 0; i <= _inventory.ItemsHolding.Count - 1; i++)
+            {
+               _inventory.GetPassiveEffect(i, gameObject);
+            }
         }
         private void SpecialAttack()
         {

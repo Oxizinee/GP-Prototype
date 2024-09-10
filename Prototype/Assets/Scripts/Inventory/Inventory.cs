@@ -67,5 +67,15 @@ namespace IMPossible.Inventory
             }
             return false;
         }
+
+        public bool GetPassiveEffect(int index, GameObject user)
+        {
+            if (ItemsHolding[index] != null)
+            {
+                ItemsHolding[index].GetPassiveEffect(user);
+                return true;
+            }
+            return false;
+        }
     }
 }

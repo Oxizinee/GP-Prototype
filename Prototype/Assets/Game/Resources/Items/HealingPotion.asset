@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5b3b135424a7c46914fe329a2635c9, type: 3}
   m_Name: HealingPotion
   m_EditorClassIdentifier: 
-  _itemID: 
   _displayName: Healing Potion
   _description: Use this to heal yourself
   _icon: {fileID: 21300000, guid: 5f211c91ab2e0a04d94cb06603b9784a, type: 3}
   _pickup: {fileID: 4741908973412232404, guid: 069ffa4d14310cb4f8e99cbfa2ed5b59, type: 3}
-  _targetingStrategy: {fileID: 11400000, guid: b8ace9b94c57dc64c9a58d49ffac8d57, type: 2}
-  _filteringStrategies: []
-  _effectStrategies:
+  _OnUse_targetingStrategy: {fileID: 11400000, guid: b8ace9b94c57dc64c9a58d49ffac8d57, type: 2}
+  _OnUse_filteringStrategies: []
+  _OnUse_effectStrategies:
   - {fileID: 11400000, guid: 4d1c36688107b194aa354f95258691f8, type: 2}
+  _hasPassiveEffect: 0
+  _Passive_targetingStrategy: {fileID: 0}
+  _Passive_filteringStrategies: []
+  _Passive_effectStrategies: []

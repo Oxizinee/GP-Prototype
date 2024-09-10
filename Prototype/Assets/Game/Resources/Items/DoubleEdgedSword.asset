@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5b3b135424a7c46914fe329a2635c9, type: 3}
   m_Name: DoubleEdgedSword
   m_EditorClassIdentifier: 
-  _itemID: 
   _displayName: Double Edged Sword
   _description: 
   _icon: {fileID: 21300000, guid: 149cc945983602f4f8e9548342266553, type: 3}
   _pickup: {fileID: 4741908973412232404, guid: 7d06254734983a4459f5d876baa334cf, type: 3}
-  _targetingStrategy: {fileID: 11400000, guid: ac09fc4188cdf9646bd255ba1f28b4a9, type: 2}
-  _filteringStrategies:
+  _OnUse_targetingStrategy: {fileID: 11400000, guid: ac09fc4188cdf9646bd255ba1f28b4a9, type: 2}
+  _OnUse_filteringStrategies:
   - {fileID: 11400000, guid: b01009eceeb46424f8b0ca68569d7d9c, type: 2}
-  _effectStrategies:
+  _OnUse_effectStrategies:
   - {fileID: 11400000, guid: c40fda00331ff434baf8c253a8855f0f, type: 2}
+  _hasPassiveEffect: 1
+  _Passive_targetingStrategy: {fileID: 11400000, guid: b8ace9b94c57dc64c9a58d49ffac8d57, type: 2}
+  _Passive_filteringStrategies: []
+  _Passive_effectStrategies:
+  - {fileID: 11400000, guid: 9bd32f23a9103a84991d044d3936cded, type: 2}

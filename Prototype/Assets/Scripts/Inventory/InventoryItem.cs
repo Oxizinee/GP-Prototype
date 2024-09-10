@@ -8,21 +8,40 @@ namespace IMPossible.Inventory
     [CreateAssetMenu(menuName = "Inventory/Item")]
     public class InventoryItem : ScriptableObject
     {
-        [SerializeField]private string _itemID = null;
         [SerializeField]private string _displayName = null;
         [SerializeField][TextArea] private string _description = null;
+
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private Pickup _pickup = null;
-        [SerializeField] TargetingStrategy _targetingStrategy;
-        [SerializeField] FilteringStrategy[] _filteringStrategies;
-        [SerializeField] EffectStrategy[] _effectStrategies;
-       public void Use(GameObject user)
+
+        [Header("On use strategies")]
+        [SerializeField] TargetingStrategy _OnUse_targetingStrategy;
+        [SerializeField] FilteringStrategy[] _OnUse_filteringStrategies;
+        [SerializeField] EffectStrategy[] _OnUse_effectStrategies;
+
+        [Header("Passive strategies")]
+        [SerializeField] private bool _hasPassiveEffect;
+
+        [SerializeField] TargetingStrategy _Passive_targetingStrategy;
+        [SerializeField] FilteringStrategy[] _Passive_filteringStrategies;
+        [SerializeField] EffectStrategy[] _Passive_effectStrategies;
+        public void Use(GameObject user)
         {
             Debug.Log("Using action: " + this);
-            _targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) => 
+            _OnUse_targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) => 
                 {
-                TargetAcquired(user, targets);
+                OnUseTargetAcquired(user, targets);
                 });
+        }
+        public void GetPassiveEffect(GameObject user)
+        {
+            if( _hasPassiveEffect )
+            {
+                _Passive_targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) =>
+                {
+                    PassiveTargetAcquired(user, targets);
+                }); 
+            }
         }
         public Pickup SpawnPickup(Vector3 position)
         {
@@ -35,11 +54,6 @@ namespace IMPossible.Inventory
         {
             return _icon;
         }
-
-        public string GetItemID()
-        {
-            return _itemID;
-        }
         public string GetDisplayName()
         {
             return _displayName;
@@ -48,17 +62,28 @@ namespace IMPossible.Inventory
         {
             return _description;
         }
-
-        private void TargetAcquired(GameObject user, IEnumerable<GameObject> targets)
+        private void PassiveTargetAcquired(GameObject user, IEnumerable<GameObject> targets)
         {
-            Debug.Log("Target Aquired ");
-
-            foreach(var filterStrategy in _filteringStrategies)
+            foreach (var filterStrategy in _Passive_filteringStrategies)
             {
                 targets = filterStrategy.Filter(targets);
             }
 
-            foreach (var effect in _effectStrategies)
+            foreach (var effect in _Passive_effectStrategies)
+            {
+                effect.StartEffect(user, targets, EffectFinished);
+            }
+        }
+        private void OnUseTargetAcquired(GameObject user, IEnumerable<GameObject> targets)
+        {
+            Debug.Log("Target Aquired ");
+
+            foreach(var filterStrategy in _OnUse_filteringStrategies)
+            {
+                targets = filterStrategy.Filter(targets);
+            }
+
+            foreach (var effect in _OnUse_effectStrategies)
             {
                 effect.StartEffect(user, targets, EffectFinished);
             }

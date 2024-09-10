@@ -13,10 +13,12 @@ namespace IMPossible.Supplies
         public float HP = 10;
         private bool IsDead = false;
         public GameObject FloatingText, BloodSplatterPrefab;
+        private float _mulltiplication = 1;
         private void Start()
         {
             GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
             HP = GetComponent<BaseStats>().GetStat(Stat.Health);
+            _mulltiplication = 1;
         }
 
         private void RegenerateHealth()
@@ -27,8 +29,9 @@ namespace IMPossible.Supplies
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            HP = Mathf.Max(HP - damage, 0);
-            ShowFloatingText(damage);
+            float newDamage = IncreaseDamage(damage, _mulltiplication);
+            HP = Mathf.Max(HP - newDamage, 0);
+            ShowFloatingText(newDamage);
             SpawnBloodSplatter();
 
             if(HP == 0) 
@@ -36,6 +39,16 @@ namespace IMPossible.Supplies
                 Die();
                 AwardExperience(instigator);
             }
+        }
+
+        public void ChangeMulltiplication(float newDamage)
+        {
+            _mulltiplication = newDamage;   
+        }
+        private float IncreaseDamage(float damage, float multiplication)
+        {
+            float newDamage = damage * multiplication;
+            return newDamage;
         }
         public bool CanBeAttacked()
         {
