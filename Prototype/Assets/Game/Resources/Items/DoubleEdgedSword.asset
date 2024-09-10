@@ -20,3 +20,5 @@ MonoBehaviour:
   _targetingStrategy: {fileID: 11400000, guid: ac09fc4188cdf9646bd255ba1f28b4a9, type: 2}
   _filteringStrategies:
   - {fileID: 11400000, guid: b01009eceeb46424f8b0ca68569d7d9c, type: 2}
+  _effectStrategies:
+  - {fileID: 11400000, guid: c40fda00331ff434baf8c253a8855f0f, type: 2}

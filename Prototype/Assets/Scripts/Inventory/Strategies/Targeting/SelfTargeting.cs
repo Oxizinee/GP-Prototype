@@ -17,8 +17,9 @@ namespace IMPossible.Inventory.Strategies.Targeting
             while (true)
             {
                 callWhenFinished(TargetPlayer(user));
-                yield return null;
+                break;
             }
+            yield return null;
         }
         private IEnumerable<GameObject> TargetPlayer(GameObject user)
         {
