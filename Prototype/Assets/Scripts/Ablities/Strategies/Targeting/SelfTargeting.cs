@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
-namespace IMPossible.Inventory.Strategies.Targeting
+namespace IMPossible.Ability.Strategies.Targeting
 {
     [CreateAssetMenu(fileName = "Self Targeting", menuName = "Inventory/Targeting/Self", order = 0)]
     public class SelfTargeting : TargetingStrategy

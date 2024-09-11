@@ -1,9 +1,8 @@
 using IMPossible.Combat;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Inventory.Strategies.Effects
+namespace IMPossible.Ability.Strategies.Effects
 {
     [CreateAssetMenu(fileName = "Stun Effect", menuName = "Inventory/Effects/Stun", order = 0)]
     public class StunEffect : EffectStrategy

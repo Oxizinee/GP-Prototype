@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Inventory.Strategies.Effects
+namespace IMPossible.Ability.Strategies.Effects
 {
     [CreateAssetMenu(fileName ="Change Health Effect", menuName ="Inventory/Effects/Health", order = 0)]
     public class ChangeHealth : EffectStrategy

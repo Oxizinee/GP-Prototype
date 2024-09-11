@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace IMPossible.Inventory.Strategies.Effects
+namespace IMPossible.Ability.Strategies.Effects
 {
     [CreateAssetMenu(fileName = "Spawn Effect", menuName = "Inventory/Effects/Spawn Effect", order = 0)]
     public class SpawnEffect : EffectStrategy

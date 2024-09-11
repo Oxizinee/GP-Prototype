@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IMPossible.Supplies;
 
-namespace IMPossible.Inventory.Strategies.Effects
+namespace IMPossible.Ability.Strategies.Effects
 {
     [CreateAssetMenu(fileName = "Change Taken Damage", menuName = "Inventory/Effects/Change Damage", order = 0)]
     public class ChangeTakenDamageEffect : EffectStrategy

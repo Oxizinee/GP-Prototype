@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Inventory
+namespace IMPossible.Ability
 {
     public class AbilityData
     {

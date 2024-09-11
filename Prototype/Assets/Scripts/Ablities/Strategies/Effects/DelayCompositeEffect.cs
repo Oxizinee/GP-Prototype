@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace IMPossible.Inventory.Strategies.Effects
+namespace IMPossible.Ability.Strategies.Effects
 {
     [CreateAssetMenu(fileName = "Delay Composite Effect",menuName = "Inventory/Effects/Delay Effects", order = 0)]
     public class DelayCompositeEffect : EffectStrategy

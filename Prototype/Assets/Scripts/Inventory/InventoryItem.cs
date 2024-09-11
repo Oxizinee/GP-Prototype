@@ -1,7 +1,5 @@
-using IMPossible.Inventory.Strategies;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using IMPossible.Ability;
+using IMPossible.Ability.Strategies;
 using UnityEngine;
 
 namespace IMPossible.Inventory

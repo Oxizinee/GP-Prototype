@@ -1,8 +1,9 @@
 {
-    "name": "IMPossible.Inventory",
+    "name": "IMPossible.Ability",
     "rootNamespace": "",
     "references": [
-        "GUID:2538bdee627aed541ab5a6a82525051d"
+        "GUID:0a907557f8839b942a187693b5782993",
+        "GUID:cff1e838da851944e843ecfe226ac17e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

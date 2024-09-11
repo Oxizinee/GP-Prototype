@@ -1,10 +1,7 @@
-﻿using IMPossible.Combat;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-namespace IMPossible.Inventory.Strategies.Effects
+namespace IMPossible.Ability.Strategies.Effects
 {
     [CreateAssetMenu(fileName = "Spawn Projectile Effect", menuName = "Inventory/Effects/Spawn Projectile", order = 0)]
     public class SpawnProjectileEffect : EffectStrategy

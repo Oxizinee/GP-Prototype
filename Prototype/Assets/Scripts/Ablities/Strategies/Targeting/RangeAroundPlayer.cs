@@ -3,10 +3,10 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-namespace IMPossible.Inventory.Strategies.Targeting
+namespace IMPossible.Ability.Strategies.Targeting
 {
-    [CreateAssetMenu(fileName = "Range Around Player With Click Targeting", menuName = "Inventory/Targeting/Range Around Player With Click", order = 0)]
-    public class RangeAroundPlayerWithClick : TargetingStrategy
+    [CreateAssetMenu(fileName = "Range Around Player", menuName = "Inventory/Targeting/Range Around Player", order = 0)]
+    public class RangeAroundPlayer : TargetingStrategy
     {
         [SerializeField] private float _areaEffectRadius;
         [SerializeField] private GameObject _circlePrefab;
@@ -14,7 +14,7 @@ namespace IMPossible.Inventory.Strategies.Targeting
         private GameObject _circleInstance;
         public override void StartTargeting(AbilityData data, Action callWhenFinished)
         {
-            data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(Targeting(data,callWhenFinished));
+            data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(Targeting(data, callWhenFinished));
         }
 
         private IEnumerator Targeting(AbilityData data, Action finished)
@@ -32,18 +32,11 @@ namespace IMPossible.Inventory.Strategies.Targeting
 
             while (true)
             {
-                    _circleInstance.transform.position = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.position.y + 0.1f, data.GetUser().transform.position.z);
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        // Absorb the whole mouse click
-                        yield return new WaitWhile(() => Input.GetMouseButton(0));
-                        _circleInstance.SetActive(false);
-                    data.SetTargetedPoint(data.GetUser().transform.position);
-                    data.SetTargets(GetEnemiesInRadius(data.GetUser().transform.position));
-                        finished();
-                        break;
-                    }
-                yield return null;
+                data.SetTargetedPoint(new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.position.y + 0.1f, data.GetUser().transform.position.z));
+                _circleInstance.transform.position = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.position.y + 0.1f, data.GetUser().transform.position.z);
+                data.SetTargets(GetEnemiesInRadius(data.GetUser().transform.position));
+                finished();
+                yield return new WaitForSeconds(3);
             }
         }
         private IEnumerable<GameObject> GetEnemiesInRadius(Vector3 playerPosition)
