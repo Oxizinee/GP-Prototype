@@ -7,7 +7,6 @@ namespace IMPossible.Inventory
 {
     public class PickupSpawner : MonoBehaviour
     {
-        // Start is called before the first frame update
         [SerializeField] private InventoryItem[] _itemsToSpawn;
         private int _randomNumber;
         void Start()

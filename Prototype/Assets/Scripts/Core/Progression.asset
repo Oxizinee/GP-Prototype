@@ -12,15 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5b453059b459945a1bf49bc86f3cea, type: 3}
   m_Name: Progression
   m_EditorClassIdentifier: 
-  SinPaths:
-  - SinPath: 0
-    ProgressionStats:
+  StatsToLevelUp:
+    Stats:
     - Stat: 0
       Levels:
       - 10
       - 20
       - 30
       - 40
+      - 50
+      - 50
+      - 50
+      - 50
+      - 50
       - 50
       - 50
       - 50
@@ -44,64 +48,23 @@ MonoBehaviour:
       - 15
       - 20
       - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-  - SinPath: 7
-    ProgressionStats:
-    - Stat: 0
-      Levels:
-      - 10
-      - 20
       - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
+      - 36
+      - 37
+      - 38
+      - 39
       - 40
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-    - Stat: 1
-      Levels:
-      - 2
-      - 10
-      - 15
-      - 20
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
-      - 25
+      - 41
+      - 42
+      - 43
+      - 44
+      - 45
+      - 46
+      - 47
+      - 48
+      - 49

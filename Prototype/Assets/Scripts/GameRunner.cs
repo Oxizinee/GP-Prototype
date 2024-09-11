@@ -8,21 +8,17 @@ using UnityEngine.UI;
 public class GameRunner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject PauseScreen, EnemyPrefab;
+    public GameObject  EnemyPrefab;
     public Text EnemiesPresent, EnemiesKilled;
-    private bool _isPaused;
 
     public float SpawnerTimer = 3, GameTime;
 
     public float EnemiesKilledNumber, EnemiesPresentNmber;
-    private BaseStats _baseStats;
 
     [SerializeField]private float _spawnTimer, _offset = 0.3f, _bigSpawnerTimer;
     void Start()
     {
         SpawnerTimer = 3;
-        _baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
-        _baseStats.OnLevelUp += PauseGame;
     }
 
     // Update is called once per frame
@@ -33,7 +29,7 @@ public class GameRunner : MonoBehaviour
      //   PauseGame();
         SpawnEnemies();
 
-        SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.02f),0.5f,3);
+        SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.007f),0.5f,3);
 
         EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
         EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;
@@ -72,7 +68,7 @@ public class GameRunner : MonoBehaviour
             Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(viewportPosition);
 
             // Instantiate the object at the calculated position
-            GameObject enemy = Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity);
+            GameObject enemy = Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity, transform);
             enemy.GetComponent<Enemy>().Type = (EnemyType)randomType;
             EnemiesPresentNmber++;
             _spawnTimer = 0;
@@ -110,13 +106,5 @@ public class GameRunner : MonoBehaviour
             EnemiesPresentNmber++;
             _bigSpawnerTimer = 0;
         }
-    }
-
-    private void PauseGame()
-    {
-        
-          //  PauseScreen.SetActive(true);
-            //Time.timeScale = 0;
-        
     }
 }

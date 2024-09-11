@@ -15,6 +15,7 @@ namespace IMPossible.Stats
         {
             _EXP += experience;
             OnExperienceGained();
+            return;
         }
 
         public float GetPoints()

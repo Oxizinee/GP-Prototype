@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfcf4d03052eab4ea7ed9f48a74fb54, type: 3}
   m_Name: Directional Targeting
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  Ggo: {fileID: 549691611273444394, guid: c9f1eb29349ca164c84ac2c3f34e565d, type: 3}
+  _groundOffset: 1

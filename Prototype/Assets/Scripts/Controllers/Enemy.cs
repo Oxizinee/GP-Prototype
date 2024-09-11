@@ -21,6 +21,23 @@ public class Enemy : MonoBehaviour
     public GameObject Player, BulletPrefab;
     [SerializeField]private float _chargerTimer, _inChargeTimer;
 
+    private void Awake()
+    {
+        GetComponent<Health>().OnDeath.AddListener(Die);
+    }
+    private void Die()
+    {
+        GetComponent<Animator>().SetTrigger("Die");
+        DropLoot();
+        Destroy(gameObject, 4);
+    }
+    private void DropLoot()
+    {
+        if (GetComponent<PickupSpawner>() != null)
+        {
+            GetComponent<PickupSpawner>().DropLoot();
+        }
+    }
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -29,7 +46,6 @@ public class Enemy : MonoBehaviour
         {
             case EnemyType.Big:
                 {
-                    GetComponent<Health>().HP = 50;
                     gameObject.AddComponent<PickupSpawner>();
                     transform.localScale = transform.localScale * 1.4f;
                     break;

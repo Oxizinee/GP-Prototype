@@ -10,7 +10,6 @@ namespace IMPossible.Stats
     {
         [Range(1, 99)]
         [SerializeField] private int _startingLevel = 1;
-        [SerializeField] private SinPath _sinPath = SinPath.Sinless;
         [SerializeField] private Progression _progression = null;
         [SerializeField] private GameObject _levelUpParticles = null;
 
@@ -20,7 +19,7 @@ namespace IMPossible.Stats
         public event Action OnLevelUp;
         private void Start()
         {
-            _currentLevel = CalculateLevel();
+            _currentLevel = _startingLevel;//CalculateLevel();
             _experience = GetComponent<Experience>(); 
             if(_experience != null)
             {
@@ -40,7 +39,7 @@ namespace IMPossible.Stats
         }
         public float GetStat(Stat stat)
         {
-            return _progression.GetStat(stat, _sinPath, GetLevel()) + GetAdditiveModifier(stat);
+            return _progression.GetStat(stat, GetLevel()) + GetAdditiveModifier(stat);
         }
 
         public int GetLevel()
@@ -57,10 +56,10 @@ namespace IMPossible.Stats
             if (experience == null) return _startingLevel;
 
             float currentXP = GetComponent<Experience>().GetPoints();
-            int maxLevel = _progression.GetLevels(Stat.Experience, _sinPath);
+            int maxLevel = _progression.GetLevels(Stat.Experience);
             for (int levels = 1; levels < maxLevel; levels++)
             {
-                float XPToLevelUp = _progression.GetStat(Stat.Experience, _sinPath, levels);
+                float XPToLevelUp = _progression.GetStat(Stat.Experience, levels);
                 if(XPToLevelUp > currentXP)
                 {
                     return levels;

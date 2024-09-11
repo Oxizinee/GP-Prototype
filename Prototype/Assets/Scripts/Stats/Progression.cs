@@ -10,13 +10,13 @@ namespace IMPossible.Stats
     [CreateAssetMenu(fileName ="Progression", menuName ="Stats/New Progression", order = 0)]
     public class Progression :ScriptableObject
     {
-        [SerializeField] ProgressionSinPath[] SinPaths = null;
-            Dictionary<SinPath, Dictionary<Stat, float[]>> _lookupTable = null;
-        public float GetStat(Stat stat, SinPath sinPath, int level)
+        [SerializeField] ProgressionStats StatsToLevelUp = null;
+        private Dictionary<Stat, float[]> _lookupTable = null;
+        public float GetStat(Stat stat, int level)
         {
             BuildLookup();
 
-            float[] levels = _lookupTable[sinPath][stat];
+            float[] levels = _lookupTable[stat];
             
             if (levels.Length < level)
             {
@@ -25,37 +25,29 @@ namespace IMPossible.Stats
             return levels[level - 1];
         }
 
-        public int GetLevels(Stat stat, SinPath sinPath)
+        public int GetLevels(Stat stat)
         {
             BuildLookup();
 
-            float[] levels = _lookupTable[sinPath][stat];
+            float[] levels = _lookupTable[stat];
             return levels.Length;
         }
         private void BuildLookup()
         {
-            if(_lookupTable != null) return; 
+            if (_lookupTable != null) return;
 
-            _lookupTable = new Dictionary<SinPath, Dictionary<Stat, float[]>>();
+            _lookupTable = new Dictionary<Stat, float[]>();
 
-            foreach(ProgressionSinPath progressionSinPath in SinPaths)
-            {
-                var statLookupTable = new Dictionary<Stat,float[]>();
-
-                foreach (ProgressionStat progressionStat in progressionSinPath.ProgressionStats)
+                foreach (ProgressionStat progressionStat in StatsToLevelUp.Stats)
                 {
-                    statLookupTable[progressionStat.Stat] = progressionStat.Levels;
+                    _lookupTable[progressionStat.Stat] = progressionStat.Levels;
                 }
-
-                _lookupTable[progressionSinPath.SinPath] = statLookupTable;
-            }
         }
 
         [System.Serializable]
-        class ProgressionSinPath
+        class ProgressionStats
         {
-            public SinPath SinPath;
-            public ProgressionStat[] ProgressionStats;
+            public ProgressionStat[] Stats;
         }
 
         [System.Serializable]

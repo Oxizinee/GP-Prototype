@@ -2,6 +2,7 @@ using IMPossible.Stats;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace IMPossible.Supplies
 {
@@ -11,9 +12,10 @@ namespace IMPossible.Supplies
         [SerializeField] private float _regenerationPercentage = 70;
 
         public float HP = 10;
-        private bool IsDead = false;
         public GameObject FloatingText, BloodSplatterPrefab;
         private float _mulltiplication = 1;
+
+        public UnityEvent OnDeath;
         private void Start()
         {
             GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
@@ -26,7 +28,10 @@ namespace IMPossible.Supplies
             float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (_regenerationPercentage / 100);
             HP = Mathf.Max(HP, regenHealthPoints);
         }
-
+        public bool IsDead()
+        {
+            return HP <= 0;
+        }
         public void TakeDamage(GameObject instigator, float damage)
         {
             float newDamage = IncreaseDamage(damage, _mulltiplication);
@@ -34,9 +39,9 @@ namespace IMPossible.Supplies
             ShowFloatingText(newDamage);
             SpawnBloodSplatter();
 
-            if(HP == 0) 
+            if(IsDead()) 
             {
-                Die();
+                OnDeath?.Invoke();
                 AwardExperience(instigator);
             }
         }
@@ -52,24 +57,9 @@ namespace IMPossible.Supplies
         }
         public bool CanBeAttacked()
         {
-            return !IsDead;
+            return !IsDead();
         }
-        private void Die()
-        {
-            if (IsDead) return;
-            GetComponent<Animator>().SetTrigger("Die");
-            //DropLoot();
-            Destroy(gameObject, 4);
-            IsDead = true;
-        }
-
-        //private void DropLoot()
-        //{
-        //    if (GetComponent<PickupSpawner>() != null)
-        //    {
-        //        GetComponent<PickupSpawner>().DropLoot();
-        //    }
-        //}
+       
         public void Heal(float healPoints)
         {
             HP = Mathf.Min(HP + healPoints, GetMaxHealth());
