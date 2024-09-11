@@ -1,40 +1,34 @@
 ﻿using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Collections;
 using log4net.Util;
 namespace IMPossible.Inventory.Strategies.Targeting
 {
     [CreateAssetMenu(fileName = "Directional Targeting", menuName = "Inventory/Targeting/Directional", order = 0)]
     public class DirectionalTargeting : TargetingStrategy
     {
-        [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private float _areaEffectRadius;
         public override void StartTargeting(AbilityData data, Action callWhenFinished)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
-            float distanceToPlane;
-            Vector3 direction = Vector3.zero;
-
-            if (plane.Raycast(ray, out distanceToPlane))
-            {
-                Vector3 targetPoint = ray.GetPoint(distanceToPlane);
-
-                direction = targetPoint - data.GetUser().transform.position;
-                direction.y = 0f;  // Keep the direction in the XZ plane
-            }
-            data.SetTargets(GetEnemiesInRadius(direction));
-            callWhenFinished();
+            data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(Targeting(data, callWhenFinished));
         }
 
-        private IEnumerable<GameObject> GetEnemiesInRadius(Vector3 point)
+        private IEnumerator Targeting(AbilityData data, Action callWhenFinished)
         {
-            RaycastHit[] hits = Physics.SphereCastAll(point, _areaEffectRadius, Vector3.up, 0);
-            foreach (var hit in hits)
+            while (true)
             {
-                yield return hit.collider.gameObject;
+                Vector3 playersPos = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.localScale.y / 2, data.GetUser().transform.position.z);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        yield return new WaitWhile(() => Input.GetMouseButton(0));
+                        data.SetTargetedPoint(playersPos);
+                        callWhenFinished();
+                        break;
+                    }
+                yield return null;
             }
         }
+
+        
     }
 }
