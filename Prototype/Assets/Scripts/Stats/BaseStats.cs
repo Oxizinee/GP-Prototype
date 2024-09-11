@@ -21,6 +21,7 @@ namespace IMPossible.Stats
         {
             _currentLevel = _startingLevel;//CalculateLevel();
             _experience = GetComponent<Experience>(); 
+
             if(_experience != null)
             {
                 _experience.OnExperienceGained += UpdateLevel;
@@ -34,6 +35,7 @@ namespace IMPossible.Stats
                 _currentLevel = newLevel;
                 Instantiate(_levelUpParticles, transform.position, transform.rotation, transform);
                 _experience.ResetPoints();
+
                 OnLevelUp();
             }
         }

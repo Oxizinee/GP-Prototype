@@ -2,7 +2,8 @@
     "name": "IMPossible.UI",
     "rootNamespace": "",
     "references": [
-        "GUID:8a08df4fe8e6ba2469c854fd6a9432f1"
+        "GUID:8a08df4fe8e6ba2469c854fd6a9432f1",
+        "GUID:59eb8f7e82a87fe4e86e81b5cedd0de1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

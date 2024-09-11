@@ -2443,13 +2443,13 @@ RectTransform:
   m_Children:
   - {fileID: 360053736}
   - {fileID: 622850074}
-  - {fileID: 1786946355}
   - {fileID: 1533870147}
   - {fileID: 1736745025}
   - {fileID: 1774479979}
   - {fileID: 1656469350}
   - {fileID: 450884647}
   - {fileID: 1522059034}
+  - {fileID: 1786946355}
   - {fileID: 3118890590701259145}
   - {fileID: 1390737651}
   - {fileID: 391111695}
@@ -3116,6 +3116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleKey: 27
   _uiContainer: {fileID: 1233979965}
+  _levelUpScreen: {fileID: 1786946354}
 --- !u!1 &1564286058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,13 +3667,14 @@ GameObject:
   - component: {fileID: 1786946355}
   - component: {fileID: 1786946357}
   - component: {fileID: 1786946356}
+  - component: {fileID: 1786946358}
   m_Layer: 5
-  m_Name: LevelUpScreen
+  m_Name: LevelUpScreenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1786946355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3736,6 +3738,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786946354}
   m_CullTransparentMesh: 1
+--- !u!114 &1786946358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786946354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b93e6593aeb2b94d9c8ff623f2178d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1884764438
 GameObject:
   m_ObjectHideFlags: 0

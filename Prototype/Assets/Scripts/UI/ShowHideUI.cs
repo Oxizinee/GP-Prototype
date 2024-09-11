@@ -8,7 +8,8 @@ namespace IMPossible.UI
     {
         [SerializeField] private KeyCode _toggleKey;
         [SerializeField] GameObject _uiContainer = null;
-        void Start()
+        [SerializeField] private GameObject _levelUpScreen;
+        private void Awake()
         {
             _uiContainer.SetActive(false);
         }
@@ -24,6 +25,8 @@ namespace IMPossible.UI
 
         private void Toggle()
         {
+            if (_levelUpScreen.activeSelf) return;
+
             bool isUIVisible = !_uiContainer.activeSelf;
             _uiContainer.SetActive(isUIVisible);
 
