@@ -9,10 +9,10 @@ namespace IMPossible.Controller
     public class Player : MonoBehaviour
     {
         // Start is called before the first frame update
-        public float MovementSpeed = 8, JumpHeight = 8,DashDistance = 10, PassiveDamage = 10, EnemyDamage = 1, BulletSpeed = 12, BulletDamage = 6, TimeBetweenBullets = 1,
+        public float MovementSpeed = 8, JumpHeight = 8,DashDistance = 10, PassiveDamage = 10, BulletSpeed = 12, BulletDamage = 6, TimeBetweenBullets = 1,
             BulletLifeSpan = 9, BulletStunDuration = 0.8f;
         public GameObject BulletPrefab, BombPrefab;
-        public bool HornsActive, CanPierceActive = false, CanShoot = true;
+        public bool CanPierceActive = false, CanShoot = true;
 
         private Inventory.Inventory _inventory;
 

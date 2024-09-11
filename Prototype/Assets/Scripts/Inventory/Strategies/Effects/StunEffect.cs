@@ -6,7 +6,7 @@ using UnityEngine;
 namespace IMPossible.Inventory.Strategies.Effects
 {
     [CreateAssetMenu(fileName = "Stun Effect", menuName = "Inventory/Effects/Stun", order = 0)]
-    public class Stun : EffectStrategy
+    public class StunEffect : EffectStrategy
     {
         [SerializeField] private float _stunDuration;
 

@@ -16,7 +16,6 @@ namespace IMPossible.Core
             _offset = transform.position - _player.transform.position;
         }
 
-        // Update is called once per frame
         void Update()
         {
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + _offset, Speed);
