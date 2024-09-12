@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8547344c3752d2b43a6e0f36d2e3787d, type: 3}
+  m_Name: ImpishMagic
+  m_EditorClassIdentifier: 
+  _displayName: Impish Magic
+  _description: 
+  _icon: {fileID: 0}
+  _cooldownTime: 5
+  _level: 1
+  _targetingStrategy: {fileID: 11400000, guid: 6fa0be45d61b6e04395461decd14a0f6, type: 2}
+  _filteringStrategies: []
+  _effectStrategies:
+  - {fileID: 11400000, guid: 235bdd5b2b053f445abc8c1dd122d38e, type: 2}

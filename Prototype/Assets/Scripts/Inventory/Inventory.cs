@@ -1,3 +1,4 @@
+using IMPossible.Ability;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,16 @@ namespace IMPossible.Inventory
             }
             return null;
         }
+
+        public AbilityData GetAbilityData(int index)
+        {
+            if (ItemsHolding.ContainsKey(index))
+            {
+                return ItemsHolding[index].GetData();
+            }
+            return null;
+        }
+
 
         public bool Use(int index, GameObject user)
         {

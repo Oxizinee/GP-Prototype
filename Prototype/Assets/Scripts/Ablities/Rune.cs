@@ -11,6 +11,7 @@ namespace IMPossible.Ability
 
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private float _cooldownTime = 0;
+        [SerializeField] private int _level = 1;
 
         private AbilityData _data = null;
 
@@ -26,11 +27,17 @@ namespace IMPossible.Ability
             {
                 _data = new AbilityData(user);
             }
+            CooldownStorage cooldownStorage = user.GetComponent<CooldownStorage>();
+            if (cooldownStorage.GetTimeRemaining(_data) > 0)
+            {
+                return; //if cooldown is still above 0 return - dont let the player use it
+            }
 
             _targetingStrategy.StartTargeting(_data, () =>
                 {
                     TargetAquired(_data, _filteringStrategies, _effectStrategies);
                 });
+
         }
         public Sprite GetIcon()
         {
@@ -46,6 +53,9 @@ namespace IMPossible.Ability
         }
         private void TargetAquired(AbilityData data, FilteringStrategy[] filtering, EffectStrategy[] effects)
         {
+            CooldownStorage cooldownStorage = data.GetUser().GetComponent<CooldownStorage>();
+            cooldownStorage.StartCooldown(_data, _cooldownTime);
+
             foreach (var filterStrategy in filtering)
             {
                 data.SetTargets(filterStrategy.Filter(data.GetTargets()));
@@ -55,6 +65,7 @@ namespace IMPossible.Ability
             {
                 effect.StartEffect(data, EffectFinished);
             }
+
         }
 
         private void EffectFinished()

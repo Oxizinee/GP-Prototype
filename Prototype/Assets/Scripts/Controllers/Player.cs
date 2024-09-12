@@ -3,6 +3,7 @@ using IMPossible.Movement;
 using IMPossible.Combat;
 using IMPossible.Supplies;
 using IMPossible.Inventory;
+using IMPossible.Ability;
 
 namespace IMPossible.Controller
 {
@@ -15,6 +16,7 @@ namespace IMPossible.Controller
         public bool CanPierceActive = false, CanShoot = true;
 
         private Inventory.Inventory _inventory;
+        private RuneStorage _runeStorage;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -27,6 +29,7 @@ namespace IMPossible.Controller
         private void Awake()
         {
            _inventory = GetComponent<Inventory.Inventory>();     
+            _runeStorage = GetComponent<RuneStorage>();
         }
         // Update is called once per frame
         void Update()
@@ -50,8 +53,15 @@ namespace IMPossible.Controller
             //}
 
            UseItems();
+           UseRunes();
         }
-
+        private void UseRunes()
+        {
+            for (int i = 0; i <= _runeStorage.RunesHolding.Count - 1; i++)
+            {
+                _runeStorage.Use(i, gameObject);
+            }
+        }
         private void UseItems()
         {
             for (int i = 0; i <= _inventory.ItemsHolding.Count -1 ; i++)

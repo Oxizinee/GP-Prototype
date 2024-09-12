@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace IMPossible.UI.Inventory
+namespace IMPossible.UI.Inventories
 {
     public class InventoryDropItem : MonoBehaviour
     {

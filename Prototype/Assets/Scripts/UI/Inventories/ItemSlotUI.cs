@@ -1,4 +1,4 @@
-﻿using IMPossible.Inventory;
+﻿using IMPossible.Ability;
 using System;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
@@ -21,12 +21,12 @@ namespace IMPossible.UI.Inventories
         }
         private void Update()
         {
-            cooldownOverlay.fillAmount = _cooldownStorage.GetFractionRemaining(GetItem());
+            cooldownOverlay.fillAmount = _cooldownStorage.GetFractionRemaining(GetAbility());
         }
 
-        private InventoryItem GetItem()
+        private AbilityData GetAbility()
         {
-            return _inventory.GetItem( _index );
+            return _inventory.GetAbilityData(_index);
         }
     }
 }

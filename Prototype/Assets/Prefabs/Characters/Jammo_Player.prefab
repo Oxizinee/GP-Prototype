@@ -2100,7 +2100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingLevel: 1
-  _sinPath: 0
   _progression: {fileID: 11400000, guid: 5b7c2d872d303d440874b34e1db7e459, type: 2}
   _levelUpParticles: {fileID: 7155335147208632822, guid: 97c43495f80a3244fad1301dfafbe252, type: 3}
   _currentLevel: 0
@@ -2154,7 +2153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3541754002163558908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7969d2ce1c60f4d84b97109c19148a, type: 3}
+  m_Script: {fileID: 11500000, guid: b41531f563598004081495ae3ed19bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5064357168020183753

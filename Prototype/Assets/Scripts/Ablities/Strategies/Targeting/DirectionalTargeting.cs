@@ -18,7 +18,7 @@ namespace IMPossible.Ability.Strategies.Targeting
         {
             while (true)
             {
-                //Vector3 playersPos = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.localScale.y / 2, data.GetUser().transform.position.z);
+                Vector3 playersPos = new Vector3(data.GetUser().transform.position.x, data.GetUser().transform.localScale.y / 2, data.GetUser().transform.position.z);
                 //    if (Input.GetMouseButtonDown(0))
                 //    {
                 //        yield return new WaitWhile(() => Input.GetMouseButton(0));
@@ -31,13 +31,14 @@ namespace IMPossible.Ability.Strategies.Targeting
                 Ray ray = GetMouseRay();
                 if (Physics.Raycast(ray, out raycastHit, 1000))
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        yield return new WaitWhile(() => Input.GetMouseButton(0));
-                        data.SetTargetedPoint(raycastHit.point + ray.direction * _groundOffset / ray.direction.y);
+                  //  if (Input.GetMouseButtonDown(0))
+                   // {
+                   //     yield return new WaitWhile(() => Input.GetMouseButton(0));
+                        //data.SetTargetedPoint(raycastHit.point + ray.direction * _groundOffset / ray.direction.y);
+                        data.SetTargetedPoint(playersPos);
                         callWhenFinished();
                         break;
-                    }
+                 //   }
                 }
                 yield return null;
             }
