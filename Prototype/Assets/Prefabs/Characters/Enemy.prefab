@@ -424,7 +424,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4047972025199878}
   - component: {fileID: 95457531584545886}
-  - component: {fileID: 677626781888623768}
   - component: {fileID: 4995228024507667376}
   - component: {fileID: 4822912971633752869}
   - component: {fileID: 5300053842149953135}
@@ -432,6 +431,7 @@ GameObject:
   - component: {fileID: 6360782912486168433}
   - component: {fileID: -497561863812004353}
   - component: {fileID: -7794958105490619876}
+  - component: {fileID: -1170758434721972902}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -478,27 +478,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &677626781888623768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931298151966786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078994a93f6147641bc54d692944a8fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  _canCharge: 1
-  _stunCharging: 0
-  Speed: 3
-  InRadius: 12
-  Player: {fileID: 0}
-  BulletPrefab: {fileID: 3255963329888112448, guid: e877134f2cc4e32478782025bb2c155c, type: 3}
-  _chargerTimer: 0
-  _inChargeTimer: 0
 --- !u!114 &4995228024507667376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,9 +490,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07caeb825bdaf8449812ed037494637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _regenerationPercentage: 70
   HP: 10
   FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
   BloodSplatterPrefab: {fileID: 3397551241818298056, guid: 89977998b14ef8044b9b83be0f945a23, type: 3}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &4822912971633752869
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -705,8 +688,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingLevel: 1
-  _sinPath: 7
   _progression: {fileID: 11400000, guid: 5b7c2d872d303d440874b34e1db7e459, type: 2}
+  _levelUpParticles: {fileID: 0}
+  _currentLevel: 0
+--- !u!114 &-1170758434721972902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931298151966786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19faf47b23c087c47aeaa374e036ce0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
 --- !u!1 &1438157519601450616
 GameObject:
   m_ObjectHideFlags: 0

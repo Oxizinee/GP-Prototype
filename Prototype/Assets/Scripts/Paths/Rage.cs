@@ -46,7 +46,7 @@ public class Rage : Path
             {
                 foreach (Collider c in enemiesInRadius)
                 {
-                    c.GetComponent<HPBarBehaviour>().CurrentHP = c.GetComponent<HPBarBehaviour>().CurrentHP - 30;
+               //     c.GetComponent<HPBarBehaviour>().CurrentHP = c.GetComponent<HPBarBehaviour>().CurrentHP - 30;
                 }
                 _timer = 0;
             }
