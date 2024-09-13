@@ -8,29 +8,38 @@ using UnityEngine;
 
 namespace IMPossible.Controller
 {
-   public class EnemyController :MonoBehaviour
+    public class EnemyController : MonoBehaviour
     {
-        public float Speed = 5;
+        public float Speed = 5, InRadius = 10;
 
-        private GameObject _player;
-
+        public Vector3 Target;
+        public bool IsInRadius
+        {
+            get 
+            {
+                return Vector3.Distance(Target, transform.position) <= InRadius;
+            }
+        }
+        private void Awake()
+        {
+            GetComponent<Health>().OnDeath.AddListener(Die);
+        }
         private void Update()
         {
             Move();
+            SpecialAttack();
         }
-        private void Start()
+        public virtual void SpecialAttack()
         {
+
         }
         public virtual void Move()
         {
             if (!GetComponent<Health>().CanBeAttacked() || GetComponent<Fighter>().IsStunned) return;
 
-            GetComponent<EnemyMover>().Move(_player, Speed);
-        }
-        private void Awake()
-        {
-            GetComponent<Health>().OnDeath.AddListener(Die);
-            _player = GameObject.FindGameObjectWithTag("Player");
+            Target = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+            GetComponent<EnemyMover>().Move(Target, Speed);
         }
         protected void Die()
         {

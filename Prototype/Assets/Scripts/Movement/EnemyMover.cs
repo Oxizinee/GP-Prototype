@@ -9,11 +9,12 @@ namespace IMPossible.Movement
             isGrounded();
             UpdateAnimator();
         }
-        public void Move(GameObject player, float speed)
+        public void Move(Vector3 targetPosition, float speed)
         {
             if (!isGrounded()) return;
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            transform.LookAt(player.transform.position);
+
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.LookAt(targetPosition);
         }
         private void UpdateAnimator()
         {

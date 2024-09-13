@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameRunner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject  EnemyPrefab;
+    public GameObject[] EnemiesToSpawn;
     public Text EnemiesPresent, EnemiesKilled;
 
     public float SpawnerTimer = 3, GameTime;
@@ -42,6 +42,7 @@ public class GameRunner : MonoBehaviour
         if (_spawnTimer >= SpawnerTimer)
         {
             int side = Random.Range(0, 4);
+            int randomEnemy = Random.Range(0, EnemiesToSpawn.Length);
 
             // Initialize the spawn position in viewport coordinates
             Vector3 viewportPosition = Vector3.zero;
@@ -66,7 +67,7 @@ public class GameRunner : MonoBehaviour
             Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(viewportPosition);
 
             // Instantiate the object at the calculated position
-            GameObject enemy = Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity, transform);
+            GameObject enemy = Instantiate(EnemiesToSpawn[randomEnemy], spawnPosition, Quaternion.identity, transform);
            // EnemiesPresentNmber++;
             _spawnTimer = 0;
         }
