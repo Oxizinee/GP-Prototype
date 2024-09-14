@@ -430,9 +430,9 @@ GameObject:
   - component: {fileID: 6360782912486168433}
   - component: {fileID: -497561863812004353}
   - component: {fileID: -7794958105490619876}
-  - component: {fileID: -962969655284939302}
+  - component: {fileID: 1247173566296777675}
   m_Layer: 6
-  m_Name: ChargerEnemy
+  m_Name: ExplodingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
   _progression: {fileID: 11400000, guid: 5b7c2d872d303d440874b34e1db7e459, type: 2}
   _levelUpParticles: {fileID: 0}
   _currentLevel: 0
---- !u!114 &-962969655284939302
+--- !u!114 &1247173566296777675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -595,14 +595,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931298151966786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71b4785739b758441b153d356f308e66, type: 3}
+  m_Script: {fileID: 11500000, guid: 828b8deb82cc15346a364b9e15be7dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  InRadius: 10
-  PrepareToChargeDuration: 0.8
-  Cooldown: 3
-  ChargeDuration: 1.2
+  Speed: 10
+  InRadius: 3
+  ExplosionPrefab: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+  ExplosionRadius: 5
+  Layer:
+    serializedVersion: 2
+    m_Bits: 128
+  Damage: 10
 --- !u!1 &1438157519601450616
 GameObject:
   m_ObjectHideFlags: 0

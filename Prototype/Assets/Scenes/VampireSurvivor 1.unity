@@ -3252,9 +3252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesToSpawn:
-  - {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
-  - {fileID: 1931298151966786, guid: 35f2d86fe60990442b4a82a4fa6443fe, type: 3}
-  - {fileID: 1931298151966786, guid: 9aa7a0d254f58f24b82f1f5d7727329e, type: 3}
+  - {fileID: 1931298151966786, guid: 5ff132215b3a92841ac591141f126a65, type: 3}
+  BigEnemy: {fileID: 1931298151966786, guid: 229ccfdc57846d8498b489af78fd543e, type: 3}
   EnemiesPresent: {fileID: 450884648}
   EnemiesKilled: {fileID: 1522059035}
   SpawnerTimer: 0

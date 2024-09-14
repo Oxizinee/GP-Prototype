@@ -12,7 +12,7 @@ namespace IMPossible.Controller
     {
         public float Speed = 5, InRadius = 10;
 
-        public Vector3 Target;
+        public Vector3 Target { get; set; }
         public bool IsInRadius
         {
             get 
@@ -23,6 +23,12 @@ namespace IMPossible.Controller
         private void Awake()
         {
             GetComponent<Health>().OnDeath.AddListener(Die);
+            OnStart();
+        }
+
+        public virtual void OnStart()
+        {
+
         }
         private void Update()
         {
