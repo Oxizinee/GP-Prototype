@@ -348,7 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e920fc36c7026428a1ec8289eb0af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RandomAbility: 0
+  _runeHolder: []
+  RandomRune: 0
   DescriptionText: {fileID: 838005}
 --- !u!1 &4308837
 GameObject:
@@ -2092,7 +2093,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e920fc36c7026428a1ec8289eb0af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RandomAbility: 0
+  _runeHolder: []
+  RandomRune: 0
   DescriptionText: {fileID: 838005}
 --- !u!1 &1029824266
 GameObject:
@@ -2240,7 +2242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e920fc36c7026428a1ec8289eb0af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RandomAbility: 0
+  _runeHolder: []
+  RandomRune: 0
   DescriptionText: {fileID: 838005}
 --- !u!1 &1062325775
 GameObject:
@@ -3252,7 +3255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesToSpawn:
-  - {fileID: 1931298151966786, guid: 5ff132215b3a92841ac591141f126a65, type: 3}
+  - {fileID: 1931298151966786, guid: 9aa7a0d254f58f24b82f1f5d7727329e, type: 3}
+  - {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+  - {fileID: 1931298151966786, guid: 35f2d86fe60990442b4a82a4fa6443fe, type: 3}
   BigEnemy: {fileID: 1931298151966786, guid: 229ccfdc57846d8498b489af78fd543e, type: 3}
   EnemiesPresent: {fileID: 450884648}
   EnemiesKilled: {fileID: 1522059035}
@@ -3676,7 +3681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1786946355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4069,6 +4074,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jammo_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7084675452128804330, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: _startingLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: RunesHolding.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: RunesHolding.Array.data[0]
+      value: 
+      objectReference: {fileID: 789353260204603254, guid: d031abd0d29a18843a91aebc548e9168, type: 3}
+    - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: RunesHolding.Array.data[1]
+      value: 
+      objectReference: {fileID: 7111801985035600328, guid: b1c268b02be5dff49beab4b60aa323dc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

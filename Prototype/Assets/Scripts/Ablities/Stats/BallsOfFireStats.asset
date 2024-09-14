@@ -10,14 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8547344c3752d2b43a6e0f36d2e3787d, type: 3}
-  m_Name: ImpishMagic
+  m_Name: BallsOfFireStats
   m_EditorClassIdentifier: 
-  _displayName: Impish Magic
-  _description: 
-  _icon: {fileID: 0}
-  _cooldownTime: 5
-  _level: 1
-  _targetingStrategy: {fileID: 11400000, guid: 6fa0be45d61b6e04395461decd14a0f6, type: 2}
-  _filteringStrategies: []
-  _effectStrategies:
-  - {fileID: 11400000, guid: 235bdd5b2b053f445abc8c1dd122d38e, type: 2}
+  RuneName: Balls Of Fire
+  StatsToLevelUp:
+    Stats:
+    - RuneStat: 0
+      Levels:
+      - 10
+      - 10
+      - 20
+      - 20
+      - 20
+      - 30
+    - RuneStat: 1
+      Levels:
+      - 10
+      - 10
+      - 10
+      - 10
+      - 10
+      - 10
+    - RuneStat: 3
+      Levels:
+      - 1
+      - 2
+      - 2
+      - 3
+      - 3
+      - 3

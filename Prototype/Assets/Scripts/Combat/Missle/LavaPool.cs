@@ -6,16 +6,17 @@ namespace IMPossible.Combat.Missle
 {
     public class LavaPool : MonoBehaviour
     {
-        public float TimeToDie = 6, Damage = 10, id;
-        private float _dmgTimer = 0;
         private VisualEffect _visualEffect;
+
+        private int _id;
+        private float _damage, _duration, _dmgTimer;
 
         private void Start()
         {
             _visualEffect = GetComponent<VisualEffect>();
-            id = Shader.PropertyToID("Duration");
-            _visualEffect.SetFloat((int)id, TimeToDie);
-            Destroy(gameObject, TimeToDie);
+            _id = Shader.PropertyToID("Duration");
+            _visualEffect.SetFloat((int)_id, _duration);
+            Destroy(gameObject, _duration);
         }
         private void OnTriggerStay(Collider other)
         {
@@ -25,10 +26,17 @@ namespace IMPossible.Combat.Missle
 
                 if (_dmgTimer >= 1)
                 {
-                    other.GetComponent<Health>().TakeDamage(gameObject, Damage);
+                    other.GetComponent<Health>().TakeDamage(gameObject, _damage);
                     _dmgTimer = 0;
                 }
             }
         }
+        public void SetLavaPool(float Damage, float Size, float Duration)
+        {
+            _damage = Damage;
+            transform.localScale = new Vector3(Size, Size, Size);
+            _duration = Duration;
+        }
+
     }
 }

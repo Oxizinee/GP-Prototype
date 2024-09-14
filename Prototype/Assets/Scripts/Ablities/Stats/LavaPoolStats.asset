@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8547344c3752d2b43a6e0f36d2e3787d, type: 3}
+  m_Name: LavaPoolStats
+  m_EditorClassIdentifier: 
+  RuneName: Lava Pool
+  StatsToLevelUp:
+    Stats:
+    - RuneStat: 1
+      Levels:
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+    - RuneStat: 3
+      Levels:
+      - 1
+      - 3
+      - 3
+      - 5
+      - 5
+      - 6
+    - RuneStat: 2
+      Levels:
+      - 5
+      - 5
+      - 5
+      - 5
+      - 5
+      - 8
+    - RuneStat: 4
+      Levels:
+      - 6
+      - 6
+      - 6
+      - 6
+      - 6
+      - 9
+    - RuneStat: 0
+      Levels:
+      - 10
+      - 10
+      - 10
+      - 10
+      - 15
+      - 15

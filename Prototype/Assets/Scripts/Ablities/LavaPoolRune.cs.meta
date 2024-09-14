@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fd0fe400754db19459b5dc9eaba6e3bf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _runeData: {fileID: 11400000, guid: 02ee1361f8892bc449d47eecc043efe0, type: 2}
+  - _levelUpParticles: {instanceID: 0}
+  - LavaPoolPrefab: {fileID: 1816995898637884409, guid: b177aba7cb267a0449573f7776134096, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -602,10 +602,7 @@ MonoBehaviour:
   InRadius: 3
   ExplosionPrefab: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   ExplosionRadius: 5
-  Layer:
-    serializedVersion: 2
-    m_Bits: 128
-  Damage: 10
+  Damage: 5
 --- !u!1 &1438157519601450616
 GameObject:
   m_ObjectHideFlags: 0

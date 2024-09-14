@@ -7,8 +7,7 @@ namespace IMPossible.Ability
     public class RuneStorage : MonoBehaviour
     {
         public List<Rune> RunesHolding = new List<Rune>();
-
-        public bool AlreadyHasIt(Rune rune)
+        private bool AlreadyHasIt(Rune rune)
         {
             for (int i = 0; i < RunesHolding.Count; i++)
             {
@@ -20,11 +19,25 @@ namespace IMPossible.Ability
             return false;
         }
 
+
+        public void AddRune(Rune rune)
+        {
+            if (AlreadyHasIt(rune))
+            {
+                rune.UpdateLevel();
+            }
+            else
+            {
+                RunesHolding.Add(rune);
+                rune.OnAdd();
+            }
+        }
+
         public bool Use(int index, GameObject user)
         {
             if (RunesHolding[index] != null)
             {
-                RunesHolding[index].GetPassiveEffect(user);
+                RunesHolding[index].Use(user);
                 return true;
             }
             return false;

@@ -1,81 +1,54 @@
-using IMPossible.Ability.Strategies;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace IMPossible.Ability
 {
-    [CreateAssetMenu(menuName = "Runes/Rune")]
-    public class Rune : ScriptableObject
+    public abstract class Rune :MonoBehaviour
     {
-        [SerializeField] private string _displayName = null;
-        [SerializeField][TextArea] private string _description = null;
-
-        [SerializeField] private Sprite _icon = null;
-        [SerializeField] private float _cooldownTime = 0;
-        [SerializeField] private int _level = 1;
-
-        private AbilityData _data = null;
-
-        [SerializeField] TargetingStrategy _targetingStrategy;
-        [SerializeField] FilteringStrategy[] _filteringStrategies;
-        [SerializeField] EffectStrategy[] _effectStrategies;
-
-        public void GetPassiveEffect(GameObject user)
+        [Range(1, 6)]
+        [SerializeField] private int _startingLevel = 1;
+        [SerializeField]private RuneData _runeData = null;
+        [SerializeField] private int _currentLevel = 1;
+        [SerializeField]private float _timer;
+        public void OnAdd()
         {
-            if (user == null) return;
+            _currentLevel = _startingLevel;
+            _timer = 0;
+        }
 
-            if (_data == null)
+        public void UpdateLevel()
+        {
+            _currentLevel++;
+        }
+
+        public float GetStat(RuneStat stat)
+        {
+            return _runeData.GetStat(stat, _currentLevel);
+        }
+       
+        public void Use(GameObject user)
+        {
+            _timer += Time.deltaTime;
+
+            if (_timer > GetStat(RuneStat.Cooldown))
             {
-                _data = new AbilityData(user);
+                Behaviour(user);
+                _timer = 0;
             }
-            CooldownStorage cooldownStorage = user.GetComponent<CooldownStorage>();
-            if (cooldownStorage.GetTimeRemaining(_data) > 0)
-            {
-                return; //if cooldown is still above 0 return - dont let the player use it
-            }
-
-            _targetingStrategy.StartTargeting(_data, () =>
-                {
-                    TargetAquired(_data, _filteringStrategies, _effectStrategies);
-                });
-
-        }
-        public Sprite GetIcon()
-        {
-            return _icon;
-        }
-        public string GetDisplayName()
-        {
-            return _displayName;
-        }
-        public string GetDescription()
-        {
-            return _description;
-        }
-        private void TargetAquired(AbilityData data, FilteringStrategy[] filtering, EffectStrategy[] effects)
-        {
-            CooldownStorage cooldownStorage = data.GetUser().GetComponent<CooldownStorage>();
-            cooldownStorage.StartCooldown(_data, _cooldownTime);
-
-            foreach (var filterStrategy in filtering)
-            {
-                data.SetTargets(filterStrategy.Filter(data.GetTargets()));
-            }
-
-            foreach (var effect in effects)
-            {
-                effect.StartEffect(data, EffectFinished);
-            }
-
         }
 
-        private void EffectFinished()
+        public virtual void Behaviour(GameObject user)
         {
 
         }
 
-        public AbilityData GetData()
+        public RuneData GetRuneData()
         {
-            return _data;
+            return _runeData;
         }
     }
 }
