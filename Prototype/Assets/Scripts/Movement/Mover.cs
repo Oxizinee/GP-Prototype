@@ -6,7 +6,7 @@ namespace IMPossible.Movement
     {
         public bool CanDash { get; private set; } = true;
 
-        private float _verticalVel, _gravity = 12, _dashCooldown = 0;
+        private float _verticalVel, _gravity = 12, _dashCooldown = 0, _timer = 0;
         private Vector2 _movementInput;
         private Vector3 _moveVector;
 
@@ -18,6 +18,7 @@ namespace IMPossible.Movement
                 if (_dashCooldown > 2)
                 {
                     _dashCooldown = 0;
+                    _timer = 0;
                     CanDash = true;
                 }
             }
@@ -57,9 +58,14 @@ namespace IMPossible.Movement
             GetComponent<CharacterController>().Move(_moveVector * Time.deltaTime);
         }
 
-        public void Dash(float DashDistance)
+        public void Dash(float dashDistance, float dashDuration)
         {
-            GetComponent<CharacterController>().Move(transform.forward * DashDistance);
+            _timer += Time.deltaTime;
+            Vector3 dashStartPosition = transform.position;
+            Vector3 dashEndPosition = dashStartPosition + transform.forward * dashDistance;
+
+            Vector3 move = Vector3.Lerp(dashStartPosition, dashEndPosition, _timer/dashDuration);
+            GetComponent<CharacterController>().Move(move - transform.position);
             CanDash = false;
         }
         public void Rotate()

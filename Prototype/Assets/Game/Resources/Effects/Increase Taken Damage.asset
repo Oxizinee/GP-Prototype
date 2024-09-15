@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b118f44a63c729148a07756a8ec38966, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ef5ad0b25391fc4b9af9f278d06500f, type: 3}
   m_Name: Increase Taken Damage
   m_EditorClassIdentifier: 
   _newMultiplication: 2

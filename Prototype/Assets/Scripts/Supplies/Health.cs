@@ -34,6 +34,8 @@ namespace IMPossible.Supplies
         }
         public void TakeDamage(GameObject instigator, float damage)
         {
+            if (!CanBeAttacked()) return;
+
             float newDamage = IncreaseDamage(damage, _mulltiplication);
             HP = Mathf.Max(HP - newDamage, 0);
             ShowFloatingText(newDamage);

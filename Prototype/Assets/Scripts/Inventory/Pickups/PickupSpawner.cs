@@ -12,7 +12,6 @@ namespace IMPossible.Inventory
         void Start()
         {
             LoadAllScriptableObjects();
-
         }
 
         private void LoadAllScriptableObjects()
@@ -28,7 +27,7 @@ namespace IMPossible.Inventory
         public void DropLoot()
         {
             _randomNumber = Random.Range(0, _itemsToSpawn.Length - 1);
-            _itemsToSpawn[_randomNumber].SpawnPickup(new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z));
+            _itemsToSpawn[_randomNumber].SpawnPickup(new Vector3(transform.position.x, transform.position.y, transform.position.z));
         }
 
     }

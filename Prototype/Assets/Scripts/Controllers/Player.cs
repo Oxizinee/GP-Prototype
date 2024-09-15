@@ -10,7 +10,7 @@ namespace IMPossible.Controller
     public class Player : MonoBehaviour
     {
         // Start is called before the first frame update
-        public float MovementSpeed = 8, JumpHeight = 8,DashDistance = 10, PassiveDamage = 10, BulletSpeed = 12, BulletDamage = 6, TimeBetweenBullets = 1,
+        public float MovementSpeed = 8, JumpHeight = 8,DashDistance = 30, PassiveDamage = 10, BulletSpeed = 12, BulletDamage = 6, TimeBetweenBullets = 1,
             BulletLifeSpan = 9, BulletStunDuration = 0.8f;
         public GameObject BulletPrefab, BombPrefab;
         public bool CanPierceActive = false, CanShoot = true;
@@ -97,7 +97,7 @@ namespace IMPossible.Controller
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && GetComponent<Mover>().CanDash)
             {
-                GetComponent<Mover>().Dash(DashDistance);
+                GetComponent<Mover>().Dash(DashDistance, 0.1f);
             }
         }
       

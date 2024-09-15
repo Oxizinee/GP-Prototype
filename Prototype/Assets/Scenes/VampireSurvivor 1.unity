@@ -3827,6 +3827,10 @@ PrefabInstance:
       propertyPath: _startingLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7534953489361986049, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: DashDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: RunesHolding.Array.size
       value: 0

@@ -27,4 +27,4 @@ MonoBehaviour:
   _Passive_filteringStrategies:
   - {fileID: 11400000, guid: b01009eceeb46424f8b0ca68569d7d9c, type: 2}
   _Passive_effectStrategies:
-  - {fileID: 11400000, guid: d2cc050d618be14459bd6c2f52209166, type: 2}
+  - {fileID: 11400000, guid: 3b58d7f049c22b9449ceb3f3edbe20a3, type: 2}

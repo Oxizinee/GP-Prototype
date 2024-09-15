@@ -166,9 +166,9 @@ public class Pride : Path
     }
     public override void OnLevelUp(GameObject player)
     {
-        if (player.GetComponent<XPBar>().Level != 0 && player.GetComponent<XPBar>().Level % 3 == 0)
-        {
-            Level++;
-        }
+        //if (player.GetComponent<XPBar>().Level != 0 && player.GetComponent<XPBar>().Level % 3 == 0)
+        //{
+        //    Level++;
+        //}
     }
 }
