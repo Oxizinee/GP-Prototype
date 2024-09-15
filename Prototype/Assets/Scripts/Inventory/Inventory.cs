@@ -1,6 +1,8 @@
 using IMPossible.Ability;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,25 +11,18 @@ namespace IMPossible.Inventory
     public class Inventory : MonoBehaviour
     {
         // Start is called before the first frame update
-        public Dictionary<int, InventoryItem> ItemsHolding = new Dictionary<int, InventoryItem>();
-        public List<GameObject> UIIcons = new List<GameObject>();
+        public InventoryItem[] ItemsHolding;
         public bool CanUse = true;
-        public bool HasFreeSpace()
-        {
-            if(ItemsHolding.Count < 3) return true;
-            else
-            {
-                return false;
-            }
-        }
 
-        public void AddIconToUI(InventoryItem item)
+        private int _inventorySize = 3;
+
+        private void Awake()
         {
-            UIIcons[ItemsHolding.Count - 1].GetComponent<Image>().sprite = item.GetIcon();
+            ItemsHolding = new InventoryItem[_inventorySize];
         }
         public bool AlreadyHasIt(InventoryItem item)
         {
-            for (int i = 0; i < ItemsHolding.Count; i++)
+            for (int i = 0; i < ItemsHolding.Length; i++)
             {
                 if (object.ReferenceEquals(ItemsHolding[i], item))
                 {
@@ -44,7 +39,7 @@ namespace IMPossible.Inventory
         //Get the item from given index 
         public InventoryItem GetItem(int index)
         {
-            if (ItemsHolding.ContainsKey(index))
+            if (ItemsHolding.GetValue(index) != null)
             {
                 return ItemsHolding[index];
             }
@@ -53,7 +48,7 @@ namespace IMPossible.Inventory
 
         public AbilityData GetAbilityData(int index)
         {
-            if (ItemsHolding.ContainsKey(index))
+            if (ItemsHolding.GetValue(index) != null)
             {
                 return ItemsHolding[index].GetData();
             }
@@ -63,7 +58,7 @@ namespace IMPossible.Inventory
 
         public bool Use(int index, GameObject user)
         {
-            if (ItemsHolding.ContainsKey(index))
+            if (ItemsHolding.GetValue(index) != null)
             {
                 ItemsHolding[index].Use(user);
                 return true;
@@ -73,14 +68,46 @@ namespace IMPossible.Inventory
 
         public bool GetPassiveEffect(int index, GameObject user)
         {
-            if (ItemsHolding[index].GetData() == null) return false;
+            if (GetAbilityData(index) == null) return false;
 
-            if (ItemsHolding.ContainsKey(index))
+            if (ItemsHolding.GetValue(index) != null)
             {
                 ItemsHolding[index].GetPassiveEffect(user);
                 return true;
             }
             return false;
+        }
+
+        public bool AddItemToSlot(int slot, InventoryItem item)
+        {
+            if (ItemsHolding[slot] != null)
+            {
+                return AddToFirstEmptySlot(item);
+            }
+            return true;
+        }
+        public bool AddToFirstEmptySlot(InventoryItem item)
+        {
+            int i = FindEmptySlot();
+
+            if (i < 0)
+            {
+                return false;
+            }
+
+            ItemsHolding[i] = item;
+            return true;
+        }
+        private int FindEmptySlot()
+        {
+            for (int i = 0; i < ItemsHolding.Length; i++)
+            {
+                if (ItemsHolding[i] == null)
+                {
+                    return i; 
+                }
+            }
+            return -1; // returns -1 if all slots are full
         }
     }
 }

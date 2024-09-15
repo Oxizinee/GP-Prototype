@@ -30,10 +30,9 @@ namespace IMPossible.Inventory
 
         public void PickUp()
         {
-            if (_inventory.HasFreeSpace() && !_inventory.AlreadyHasIt(Item))
+            if (!_inventory.AlreadyHasIt(Item))
             {
-                _inventory.ItemsHolding.Add(_inventory.ItemsHolding.Count, Item);
-                _inventory.AddIconToUI(Item);
+               _inventory.AddToFirstEmptySlot(Item);
                 print(Item.GetDisplayName() + " has been picked up!");
                 Destroy(gameObject);
             }

@@ -1,10 +1,13 @@
 ﻿using IMPossible.Ability;
+using IMPossible.Inventory;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace IMPossible.UI.Inventories
 {
-    public class ItemSlotUI :MonoBehaviour
+    [RequireComponent(typeof(Image))]
+    public class ItemIconUI :MonoBehaviour
     {
         [SerializeField] int _index = 0;
         [SerializeField] private Image cooldownOverlay = null;
@@ -26,5 +29,6 @@ namespace IMPossible.UI.Inventories
         {
             return _inventory.GetAbilityData(_index);
         }
+
     }
 }

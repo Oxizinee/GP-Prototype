@@ -64,7 +64,7 @@ namespace IMPossible.Controller
         }
         private void UseItems()
         {
-            for (int i = 0; i <= _inventory.ItemsHolding.Count -1 ; i++)
+            for (int i = 0; i <= _inventory.ItemsHolding.Length -1 ; i++)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1 + i))
                 {
@@ -72,7 +72,7 @@ namespace IMPossible.Controller
                 }
             }
 
-            for (int i = 0; i <= _inventory.ItemsHolding.Count - 1; i++)
+            for (int i = 0; i <= _inventory.ItemsHolding.Length - 1; i++)
             {
                _inventory.GetPassiveEffect(i, gameObject);
             }
