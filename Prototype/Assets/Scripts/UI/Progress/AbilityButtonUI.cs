@@ -14,12 +14,12 @@ namespace IMPossible.UI.Progress
         private void OnEnable()
         {
             _levelUpScreenUI = GetComponentInParent<LevelUpScreenUI>();
-            RandomRune = Random.Range(0, _levelUpScreenUI.GetRuneList().Length);
-            GetComponentInChildren<Text>().text = _levelUpScreenUI.GetRuneList()[RandomRune].GetRuneData().RuneName;
-        }
-        public void Start()
-        {
-            _levelUpScreenUI = GetComponentInParent<LevelUpScreenUI>();
+
+            if (_levelUpScreenUI.GetRuneList().Length != 0)
+            {
+                RandomRune = Random.Range(0, _levelUpScreenUI.GetRuneList().Length);
+                GetComponentInChildren<Text>().text = _levelUpScreenUI.GetRuneName(RandomRune);
+            }
         }
 
         private void Update()

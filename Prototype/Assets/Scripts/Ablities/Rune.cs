@@ -9,20 +9,22 @@ namespace IMPossible.Ability
 {
     public abstract class Rune :MonoBehaviour
     {
-        [Range(1, 6)]
-        [SerializeField] private int _startingLevel = 1;
         [SerializeField]private RuneData _runeData = null;
-        [SerializeField] private int _currentLevel = 1;
+        [SerializeField] private int _currentLevel = 0;
         [SerializeField]private float _timer;
         public void OnAdd()
         {
-            _currentLevel = _startingLevel;
+            _currentLevel = 0;
+            _currentLevel++;
             _timer = 0;
         }
 
         public void UpdateLevel()
         {
-            _currentLevel++;
+            if(_currentLevel < 6 )
+            {
+                _currentLevel++;
+            }
         }
 
         public float GetStat(RuneStat stat)
@@ -49,6 +51,16 @@ namespace IMPossible.Ability
         public RuneData GetRuneData()
         {
             return _runeData;
+        }
+
+        public string GetRuneName()
+        {
+            return _runeData.RuneName + " " + GetNextLevel();
+        }
+
+        public int GetNextLevel()
+        {
+            return _currentLevel + 1;
         }
     }
 }

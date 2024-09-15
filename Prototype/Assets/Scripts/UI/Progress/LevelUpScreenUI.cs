@@ -35,10 +35,14 @@ namespace IMPossible.UI.Progress
                 Debug.Log("Loaded ScriptableObject: " + go.name);
             }
         }
-
         public Rune[] GetRuneList()
         {
             return _runesToUnlock;
+        }
+
+        public string GetRuneName(int index)
+        {
+            return _runesToUnlock[index].GetRuneName();
         }
 
         private void HideLevelUpScreen()

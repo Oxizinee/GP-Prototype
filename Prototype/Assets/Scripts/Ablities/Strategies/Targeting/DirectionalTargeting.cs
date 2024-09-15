@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 using System.Collections;
-using log4net.Util;
 namespace IMPossible.Ability.Strategies.Targeting
 {
     [CreateAssetMenu(fileName = "Directional Targeting", menuName = "Inventory/Targeting/Directional", order = 0)]

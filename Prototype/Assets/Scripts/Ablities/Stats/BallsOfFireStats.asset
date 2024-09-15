@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: BallsOfFireStats
   m_EditorClassIdentifier: 
   RuneName: Balls Of Fire
+  RuneDescription: Shoots a small projectile from player position at the closest
+    enemy dealing 10 damage every 10 seconds
   StatsToLevelUp:
     Stats:
     - RuneStat: 0

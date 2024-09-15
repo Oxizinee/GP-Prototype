@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1211956889305618125
+--- !u!1 &4041727111560553993
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9222498960597984626}
-  - component: {fileID: 789353260204603254}
+  - component: {fileID: 9140029561787829049}
+  - component: {fileID: -7987580048206965017}
   m_Layer: 0
-  m_Name: BallsOfFireRune
+  m_Name: ImpishMagicRune
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9222498960597984626
+--- !u!4 &9140029561787829049
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211956889305618125}
+  m_GameObject: {fileID: 4041727111560553993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.771614, y: 12.67642, z: -29.70419}
+  m_LocalPosition: {x: -27.628407, y: 8.658758, z: -30.212284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &789353260204603254
+--- !u!114 &-7987580048206965017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211956889305618125}
+  m_GameObject: {fileID: 4041727111560553993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2ae3727369bb9428a75ba67d609f5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 01439685550f2d043a86d1587bdf1026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runeData: {fileID: 11400000, guid: 2b3f9b92fae88454aafc2125bd681e63, type: 2}
+  _runeData: {fileID: 11400000, guid: a3ec0613f6c6ac5428a90e538bbc3164, type: 2}
   _currentLevel: 0
-  _timer: 8.484739
-  _enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _bulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}
-  _radius: 20
+  _timer: 0.34217912
+  BulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}

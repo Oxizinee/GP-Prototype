@@ -44,12 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd0fe400754db19459b5dc9eaba6e3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingLevel: 1
+  _startingLevel: 0
   _runeData: {fileID: 11400000, guid: 3d1a6562159d1ab49ae118fc5683d892, type: 2}
-  _currentLevel: 4
-  Cooldown: 8
-  _radius: 5
-  _number: 1
-  _timer: 3.6100974
+  _currentLevel: 0
+  _timer: 5.56074
   LavaPoolPrefab: {fileID: 1816995898637884409, guid: b177aba7cb267a0449573f7776134096, type: 3}
   Range: 20
