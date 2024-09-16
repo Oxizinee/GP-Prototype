@@ -32,9 +32,11 @@ namespace IMPossible.Inventory
         {
             if (!_inventory.AlreadyHasIt(Item))
             {
-               _inventory.AddToFirstEmptySlot(Item);
-                print(Item.GetDisplayName() + " has been picked up!");
-                Destroy(gameObject);
+              bool foundSlot = _inventory.AddToFirstEmptySlot(Item);
+                if(foundSlot)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

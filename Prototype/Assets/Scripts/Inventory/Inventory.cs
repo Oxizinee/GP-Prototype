@@ -16,6 +16,8 @@ namespace IMPossible.Inventory
 
         private int _inventorySize = 3;
 
+        public event Action OnInventoryChanged;
+
         private void Awake()
         {
             ItemsHolding = new InventoryItem[_inventorySize];
@@ -35,7 +37,10 @@ namespace IMPossible.Inventory
         {
 
         }
-
+        public int GetSize()
+        {
+            return ItemsHolding.Length;
+        }
         //Get the item from given index 
         public InventoryItem GetItem(int index)
         {
@@ -80,7 +85,7 @@ namespace IMPossible.Inventory
 
         public bool AddItemToSlot(int slot, InventoryItem item)
         {
-            if (ItemsHolding[slot] != null)
+            if (ItemsHolding.GetValue(slot) != null)
             {
                 return AddToFirstEmptySlot(item);
             }
@@ -96,6 +101,9 @@ namespace IMPossible.Inventory
             }
 
             ItemsHolding[i] = item;
+
+            OnInventoryChanged?.Invoke();
+
             return true;
         }
         private int FindEmptySlot()

@@ -29,6 +29,18 @@ namespace IMPossible.UI.Inventories
         {
             return _inventory.GetAbilityData(_index);
         }
-
+        public void SetItem(InventoryItem item)
+        {
+            var iconImage = GetComponent<Image>();
+            if (item == null)
+            {
+                iconImage.enabled = false;
+            }
+            else
+            {
+                iconImage.enabled = true;
+                iconImage.sprite = item.GetIcon();
+            }
+        }
     }
 }
