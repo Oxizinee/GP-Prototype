@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability
+namespace IMPossible.Inventory
 {
     public class CooldownStorage : MonoBehaviour
     {
-        Dictionary<AbilityData, float> cooldownTimers = new Dictionary<AbilityData, float>();
-        Dictionary<AbilityData, float> initialCooldownTimes = new Dictionary<AbilityData, float>();
+        Dictionary<InventoryItem, float> cooldownTimers = new Dictionary<InventoryItem, float>();
+        Dictionary<InventoryItem, float> initialCooldownTimes = new Dictionary<InventoryItem, float>();
 
         void Update()
         {
-            var keys = new List<AbilityData>(cooldownTimers.Keys);
-            foreach (AbilityData ability in keys)
+            var keys = new List<InventoryItem>(cooldownTimers.Keys);
+            foreach (InventoryItem ability in keys)
             {
                 cooldownTimers[ability] -= Time.deltaTime;
                 if (cooldownTimers[ability] < 0)
@@ -22,13 +22,13 @@ namespace IMPossible.Ability
             }
         }
 
-        public void StartCooldown(AbilityData ability, float cooldownTime)
+        public void StartCooldown(InventoryItem ability, float cooldownTime)
         {
             cooldownTimers[ability] = cooldownTime;
             initialCooldownTimes[ability] = cooldownTime;
         }
 
-        public float GetTimeRemaining(AbilityData ability)
+        public float GetTimeRemaining(InventoryItem ability)
         {
             if (!cooldownTimers.ContainsKey(ability))
             {
@@ -38,7 +38,7 @@ namespace IMPossible.Ability
             return cooldownTimers[ability];
         }
 
-        public float GetFractionRemaining(AbilityData ability)
+        public float GetFractionRemaining(InventoryItem ability)
         {
             if (ability == null)
             {

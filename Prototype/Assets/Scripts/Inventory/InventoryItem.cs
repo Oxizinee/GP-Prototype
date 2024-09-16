@@ -30,19 +30,19 @@ namespace IMPossible.Inventory
 
         public void Use(GameObject user)
         {
-            _data = new AbilityData(user);
-
             CooldownStorage cooldownStorage = user.GetComponent<CooldownStorage>();
-            if (cooldownStorage.GetTimeRemaining(_data) > 0)
+            if (cooldownStorage.GetTimeRemaining(this) > 0)
             {
                 return; //if cooldown is still above 0 return - dont let the player use it
             }
+
+            _data = new AbilityData(user);
 
             _OnUse_targetingStrategy.StartTargeting(_data,() => 
                 {
                 TargetAquired(_data, _OnUse_filteringStrategies, _OnUse_effectStrategies);
                 });
-            cooldownStorage.StartCooldown(_data, _cooldownTime);
+            cooldownStorage.StartCooldown(this, _cooldownTime);
         }
         public void GetPassiveEffect(GameObject user)
         {

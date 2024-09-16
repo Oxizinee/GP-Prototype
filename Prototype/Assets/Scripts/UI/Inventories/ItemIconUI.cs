@@ -23,12 +23,12 @@ namespace IMPossible.UI.Inventories
         }
         private void Update()
         {
-            cooldownOverlay.fillAmount = _cooldownStorage.GetFractionRemaining(GetAbility());
+            cooldownOverlay.fillAmount = _cooldownStorage.GetFractionRemaining(GetItem());
         }
 
-        private AbilityData GetAbility()
+        private InventoryItem GetItem()
         {
-            return _inventory.GetAbilityData(_index);
+            return _inventory.GetItem(_index);
         }
         public void SetItem(InventoryItem item)
         {
