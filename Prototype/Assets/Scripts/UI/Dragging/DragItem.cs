@@ -55,6 +55,7 @@ namespace IMPossible.UI.Dragging
             transform.position = startPosition;
             GetComponent<CanvasGroup>().blocksRaycasts = true;
             transform.SetParent(originalParent, true);
+            transform.SetSiblingIndex(0);
 
             IDragDestination<T> container;
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -123,11 +124,10 @@ namespace IMPossible.UI.Dragging
 
         private bool AttemptSimpleTransfer(IDragDestination<T> destination)
         {
-            print("trying to transfer");
-            print(source.GetItem().GetType().Name);
             var draggingItem = source.GetItem();
 
-            var toTransfer = destination.MaxAcceptable(draggingItem);
+            var acceptable = destination.MaxAcceptable(draggingItem);
+            var toTransfer = Mathf.Min(acceptable, 1);
 
             if (toTransfer > 0)
             {

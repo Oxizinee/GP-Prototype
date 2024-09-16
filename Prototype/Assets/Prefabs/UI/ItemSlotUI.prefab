@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8688145187930177420
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -175,6 +175,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7373818908561348273}
     m_Modifications:
+    - target: {fileID: 939076686870868368, guid: aaaa23202ddab7d46b5d4b2cc8907768, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 939076686870868368, guid: aaaa23202ddab7d46b5d4b2cc8907768, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6424227357162137724, guid: aaaa23202ddab7d46b5d4b2cc8907768, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -259,6 +267,10 @@ PrefabInstance:
       propertyPath: cooldownOverlay
       value: 
       objectReference: {fileID: 5635488431423730699}
+    - target: {fileID: 8492698226511080066, guid: aaaa23202ddab7d46b5d4b2cc8907768, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8750746466883572457, guid: aaaa23202ddab7d46b5d4b2cc8907768, type: 3}
       propertyPath: m_Name
       value: ItemSlot

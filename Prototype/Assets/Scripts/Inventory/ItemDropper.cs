@@ -10,7 +10,6 @@ namespace IMPossible.Inventory
         public void DropItem(InventoryItem item)
         {
             SpawnPickup(item);
-         //   GetComponent<Inventory>().RemoveItem(item);
         }
 
         private void SpawnPickup(InventoryItem item)

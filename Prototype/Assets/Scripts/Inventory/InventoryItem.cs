@@ -58,7 +58,7 @@ namespace IMPossible.Inventory
         public Pickup SpawnPickup(Vector3 position)
         {
             var pickup = Instantiate(_pickup);
-            pickup.transform.position = position;
+            pickup.transform.position = new Vector3(position.x + 1.5f, position.y + 1.5f, position.z);
             pickup.Setup(this);
             return pickup;
         }

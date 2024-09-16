@@ -33,6 +33,10 @@ namespace IMPossible.Inventory
             }
             return false;
         }
+        public bool HasSpaceFor()
+        {
+            return FindEmptySlot() >= 0;
+        }
         public void RemoveItem(int slot)
         {
             ItemsHolding[slot] = null;

@@ -35,8 +35,11 @@ namespace IMPossible.UI.Inventories
 
         public int MaxAcceptable(InventoryItem item)
         {
-           if(GetItem() == null) return int.MaxValue;
-            return 1;
+           if (_inventory.HasSpaceFor())
+            {
+                return int.MaxValue;
+            }
+            return 0;
         }
 
     }
