@@ -33,9 +33,11 @@ namespace IMPossible.Inventory
             }
             return false;
         }
-        public void RemoveItem(InventoryItem item)
+        public void RemoveItem(int slot)
         {
+            ItemsHolding[slot] = null;
 
+            OnInventoryChanged?.Invoke();
         }
         public int GetSize()
         {
@@ -89,6 +91,11 @@ namespace IMPossible.Inventory
             {
                 return AddToFirstEmptySlot(item);
             }
+
+            ItemsHolding[slot] = item;
+
+            OnInventoryChanged?.Invoke();
+
             return true;
         }
         public bool AddToFirstEmptySlot(InventoryItem item)

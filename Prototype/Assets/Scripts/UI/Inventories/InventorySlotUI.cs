@@ -1,10 +1,11 @@
 ﻿using IMPossible.Inventory;
+using IMPossible.UI.Dragging;
 using System.Xml.Serialization;
 using UnityEngine;
 
 namespace IMPossible.UI.Inventories
 {
-    public class InventorySlotUI : MonoBehaviour
+    public class InventorySlotUI : MonoBehaviour, IDragContainer<InventoryItem>
     {
         [SerializeField] private ItemIconUI _icon = null;
 
@@ -22,6 +23,21 @@ namespace IMPossible.UI.Inventories
             _inventory.AddItemToSlot(_index, item);
         }
 
+        public InventoryItem GetItem()
+        {
+            return _inventory.GetItem(_index);
+        }
+
+        public void RemoveItem()
+        {
+            _inventory.RemoveItem(_index);
+        }
+
+        public int MaxAcceptable(InventoryItem item)
+        {
+           if(GetItem() == null) return int.MaxValue;
+            return 1;
+        }
 
     }
 }

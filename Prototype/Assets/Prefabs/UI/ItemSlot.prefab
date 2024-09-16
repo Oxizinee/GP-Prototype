@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8492698226511080066}
   - component: {fileID: 939076686870868368}
   - component: {fileID: 7278190639747021195}
+  - component: {fileID: 3802823272599938678}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -90,3 +91,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   cooldownOverlay: {fileID: 0}
+--- !u!114 &3802823272599938678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750746466883572457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51055f4786417a5488916e6d3678b34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -30,5 +30,6 @@ namespace IMPossible.UI.Inventories
                 _inventorySlots[i].Setup(_playerInventory, i);
             }
         }
+
     }
 }

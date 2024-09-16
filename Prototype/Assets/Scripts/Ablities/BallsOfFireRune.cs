@@ -46,8 +46,6 @@ namespace IMPossible.Ability
                     {
                         targetedEnemies.Add(enemyCollider);  // Add the collider to the list of targeted enemies
                     }
-
-                    print("Bullet Shoot");
                 }
             }
         }

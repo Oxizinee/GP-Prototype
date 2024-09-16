@@ -1,5 +1,6 @@
 ﻿using IMPossible.Ability;
 using IMPossible.Inventory;
+using IMPossible.UI.Dragging;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 namespace IMPossible.UI.Inventories
 {
     [RequireComponent(typeof(Image))]
-    public class ItemIconUI :MonoBehaviour
+    public class ItemIconUI : DragItem<InventoryItem>
     {
         [SerializeField] int _index = 0;
         [SerializeField] private Image cooldownOverlay = null;
