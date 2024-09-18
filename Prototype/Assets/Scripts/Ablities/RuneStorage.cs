@@ -1,15 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace IMPossible.Ability
 {
     public class RuneStorage : MonoBehaviour
     {
-        public List<Rune> RunesHolding = new List<Rune>();
+        public Rune[] RunesHolding;
+
+        public event Action OnStorageChanged;
+
+        private int _storageSize = 3;
+
+        private void Awake()
+        {
+            RunesHolding = new Rune[_storageSize];
+        }
         private bool AlreadyHasIt(Rune rune)
         {
-            for (int i = 0; i < RunesHolding.Count; i++)
+            for (int i = 0; i < RunesHolding.Length; i++)
             {
                 if (object.ReferenceEquals(RunesHolding[i], rune))
                 {
@@ -19,23 +30,55 @@ namespace IMPossible.Ability
             return false;
         }
 
+        public Rune GetRune(int id)
+        {
+            if (RunesHolding.GetValue(id) != null)
+            {
+                return RunesHolding[id];
+            }
+            return null;
+        }
 
-        public void AddRune(Rune rune)
+        public int GetLevelInSlot(int slot)
+        {
+            if (RunesHolding.GetValue(slot) != null)
+            {
+                return RunesHolding[slot].GetCurrentLevel();
+            }
+            return 0;
+        }
+        public void AddToFirstEmptySlot(Rune rune)
         {
             if (AlreadyHasIt(rune))
             {
                 rune.UpdateLevel();
+                OnStorageChanged?.Invoke();
             }
             else
             {
-                RunesHolding.Add(rune);
+                int i = FindEmptySlot();
+
+                RunesHolding[i] = rune;
                 rune.OnAdd();
             }
+
+            OnStorageChanged?.Invoke();
+        }
+        private int FindEmptySlot()
+        {
+            for (int i = 0; i < RunesHolding.Length; i++)
+            {
+                if (RunesHolding[i] == null)
+                {
+                    return i;
+                }
+            }
+            return -1; // returns -1 if all slots are full
         }
 
         public bool Use(int index, GameObject user)
         {
-            if (RunesHolding[index] != null)
+            if (RunesHolding.GetValue(index) != null)
             {
                 RunesHolding[index].Use(user);
                 return true;

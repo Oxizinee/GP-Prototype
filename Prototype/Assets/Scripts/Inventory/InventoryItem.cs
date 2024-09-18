@@ -1,6 +1,5 @@
-using IMPossible.Ability;
-using IMPossible.Ability.Strategies;
 using UnityEngine;
+using IMPossible.Inventory.Strategies;
 
 namespace IMPossible.Inventory
 {
@@ -14,7 +13,7 @@ namespace IMPossible.Inventory
         [SerializeField] private Pickup _pickup = null;
         [SerializeField] private float _cooldownTime = 0;
 
-        private AbilityData _data = null;
+        private ItemAbilityData _data = null;
 
         [Header("On use strategies")]
         [SerializeField] TargetingStrategy _OnUse_targetingStrategy;
@@ -36,7 +35,7 @@ namespace IMPossible.Inventory
                 return; //if cooldown is still above 0 return - dont let the player use it
             }
 
-            _data = new AbilityData(user);
+            _data = new ItemAbilityData(user);
 
             _OnUse_targetingStrategy.StartTargeting(_data,() => 
                 {
@@ -74,7 +73,7 @@ namespace IMPossible.Inventory
         {
             return _description;
         }
-        private void TargetAquired(AbilityData data, FilteringStrategy[] filtering, EffectStrategy[] effects)
+        private void TargetAquired(ItemAbilityData data, FilteringStrategy[] filtering, EffectStrategy[] effects)
         {
             foreach(var filterStrategy in filtering)
             {
@@ -92,7 +91,7 @@ namespace IMPossible.Inventory
 
         }
 
-        public AbilityData GetData()
+        public ItemAbilityData GetData()
         {
             if (_data != null)
             {

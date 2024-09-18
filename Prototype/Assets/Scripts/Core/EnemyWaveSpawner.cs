@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static IMPossible.Core.EnemyWaveSpawner;
 
 namespace IMPossible.Core
 {
@@ -12,6 +10,8 @@ namespace IMPossible.Core
 
         private int _currentWave = 0;
         private float _offset = 0.4f, _offsetFromClipPlane = 30, _waveCountdown, _timeBetweenWaves = 3;
+
+        public event Action OnEnemySpawned;
 
         private void Start()
         {
@@ -61,6 +61,7 @@ namespace IMPossible.Core
             for (int i = 0; i < wave.EnemiesToSpawnAtOnce; i++)
             {
                 Instantiate(wave.EnemyTypesToSpawn[randomImp], GetOffScreenPosition(), Quaternion.identity, transform);
+                OnEnemySpawned?.Invoke();
             }
         }
 

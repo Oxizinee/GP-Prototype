@@ -2,18 +2,18 @@
 using System;
 using UnityEngine;
 using System.Collections;
-namespace IMPossible.Ability.Strategies.Targeting
+namespace IMPossible.Inventory.Strategies.Targeting
 {
     [CreateAssetMenu(fileName = "Directional Targeting", menuName = "Inventory/Targeting/Directional", order = 0)]
     public class DirectionalTargeting : TargetingStrategy
     {
         [SerializeField] private float _groundOffset = 1;
-        public override void StartTargeting(AbilityData data, Action callWhenFinished)
+        public override void StartTargeting(ItemAbilityData data, Action callWhenFinished)
         {
             data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(Targeting(data, callWhenFinished));
         }
 
-        private IEnumerator Targeting(AbilityData data, Action callWhenFinished)
+        private IEnumerator Targeting(ItemAbilityData data, Action callWhenFinished)
         {
             while (true)
             {

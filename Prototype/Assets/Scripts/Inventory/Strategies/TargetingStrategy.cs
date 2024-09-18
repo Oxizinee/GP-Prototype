@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability.Strategies
+namespace IMPossible.Inventory.Strategies
 {
     public abstract class TargetingStrategy : ScriptableObject
     {
-        public abstract void StartTargeting(AbilityData data, Action callWhenFinished);
+        public abstract void StartTargeting(ItemAbilityData data, Action callWhenFinished);
     }
 }

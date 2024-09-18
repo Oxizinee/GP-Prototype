@@ -8,6 +8,7 @@ namespace IMPossible.Ability
     {
         public string RuneName;
         [TextArea]public string RuneDescription;
+        public Sprite RuneIcon;
         [SerializeField] ProgressionStats StatsToLevelUp = null;
         private Dictionary<RuneStat, float[]> _lookupTable = null;
         public float GetStat(RuneStat stat, int level)
@@ -40,6 +41,11 @@ namespace IMPossible.Ability
             {
                 _lookupTable[progressionStat.RuneStat] = progressionStat.Levels;
             }
+        }
+
+        public Sprite GetIcon()
+        {
+            return RuneIcon;
         }
 
 

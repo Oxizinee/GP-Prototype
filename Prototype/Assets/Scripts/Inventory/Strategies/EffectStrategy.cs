@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability.Strategies
+namespace IMPossible.Inventory.Strategies
 {
     public abstract class EffectStrategy : ScriptableObject
     {
-        public abstract void StartEffect(AbilityData data, Action callWhenFinished);
+        public abstract void StartEffect(ItemAbilityData data, Action callWhenFinished);
     }
 }

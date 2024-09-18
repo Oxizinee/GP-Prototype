@@ -2,17 +2,17 @@
 using System;
 using UnityEngine;
 using System.Collections;
-namespace IMPossible.Ability.Strategies.Targeting
+namespace IMPossible.Inventory.Strategies.Targeting
 {
     [CreateAssetMenu(fileName = "Self Targeting", menuName = "Inventory/Targeting/Self", order = 0)]
     public class SelfTargeting : TargetingStrategy
     {
-        public override void StartTargeting(AbilityData data, Action callWhenFinished)
+        public override void StartTargeting(ItemAbilityData data, Action callWhenFinished)
         {
             data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(ActivateTargetPlayer(data,callWhenFinished));
         }
 
-        private IEnumerator ActivateTargetPlayer(AbilityData data, Action callWhenFinished)
+        private IEnumerator ActivateTargetPlayer(ItemAbilityData data, Action callWhenFinished)
         {
             while (true)
             {

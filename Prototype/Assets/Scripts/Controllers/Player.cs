@@ -57,7 +57,7 @@ namespace IMPossible.Controller
         }
         private void UseRunes()
         {
-            for (int i = 0; i <= _runeStorage.RunesHolding.Count - 1; i++)
+            for (int i = 0; i < _runeStorage.RunesHolding.Length; i++)
             {
                 _runeStorage.Use(i, gameObject);
             }

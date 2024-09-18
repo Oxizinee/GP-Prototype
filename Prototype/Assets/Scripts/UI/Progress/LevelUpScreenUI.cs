@@ -59,7 +59,7 @@ namespace IMPossible.UI.Progress
 
         public void AddRune(Rune rune)
         {
-            _runeHolder.AddRune(rune);
+            _runeHolder.AddToFirstEmptySlot(rune);
             HideLevelUpScreen();
         }
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability.Strategies
+namespace IMPossible.Inventory.Strategies
 {
     public abstract class FilteringStrategy : ScriptableObject
     {

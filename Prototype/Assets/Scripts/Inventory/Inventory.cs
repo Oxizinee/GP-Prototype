@@ -1,4 +1,3 @@
-using IMPossible.Ability;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,7 +56,7 @@ namespace IMPossible.Inventory
             return null;
         }
 
-        public AbilityData GetAbilityData(int index)
+        public ItemAbilityData GetAbilityData(int index)
         {
             if (ItemsHolding.GetValue(index) != null)
             {

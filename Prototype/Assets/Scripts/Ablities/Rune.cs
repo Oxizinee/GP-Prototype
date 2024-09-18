@@ -63,6 +63,10 @@ namespace IMPossible.Ability
             return _runeData.RuneName + " " + GetNextLevel();
         }
 
+        public Sprite GetIcon()
+        {
+           return _runeData.GetIcon();
+        }
         public int GetNextLevel()
         {
             if (_currentLevel == 6)

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability.Strategies.Filtering
+namespace IMPossible.Inventory.Strategies.Filtering
 {
     [CreateAssetMenu(fileName = "Tag Filter", menuName = "Inventory/Filters/By Tag", order = 0)]
     public class TagFilter : FilteringStrategy

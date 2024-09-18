@@ -11,7 +11,6 @@ namespace IMPossible.Controller
     public class EnemyController : MonoBehaviour
     {
         public float Speed = 5, InRadius = 10;
-
         public Vector3 Target { get; set; }
         public bool IsInRadius
         {

@@ -11,6 +11,8 @@ namespace IMPossible.Combat.Missle
         private int _id;
         private float _damage, _duration, _dmgTimer;
 
+        private GameObject _player;
+
         private void Start()
         {
             _visualEffect = GetComponent<VisualEffect>();
@@ -26,13 +28,14 @@ namespace IMPossible.Combat.Missle
 
                 if (_dmgTimer >= 1)
                 {
-                    other.GetComponent<Health>().TakeDamage(gameObject, _damage);
+                    other.GetComponent<Health>().TakeDamage(_player, _damage);
                     _dmgTimer = 0;
                 }
             }
         }
-        public void SetLavaPool(float Damage, float Size, float Duration)
+        public void SetLavaPool(GameObject player, float Damage, float Size, float Duration)
         {
+            _player = player;
             _damage = Damage;
             transform.localScale = new Vector3(Size, Size, Size);
             _duration = Duration;

@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-namespace IMPossible.Ability.Strategies.Targeting
+namespace IMPossible.Inventory.Strategies.Targeting
 {
     [CreateAssetMenu(fileName = "Range Around Player With Click Targeting", menuName = "Inventory/Targeting/Range Around Player With Click", order = 0)]
     public class RangeAroundPlayerWithClick : TargetingStrategy
@@ -12,12 +12,12 @@ namespace IMPossible.Ability.Strategies.Targeting
         [SerializeField] private GameObject _circlePrefab;
 
         private GameObject _circleInstance;
-        public override void StartTargeting(AbilityData data, Action callWhenFinished)
+        public override void StartTargeting(ItemAbilityData data, Action callWhenFinished)
         {
             data.GetUser().GetComponent<MonoBehaviour>().StartCoroutine(Targeting(data,callWhenFinished));
         }
 
-        private IEnumerator Targeting(AbilityData data, Action finished)
+        private IEnumerator Targeting(ItemAbilityData data, Action finished)
         {
             if (_circleInstance == null)
             {

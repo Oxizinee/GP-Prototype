@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability
+namespace IMPossible.Inventory
 {
-    public class AbilityData
+    public class ItemAbilityData
     {
         private GameObject _user;
         private Vector3 _targetedPoint;
         private IEnumerable<GameObject> _targets;
 
-        public AbilityData(GameObject user)
+        public ItemAbilityData(GameObject user)
         {
             _user = user;
         }

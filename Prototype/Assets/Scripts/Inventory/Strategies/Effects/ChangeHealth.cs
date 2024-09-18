@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IMPossible.Ability.Strategies.Effects
+namespace IMPossible.Inventory.Strategies.Effects
 {
     [CreateAssetMenu(fileName ="Change Health Effect", menuName ="Inventory/Effects/Health", order = 0)]
     public class ChangeHealth : EffectStrategy
@@ -11,7 +11,7 @@ namespace IMPossible.Ability.Strategies.Effects
         [SerializeField] private float _damageAmount;
         private float _healAmount;
 
-        public override void StartEffect(AbilityData data, Action callWhenFinished)
+        public override void StartEffect(ItemAbilityData data, Action callWhenFinished)
         {
             _healAmount = HalfHP(data.GetUser().GetComponent<Health>().GetMaxHealth());
             foreach (var target in data.GetTargets())

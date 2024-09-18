@@ -15,6 +15,7 @@ MonoBehaviour:
   RuneName: Balls Of Fire
   RuneDescription: Shoots a small projectile from player position at the closest
     enemy dealing 10 damage every 10 seconds
+  RuneIcon: {fileID: 21300000, guid: 94e8c9d8b366fb448932da69e1683dad, type: 3}
   StatsToLevelUp:
     Stats:
     - RuneStat: 0
