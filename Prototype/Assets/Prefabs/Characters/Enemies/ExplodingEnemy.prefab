@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingLevel: 1
-  _progression: {fileID: 11400000, guid: 5b7c2d872d303d440874b34e1db7e459, type: 2}
+  _progression: {fileID: 11400000, guid: 156befe0adc073645ab75aa721fb7494, type: 2}
   _levelUpParticles: {fileID: 0}
   _currentLevel: 0
 --- !u!114 &1247173566296777675

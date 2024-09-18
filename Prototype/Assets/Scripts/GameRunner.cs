@@ -12,7 +12,7 @@ public class GameRunner : MonoBehaviour
     public GameObject[] EnemiesToSpawn;
     public GameObject BigEnemy;
 
-    public Text EnemiesPresent, EnemiesKilled;
+  //  public Text EnemiesPresent, EnemiesKilled;
 
     public float SpawnerTimer = 3, GameTime;
 
@@ -27,14 +27,12 @@ public class GameRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameTime += Time.deltaTime;
+    //    SpawnEnemies();
 
-        SpawnEnemies();
+      //  SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.007f),0.5f,3);
 
-        SpawnerTimer = Mathf.Clamp(SpawnerTimer - (Time.deltaTime * 0.007f),0.5f,3);
-
-        EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
-        EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;
+     //   EnemiesPresent.text = "Enemies Present: " + EnemiesPresentNmber;
+       // EnemiesKilled.text = "Enemies Killed: " + EnemiesKilledNumber;
     }
 
     private void SpawnEnemies()

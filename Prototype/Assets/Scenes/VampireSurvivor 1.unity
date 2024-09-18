@@ -3037,8 +3037,6 @@ MonoBehaviour:
   - {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
   - {fileID: 1931298151966786, guid: 35f2d86fe60990442b4a82a4fa6443fe, type: 3}
   BigEnemy: {fileID: 1931298151966786, guid: 229ccfdc57846d8498b489af78fd543e, type: 3}
-  EnemiesPresent: {fileID: 450884648}
-  EnemiesKilled: {fileID: 1522059035}
   SpawnerTimer: 0
   GameTime: 0
   EnemiesKilledNumber: 0
@@ -3055,7 +3053,76 @@ Transform:
   m_GameObject: {fileID: 1578714303}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.948019, y: 1.1921388, z: -4.671876}
+  m_LocalPosition: {x: 3.68, y: 0.04, z: -4.671876}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1598134620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598134622}
+  - component: {fileID: 1598134621}
+  m_Layer: 0
+  m_Name: EnemyWaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1598134621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598134620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db29a0a787ddf94aa90953bbf6f8128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waves:
+  - State: 0
+    EnemyTypesToSpawn:
+    - {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+    Duration: 30
+    SpawnRate: 0.25
+    EnemiesToSpawnAtOnce: 3
+  - State: 0
+    EnemyTypesToSpawn:
+    - {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+    - {fileID: 1931298151966786, guid: 9aa7a0d254f58f24b82f1f5d7727329e, type: 3}
+    - {fileID: 1931298151966786, guid: 35f2d86fe60990442b4a82a4fa6443fe, type: 3}
+    Duration: 60
+    SpawnRate: 0.1
+    EnemiesToSpawnAtOnce: 10
+  - State: 0
+    EnemyTypesToSpawn:
+    - {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+    - {fileID: 1931298151966786, guid: 229ccfdc57846d8498b489af78fd543e, type: 3}
+    - {fileID: 1931298151966786, guid: 5ff132215b3a92841ac591141f126a65, type: 3}
+    - {fileID: 1931298151966786, guid: 35f2d86fe60990442b4a82a4fa6443fe, type: 3}
+    - {fileID: 1931298151966786, guid: 9aa7a0d254f58f24b82f1f5d7727329e, type: 3}
+    Duration: 160
+    SpawnRate: 0.1
+    EnemiesToSpawnAtOnce: 10
+--- !u!4 &1598134622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598134620}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.7837553, y: 1.4209337, z: -0.84427327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3863,6 +3930,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1598134622}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 803820211}
