@@ -17,8 +17,21 @@ namespace IMPossible.UI.Progress
 
             if (_levelUpScreenUI.GetRuneList().Length != 0)
             {
-                RandomRune = Random.Range(0, _levelUpScreenUI.GetRuneList().Length);
+                AssignRune();
+            }
+        }
+
+        private void AssignRune()
+        {
+            RandomRune = Random.Range(0, _levelUpScreenUI.GetRuneList().Length);
+
+            if (_levelUpScreenUI.GetRuneLevel(RandomRune) != 6)
+            {
                 GetComponentInChildren<Text>().text = _levelUpScreenUI.GetRuneName(RandomRune);
+            }
+            else
+            {
+                AssignRune();
             }
         }
 

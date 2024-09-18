@@ -3111,7 +3111,7 @@ MonoBehaviour:
     - {fileID: 1931298151966786, guid: 35f2d86fe60990442b4a82a4fa6443fe, type: 3}
     - {fileID: 1931298151966786, guid: 9aa7a0d254f58f24b82f1f5d7727329e, type: 3}
     Duration: 160
-    SpawnRate: 0.1
+    SpawnRate: 0.07
     EnemiesToSpawnAtOnce: 10
 --- !u!4 &1598134622
 Transform:

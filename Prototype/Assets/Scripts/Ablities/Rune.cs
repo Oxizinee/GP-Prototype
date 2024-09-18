@@ -48,6 +48,11 @@ namespace IMPossible.Ability
 
         }
 
+        public int GetCurrentLevel()
+        {
+            return _currentLevel;
+        }
+
         public RuneData GetRuneData()
         {
             return _runeData;
@@ -60,6 +65,11 @@ namespace IMPossible.Ability
 
         public int GetNextLevel()
         {
+            if (_currentLevel == 6)
+            {
+                return _currentLevel;
+            }
+
             return _currentLevel + 1;
         }
     }

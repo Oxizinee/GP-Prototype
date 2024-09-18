@@ -4,6 +4,7 @@ using IMPossible.Controller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace IMPossible.UI.Progress
 {
@@ -38,6 +39,11 @@ namespace IMPossible.UI.Progress
         public Rune[] GetRuneList()
         {
             return _runesToUnlock;
+        }
+
+        public int GetRuneLevel(int index)
+        {
+            return _runesToUnlock[index].GetCurrentLevel();
         }
 
         public string GetRuneName(int index)

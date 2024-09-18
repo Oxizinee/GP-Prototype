@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runeData: {fileID: 11400000, guid: 2b3f9b92fae88454aafc2125bd681e63, type: 2}
   _currentLevel: 0
-  _timer: 0.8264792
+  _timer: 9.243063
   _enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64

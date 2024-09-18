@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runeData: {fileID: 11400000, guid: a3ec0613f6c6ac5428a90e538bbc3164, type: 2}
   _currentLevel: 0
-  _timer: 0.34217912
+  _timer: 0.6381943
   BulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}

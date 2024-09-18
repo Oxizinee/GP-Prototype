@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runeData: {fileID: 11400000, guid: 3d1a6562159d1ab49ae118fc5683d892, type: 2}
   _currentLevel: 0
-  _timer: 4.1915216
+  _timer: 3.921841
   LavaPoolPrefab: {fileID: 1816995898637884409, guid: b177aba7cb267a0449573f7776134096, type: 3}
   Range: 20
