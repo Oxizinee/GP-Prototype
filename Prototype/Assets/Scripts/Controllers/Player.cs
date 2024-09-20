@@ -4,12 +4,15 @@ using IMPossible.Combat;
 using IMPossible.Supplies;
 using IMPossible.Inventory;
 using IMPossible.Ability;
+using IMPossible.Paths;
 
 namespace IMPossible.Controller
 {
     public class Player : MonoBehaviour
     {
         // Start is called before the first frame update
+        [SerializeField] private Path _choosenPath = null;
+
         public float MovementSpeed = 8, JumpHeight = 8,DashDistance = 30, PassiveDamage = 10, BulletSpeed = 12, BulletDamage = 6, TimeBetweenBullets = 1,
             BulletLifeSpan = 9, BulletStunDuration = 0.8f;
         public GameObject BulletPrefab, BombPrefab;
@@ -30,6 +33,11 @@ namespace IMPossible.Controller
         {
            _inventory = GetComponent<Inventory.Inventory>();     
             _runeStorage = GetComponent<RuneStorage>();
+
+            if (_choosenPath != null)
+            {
+                _choosenPath.OnStart();
+            }
         }
         // Update is called once per frame
         void Update()
@@ -39,21 +47,21 @@ namespace IMPossible.Controller
             GetComponent<Mover>().Move(MovementSpeed, JumpHeight);
             GetComponent<Mover>().Rotate();
 
-            BasicAttack();
-
-            //if (GetComponent<PathHolder>().ChoosenPath == null)
-            //{
+            if (_choosenPath == null)
+            {
+                BasicAttack();
                 SpecialAttack();
                 Dash();
-            //}
-            //else
-            //{
-            //    GetComponent<PathHolder>().ChoosenPath.Dash(this.gameObject);
-            //    GetComponent<PathHolder>().ChoosenPath.SpecialAttack(this.gameObject);
-            //}
+            }
+            else
+            {
+               _choosenPath.BasicAttack(gameObject);
+               _choosenPath.Dash(gameObject);
+               _choosenPath.SpecialAttack(gameObject);
+            }
 
-           UseItems();
-           UseRunes();
+            UseItems();
+            UseRunes();
         }
         private void UseRunes()
         {

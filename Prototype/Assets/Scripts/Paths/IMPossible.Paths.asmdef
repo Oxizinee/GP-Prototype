@@ -1,13 +1,10 @@
 {
-    "name": "IMPossible.Controller",
+    "name": "IMPossible.Paths",
     "rootNamespace": "",
     "references": [
-        "GUID:cff1e838da851944e843ecfe226ac17e",
-        "GUID:0a907557f8839b942a187693b5782993",
         "GUID:92390434bf54a6d45a2f38b5fcc6dc55",
-        "GUID:8a08df4fe8e6ba2469c854fd6a9432f1",
-        "GUID:2538bdee627aed541ab5a6a82525051d",
-        "GUID:c1a574fbde878ce488c2adc681bdf206"
+        "GUID:0a907557f8839b942a187693b5782993",
+        "GUID:cff1e838da851944e843ecfe226ac17e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

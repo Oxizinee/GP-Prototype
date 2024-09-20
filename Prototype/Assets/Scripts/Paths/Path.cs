@@ -2,14 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path : ScriptableObject
+namespace IMPossible.Paths
 {
-    public string Name;
-    public int Level = 0;
-    public virtual void Passive(GameObject parent) { }
-    public virtual void SpecialAttack(GameObject parent) { }
-    public virtual void Dash(GameObject parent) { }
-    public virtual void OnStart(GameObject parent) { }
-    public virtual void OnLevelUp(GameObject parent) { }
+    public class Path : MonoBehaviour
+    {
+        [SerializeField] private PathProgression _pathProgression;
+        private int _currentLevel = 0;
+        public int GetCurrentLevel()
+        {
+            return _currentLevel;
+        }
+        public virtual void OnStart()
+        {
+            _currentLevel = 0;
+            _currentLevel++;
+        }
+        public float GetStat(PathStat stat)
+        {
+            return _pathProgression.GetStat(stat, _currentLevel);
+        }
+        public virtual void BasicAttack(GameObject user) { }
+        public virtual void Passive(GameObject user) { }
+        public virtual void SpecialAttack(GameObject parent) { }
+        public virtual void Dash(GameObject parent) { }
+        public virtual void UpdateLevel(GameObject user) { }
 
+    }
 }

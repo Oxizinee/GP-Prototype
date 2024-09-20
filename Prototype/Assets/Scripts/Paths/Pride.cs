@@ -1,174 +1,139 @@
+using Codice.CM.Common;
+using IMPossible.Combat;
+using IMPossible.Combat.Missle;
+using IMPossible.Movement;
+using IMPossible.Supplies;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using IMPossible.Controller;
-using IMPossible.Combat.Missle;
-
-[CreateAssetMenu(menuName = "Paths/Pride")]
-public class Pride : Path
+namespace IMPossible.Paths
 {
-    public bool _canShoot = true, _canShoot2 = true;
-    public float NewRateOfFire = 0.5f, MaxDistance = 20;
-    public GameObject LaserPrefab;
-    public int CurrentDashCharges = 3, MaxDashCharges = 3;
-
-    private float _shootingDelayTimer, _shootingTimer, _shootingDelayTimer2, _shootingTimer2, _specialAttackTimer, _rechargeTimer;
-    private bool _canUseSpecialAttack = true;
-
-    public override void Dash(GameObject parent)
+    public class Pride : Path
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && CurrentDashCharges > 0)
+        public LayerMask EnemyLayerMask;
+        public GameObject LaserPrefab, BulletPrefab;
+        [SerializeField]private float _dashDistance = 50, _radius = 2;
+
+        private float _shootingTimer, _specialAttackTimer, _rechargeTimer;
+        [SerializeField]private bool _canUseSpecialAttack = true, _canUseBasicAttack = true;
+
+        private int _maxDashCharges = 3, _currentDashCharges, _bulletCounter;
+        private GameObject _laser = null;
+
+        public override void OnStart()
         {
-            parent.GetComponent<CharacterController>().Move(parent.transform.forward * parent.GetComponent<Player>().DashDistance);
-            CurrentDashCharges--;
+            base.OnStart();
+            _laser = null;
+            _canUseSpecialAttack = true;
+            _currentDashCharges = _maxDashCharges;
         }
 
-        RechargeCharges();
-    }
-    private void RechargeCharges()
-    {
-        if (CurrentDashCharges < MaxDashCharges)
+        public override void BasicAttack(GameObject user)
         {
-            _rechargeTimer += Time.deltaTime;
-            if (_rechargeTimer >= 8)
+            if(Input.GetMouseButton(0) && _canUseBasicAttack) 
             {
-                CurrentDashCharges++;
-                _rechargeTimer = 0f;
-            }
-        }
-    }
-    public override void SpecialAttack(GameObject parent)
-    {
-        if (Input.GetMouseButtonDown(1) && _canUseSpecialAttack)
-        {
-            Instantiate(LaserPrefab, parent.transform.position, parent.transform.rotation, parent.transform);
-            _canUseSpecialAttack = false;
-        }
-
-        if (!_canUseSpecialAttack)
-        {
-            _specialAttackTimer += Time.deltaTime;
-            if (_specialAttackTimer >= 8)
-            {
-                _canUseSpecialAttack = true;
-                _specialAttackTimer = 0;
-            }
-        }
-    }
-    public override void Passive(GameObject parent)
-    {
-        parent.GetComponent<Player>().BulletDamage = 2 + Level;
-
-        if (Level >= 1)
-        {
-            ShootBullet(parent, parent.transform.position + parent.transform.right, parent.transform.rotation);
-
-            if(Level >= 2)
-            {
-                parent.GetComponent<Player>().TimeBetweenBullets = NewRateOfFire;
-
-                if (Level >= 3)
+                for (int i = 0; i < GetStat(PathStat.NumberOfSpawners); i++)
                 {
-                    ShootMoreBullets(parent, parent.transform.position - parent.transform.right, parent.transform.rotation);
+                    GameObject go = Instantiate(BulletPrefab, new Vector3(user.transform.position.x + i, user.transform.localScale.y / 2, user.transform.position.z), user.transform.rotation);
+                    _bulletCounter++;
+
+                    if (_bulletCounter == 7 && GetCurrentLevel() == 5)
+                    {
+                        go.GetComponent<BasicBullet>().SetProperties(user, 8, GetStat(PathStat.Speed), 0.8f, 12, true);
+                    }
+
+                    go.GetComponent<BasicBullet>().SetProperties(user, 8, GetStat(PathStat.Speed), 0.8f, 6, false);
+
+                }
+                _canUseBasicAttack = false;
+            }
+
+            if (!_canUseBasicAttack)
+            {
+                _shootingTimer += Time.deltaTime;
+                if (_shootingTimer >= GetStat(PathStat.RateOfFire))
+                {
+                    _canUseBasicAttack= true;
+                    _shootingTimer = 0;
                 }
             }
         }
-    }
-
-    private void ShootMoreBullets(GameObject parent, Vector3 position, Quaternion rotation)
-    {
-        if (Input.GetMouseButtonDown(0) && _canShoot2)
+        public override void Dash(GameObject parent)
         {
-
-            GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-            go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-            go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
-            go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
-
-
-            _canShoot2 = false;
-
-        }
-
-        if (!_canShoot2)
-        {
-            _shootingDelayTimer2 += Time.deltaTime;
-
-            if (_shootingDelayTimer2 >= parent.GetComponent<Player>().TimeBetweenBullets)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && _currentDashCharges > 0)
             {
-                _canShoot2 = true;
-                _shootingDelayTimer2 = 0;
+                parent.GetComponent<Mover>().Dash(_dashDistance, 0.5f);
+                _currentDashCharges--;
+            }
+
+            RechargeCharges();
+        }
+        private void RechargeCharges()
+        {
+            if (_currentDashCharges < _maxDashCharges)
+            {
+                _rechargeTimer += Time.deltaTime;
+                if (_rechargeTimer >= 8)
+                {
+                    _currentDashCharges++;
+                    _rechargeTimer = 0f;
+                }
+            }
+        }
+        public override void SpecialAttack(GameObject user)
+        {
+            if (Input.GetMouseButtonDown(1) && _canUseSpecialAttack && GetCurrentLevel() < 3)
+            {
+                if (_laser == null)
+                {
+                    _laser = Instantiate(LaserPrefab, new Vector3(user.transform.position.x, user.transform.position.y + user.transform.localPosition.y, user.transform.position.z), user.transform.rotation, user.transform);
+                }
+                _laser.SetActive(true);
+                _laser.transform.localScale = new Vector3(_radius, _radius, 10);
+
+                RaycastHit[] hit = Physics.SphereCastAll(new Vector3(user.transform.position.x, user.transform.position.y + user.transform.localPosition.y, user.transform.position.z), _radius, user.transform.forward, Mathf.Infinity, EnemyLayerMask);
+                foreach(RaycastHit enemy in hit)
+                {
+                    enemy.collider.GetComponent<Health>().TakeDamage(user, 200);
+                }
+                
+                _canUseSpecialAttack = false;
+            }
+
+            if (!_canUseSpecialAttack)
+            {
+                _specialAttackTimer += Time.deltaTime;
+                if (_specialAttackTimer >= 120)
+                {
+                    _canUseSpecialAttack = true;
+                    _specialAttackTimer = 0;
+                }
             }
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            _shootingTimer2 += Time.deltaTime;
-
-            if (_shootingTimer2 >= parent.GetComponent<Player>().TimeBetweenBullets)
-            {
-                GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-                go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-                go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
-                go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
-                _shootingTimer2 = 0;
-            }
-        }
-        else
-        {
-            _shootingTimer2 = 0;
-        }
-    }
-
-    private void ShootBullet(GameObject parent, Vector3 position, Quaternion rotation)
-    {
-        if (Input.GetMouseButtonDown(0) && _canShoot)
+        public override void UpdateLevel(GameObject user)
         {
 
-            GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-            go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-            go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
-            go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
-
-            _canShoot = false;
-
         }
-
-        if (!_canShoot)
+        public override void Passive(GameObject parent)
         {
-            _shootingDelayTimer += Time.deltaTime;
+            //parent.GetComponent<Player>().BulletDamage = 2 + Level;
 
-            if (_shootingDelayTimer >= parent.GetComponent<Player>().TimeBetweenBullets)
-            {
-                _canShoot = true;
-                _shootingDelayTimer = 0;
-            }
-        }
+            //if (Level >= 1)
+            //{
+            //    ShootBullet(parent, parent.transform.position + parent.transform.right, parent.transform.rotation);
 
-        if (Input.GetMouseButton(0))
-        {
-            _shootingTimer += Time.deltaTime;
+            //    if (Level >= 2)
+            //    {
+            //        parent.GetComponent<Player>().TimeBetweenBullets = NewRateOfFire;
 
-            if (_shootingTimer >= parent.GetComponent<Player>().TimeBetweenBullets)
-            {
-                GameObject go = Instantiate(parent.GetComponent<Player>().BulletPrefab, position, rotation);
-                go.GetComponent<BasicBullet>().CanPierce = parent.GetComponent<Player>().CanPierceActive;
-                go.GetComponent<BasicBullet>().Damage = parent.GetComponent<Player>().BulletDamage;
-                go.GetComponent<BasicBullet>().Speed = parent.GetComponent<Player>().BulletSpeed;
-                _shootingTimer = 0;
-            }
+            //        if (Level >= 3)
+            //        {
+            //            ShootMoreBullets(parent, parent.transform.position - parent.transform.right, parent.transform.rotation);
+            //        }
+            //    }
+            //}
         }
-        else
-        {
-            _shootingTimer = 0;
-        }
-    }
-    public override void OnLevelUp(GameObject player)
-    {
-        //if (player.GetComponent<XPBar>().Level != 0 && player.GetComponent<XPBar>().Level % 3 == 0)
-        //{
-        //    Level++;
-        //}
     }
 }

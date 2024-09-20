@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChoosenPathHolder : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Path Path;
+    //public Path Path;
     void Start()
     {
         DontDestroyOnLoad(gameObject);

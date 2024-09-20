@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5275431425975771741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243306447543895998}
+  - component: {fileID: 704268126726532686}
+  m_Layer: 0
+  m_Name: PridePath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243306447543895998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5275431425975771741}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 70.16108, y: 979.0214, z: -0.5789657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &704268126726532686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5275431425975771741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16acb5f3e3ff1c4e80dd717a5a08d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pathProgression: {fileID: 11400000, guid: 131fcdaa82b83d24e95f44c2a9f0b13b, type: 2}
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  LaserPrefab: {fileID: 7214280178495082250, guid: dc241127680c7954f9cdef27fbe9649f, type: 3}
+  BulletPrefab: {fileID: 6875694788903340662, guid: ea492bb7cde27364c8396beafa560428, type: 3}
+  _dashDistance: 50
+  _radius: 2
+  _canUseSpecialAttack: 1
+  _canUseBasicAttack: 1
