@@ -1,22 +1,31 @@
+using IMPossible.Supplies;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class FloatingText : MonoBehaviour
+namespace IMPossible.UI
 {
-    // Start is called before the first frame update
-    public float DestroyTime = 3;
-    public Vector3 Offset = new Vector3(0,2.5f,0);
-    void Start()
+    public class FloatingText : MonoBehaviour
     {
-        Destroy(gameObject, DestroyTime);
+        // Start is called before the first frame update
+        public float DestroyTime = 3;
+        public Vector3 Offset = new Vector3(0, 2.5f, 0);
 
-        transform.localPosition += Offset;
-    }
+        void Start()
+        {
+            Destroy(gameObject, DestroyTime);
+            transform.localPosition += Offset;
+        }
+        public void SetValue(float damage)
+        {
+            GetComponent<TextMeshPro>().text = damage.ToString();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.localScale -= new Vector3(0.8f, 0.8f, 0.8f) * Time.deltaTime;
+        // Update is called once per frame
+        void Update()
+        {
+            transform.localScale -= new Vector3(0.8f, 0.8f, 0.8f) * Time.deltaTime;
+        }
     }
 }

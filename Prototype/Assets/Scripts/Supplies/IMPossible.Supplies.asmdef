@@ -2,8 +2,7 @@
     "name": "IMPossible.Resources",
     "rootNamespace": "",
     "references": [
-        "GUID:59eb8f7e82a87fe4e86e81b5cedd0de1",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:59eb8f7e82a87fe4e86e81b5cedd0de1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,3 +1,4 @@
+using IMPossible.Supplies;
 using UnityEngine;
 
 namespace IMPossible.Movement
@@ -65,6 +66,7 @@ namespace IMPossible.Movement
             Vector3 dashEndPosition = dashStartPosition + transform.forward * dashDistance;
 
             Vector3 move = Vector3.Lerp(dashStartPosition, dashEndPosition, _timer/dashDuration);
+            GetComponent<Health>().BecomeInvincible(dashDuration);
             GetComponent<CharacterController>().Move(move - transform.position);
             CanDash = false;
         }

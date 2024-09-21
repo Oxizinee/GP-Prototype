@@ -10,7 +10,7 @@ namespace IMPossible.Inventory.Strategies.Effects
         [SerializeField] private float _newMultiplication;
         public override void StartEffect(ItemAbilityData data, Action callWhenFinished)
         {
-            data.GetUser().GetComponent<Health>().ChangeMulltiplication(_newMultiplication);
+            data.GetUser().GetComponent<Health>().ShouldUseModifier = true;
             callWhenFinished();
         }
     }

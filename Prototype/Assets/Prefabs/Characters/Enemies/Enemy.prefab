@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: -497561863812004353}
   - component: {fileID: -7794958105490619876}
   - component: {fileID: -1170758434721972902}
+  - component: {fileID: 1757175957672069865}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -491,7 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _regenerationPercentage: 70
   HP: 10
-  FloatingText: {fileID: 2490951489629043739, guid: d89612f5fd7b9be42880b22838333180, type: 3}
+  ShouldUseModifier: 0
   BloodSplatterPrefab: {fileID: 3397551241818298056, guid: 89977998b14ef8044b9b83be0f945a23, type: 3}
   OnDeath:
     m_PersistentCalls:
@@ -600,6 +601,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   InRadius: 10
+--- !u!114 &1757175957672069865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931298151966786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ac734187e5b8c4eba191e2816c1367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingText: {fileID: -5273486314670260116, guid: d89612f5fd7b9be42880b22838333180, type: 3}
 --- !u!1 &1438157519601450616
 GameObject:
   m_ObjectHideFlags: 0

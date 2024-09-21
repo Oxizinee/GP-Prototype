@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IMPossible.Paths
 {
-    public class Path : MonoBehaviour
+    public abstract class Path : MonoBehaviour
     {
         [SerializeField] private PathProgression _pathProgression;
         private int _currentLevel = 0;

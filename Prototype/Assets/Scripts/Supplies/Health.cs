@@ -1,6 +1,6 @@
 using IMPossible.Stats;
 using System;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,15 +12,18 @@ namespace IMPossible.Supplies
         [SerializeField] private float _regenerationPercentage = 70;
 
         public float HP = 10;
-        public GameObject FloatingText, BloodSplatterPrefab;
-        private float _mulltiplication = 1;
+        public bool ShouldUseModifier = false;
+        public GameObject BloodSplatterPrefab;
+        private float _invincibleTimer, _invincibleDuration;
 
+        private bool _isInvincible;
+
+        public event Action<float> OnDamageTaken;
         public UnityEvent OnDeath;
         private void Start()
         {
             GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
             HP = GetComponent<BaseStats>().GetStat(Stat.Health);
-            _mulltiplication = 1;
         }
 
         private void RegenerateHealth()
@@ -34,11 +37,11 @@ namespace IMPossible.Supplies
         }
         public void TakeDamage(GameObject instigator, float damage)
         {
-            if (!CanBeAttacked()) return;
+            if (!CanBeAttacked() || _isInvincible) return;
 
-            float newDamage = IncreaseDamage(damage, _mulltiplication);
+            float newDamage = damage + ModifiedDamage(damage);
             HP = Mathf.Max(HP - newDamage, 0);
-            ShowFloatingText(newDamage);
+            OnDamageTaken?.Invoke(newDamage);
             SpawnBloodSplatter();
 
             if(IsDead()) 
@@ -48,14 +51,28 @@ namespace IMPossible.Supplies
             }
         }
 
-        public void ChangeMulltiplication(float newDamage)
+        public void BecomeInvincible(float duration)
         {
-            _mulltiplication = newDamage;   
+            _isInvincible = true;
+            _invincibleDuration = duration;
         }
-        private float IncreaseDamage(float damage, float multiplication)
+        private void Update()
         {
-            float newDamage = damage * multiplication;
-            return newDamage;
+            if (_isInvincible)
+            {
+                _invincibleTimer += Time.deltaTime;
+                if (_invincibleTimer >= _invincibleDuration)
+                {
+                    _isInvincible = false;
+                    _invincibleTimer = 0;
+                }
+            }
+        }
+        private float ModifiedDamage(float damage)
+        {
+            if (!ShouldUseModifier) return 0;
+
+            return damage;
         }
         public bool CanBeAttacked()
         {
@@ -80,16 +97,13 @@ namespace IMPossible.Supplies
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.Experience));
         }
 
-        private void ShowFloatingText(float DamageValue)
-        {
-            GameObject text = Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
-            text.GetComponent<TextMeshPro>().text = DamageValue.ToString();
-        }
         private void SpawnBloodSplatter()
         {
             Vector3 oppositeDirection = -transform.forward;
             Quaternion oppositeRotation = Quaternion.LookRotation(oppositeDirection);
             Instantiate(BloodSplatterPrefab, new Vector3(transform.position.x, transform.localScale.y ,transform.position.z), oppositeRotation);
         }
+
+       
     }
 }

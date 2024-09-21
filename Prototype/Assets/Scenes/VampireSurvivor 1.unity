@@ -516,11 +516,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 069ffa4d14310cb4f8e99cbfa2ed5b59, type: 3}
---- !u!1 &60239141 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3766822584442954792, guid: 29928932fab67c74c917cd82de92bc4b, type: 3}
-  m_PrefabInstance: {fileID: 3118890590701259144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &144869716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,11 +730,6 @@ PrefabInstance:
 --- !u!224 &391111695 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7373818908561348273, guid: 29928932fab67c74c917cd82de92bc4b, type: 3}
-  m_PrefabInstance: {fileID: 391111694}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &391111696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3766822584442954792, guid: 29928932fab67c74c917cd82de92bc4b, type: 3}
   m_PrefabInstance: {fileID: 391111694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &416020444
@@ -2813,11 +2803,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7373818908561348273, guid: 29928932fab67c74c917cd82de92bc4b, type: 3}
   m_PrefabInstance: {fileID: 1390737650}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1390737652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3766822584442954792, guid: 29928932fab67c74c917cd82de92bc4b, type: 3}
-  m_PrefabInstance: {fileID: 1390737650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1394761050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3218,11 +3203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19221d8cb7fe93d4ba66a8cc7a9b47dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemiesKilledNumber: 0
-  EnemiesPresentNmber: 0
-  _spawnTimer: 0
-  _offset: 0.3
-  _bigSpawnerTimer: 0
 --- !u!4 &1578714305
 Transform:
   m_ObjectHideFlags: 0
@@ -4215,46 +4195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: UIIcons.Array.data[0]
-      value: 
-      objectReference: {fileID: 60239141}
-    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: UIIcons.Array.data[1]
-      value: 
-      objectReference: {fileID: 1390737652}
-    - target: {fileID: 1019937371619816180, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: UIIcons.Array.data[2]
-      value: 
-      objectReference: {fileID: 391111696}
     - target: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_Name
       value: Jammo_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7084675452128804330, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: _startingLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7534953489361986049, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: DashDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7534953489361986049, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: _choosenPath
-      value: 
-      objectReference: {fileID: 704268126726532686, guid: 602bb79895ff6d14f90ebf3c94413541, type: 3}
-    - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: RunesHolding.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: RunesHolding.Array.data[0]
-      value: 
-      objectReference: {fileID: 789353260204603254, guid: d031abd0d29a18843a91aebc548e9168, type: 3}
-    - target: {fileID: 7766112375350094004, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-      propertyPath: RunesHolding.Array.data[1]
-      value: 
-      objectReference: {fileID: 7111801985035600328, guid: b1c268b02be5dff49beab4b60aa323dc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
