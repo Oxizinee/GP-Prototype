@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace IMPossible.Core
@@ -9,7 +10,7 @@ namespace IMPossible.Core
         [SerializeField] private Wave[] _waves;
 
         private int _currentWave = 0;
-        private float _offset = 0.4f, _offsetFromClipPlane = 30, _waveCountdown, _timeBetweenWaves = 3;
+        private float _offset = 0.4f, _waveCountdown, _timeBetweenWaves = 3;
 
         public event Action OnEnemySpawned;
 
@@ -20,16 +21,26 @@ namespace IMPossible.Core
 
         private void Update()
         {
-            if (_waves[_currentWave].State == SpawnState.Waiting)
+                if (_waves[_currentWave].State == SpawnState.Waiting)
+                {
+                    if (_waveCountdown <= 0)
+                    {
+                        StartCoroutine(SpawnWave(_waves[_currentWave]));
+                    }
+                    else
+                    {
+                        _waveCountdown -= Time.deltaTime;
+                    }
+                }
+
+            WinGame();
+        }
+
+        private void WinGame()
+        {
+            if (_waves.All(x => x.State == SpawnState.Done) && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
             {
-                if (_waveCountdown <= 0)
-                {
-                    StartCoroutine(SpawnWave(_waves[_currentWave]));
-                }
-                else
-                {
-                    _waveCountdown -= Time.deltaTime;
-                }
+                Debug.Log("You won");
             }
         }
 
@@ -44,24 +55,25 @@ namespace IMPossible.Core
             }
 
             wave.State = SpawnState.Done;
-            _currentWave++;
-            _waveCountdown = ResetCountdown();
+            _currentWave = Mathf.Min(_currentWave + 1, _waves.Length -1);
+            ResetCountdown();
 
             yield break;
         }
 
-        private float ResetCountdown()
+        private void ResetCountdown()
         {
-            return _timeBetweenWaves;
+            _waveCountdown = _timeBetweenWaves;
         }
         private void SpawnEnemy(Wave wave)
         {
-            int randomImp = UnityEngine.Random.Range(0, wave.EnemyTypesToSpawn.Length);
-
-            for (int i = 0; i < wave.EnemiesToSpawnAtOnce; i++)
+            foreach (Enemy enemy in wave.EnemiesToSpawn)
             {
-                Instantiate(wave.EnemyTypesToSpawn[randomImp], GetOffScreenPosition(), Quaternion.identity, transform);
-                OnEnemySpawned?.Invoke();
+                for (int i = 0; i < enemy.AmountToSpawn; i++)
+                {
+                    Instantiate(enemy.EnemyPrefab, GetOffScreenPosition(), Quaternion.identity, transform);
+                    OnEnemySpawned?.Invoke();
+                }
             }
         }
 
@@ -73,16 +85,16 @@ namespace IMPossible.Core
             switch (side)
             {
                 case 0: // Left side
-                    viewportPosition = new Vector3(-_offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + _offsetFromClipPlane);
+                    viewportPosition = new Vector3(-_offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + 30);
                     break;
                 case 1: // Right side
-                    viewportPosition = new Vector3(1f + _offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + _offsetFromClipPlane);
+                    viewportPosition = new Vector3(1f + _offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + 30);
                     break;
                 case 2: // Top side
-                    viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), 1f + _offset, Camera.main.nearClipPlane + _offsetFromClipPlane);
+                    viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), 1f + _offset, Camera.main.nearClipPlane + 45);
                     break;
                 case 3: // Bottom side
-                    viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), -_offset, Camera.main.nearClipPlane + _offsetFromClipPlane);
+                    viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), -_offset, Camera.main.nearClipPlane + 25);
                     break;
             }
 
@@ -93,10 +105,16 @@ namespace IMPossible.Core
         public class Wave
         {
             public SpawnState State = SpawnState.Waiting;
-            public GameObject[] EnemyTypesToSpawn;
+            public Enemy[] EnemiesToSpawn;
             public float Duration;
             public float SpawnRate;
-            public int EnemiesToSpawnAtOnce;
+        }
+
+        [Serializable]
+        public class Enemy
+        {
+            public GameObject EnemyPrefab;
+            public int AmountToSpawn;
         }
 
         public enum SpawnState
