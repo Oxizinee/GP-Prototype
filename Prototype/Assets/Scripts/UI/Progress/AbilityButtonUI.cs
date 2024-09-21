@@ -21,7 +21,7 @@ namespace IMPossible.UI.Progress
             }
         }
 
-        private void AssignRune()
+        public void AssignRune()
         {
             RandomRune = Random.Range(0, _levelUpScreenUI.GetRuneList().Length);
 

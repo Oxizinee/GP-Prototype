@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8547344c3752d2b43a6e0f36d2e3787d, type: 3}
   m_Name: LavaPoolStats
   m_EditorClassIdentifier: 
-  RuneName: Lava Pool
-  RuneDescription: Spawns lava pool(s) randomly every 8 seconds around the player,
+  RuneName: Lava Pools
+  RuneDescription: Spawns lava pools randomly every 8 seconds around the player,
     lasting for 6 seconds. They deal 10 damage per second
   RuneIcon: {fileID: 21300000, guid: 97970d08a6125224eb9c1c9dc83c3df1, type: 3}
   StatsToLevelUp:

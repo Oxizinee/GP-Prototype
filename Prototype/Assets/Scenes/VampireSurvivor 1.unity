@@ -1378,7 +1378,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 764618502}
-        m_TargetAssemblyTypeName: RerollButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: IMPossible.UI.Progress.RerollAbilitiesButton, IMPossible.UI
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
