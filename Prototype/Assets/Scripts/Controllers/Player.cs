@@ -20,7 +20,7 @@ namespace IMPossible.Controller
 
         private Inventory.Inventory _inventory;
         private RuneStorage _runeStorage;
-
+        private float _enemyHitTimer;
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Fighter>().IsStunned)
@@ -28,6 +28,19 @@ namespace IMPossible.Controller
                 GetComponent<Health>().TakeDamage(collision.gameObject, 2);
             }
 
+        }
+        private void OnCollisionStay(Collision collision)
+        {
+            if (collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Fighter>().IsStunned)
+            {
+                _enemyHitTimer += Time.deltaTime;
+                if (_enemyHitTimer >= 0.9f)
+                {
+                    GetComponent<Health>().TakeDamage(collision.gameObject, 2);
+                    _enemyHitTimer = 0;
+
+                }
+            }
         }
         private void Awake()
         {
