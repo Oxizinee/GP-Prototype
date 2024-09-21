@@ -7,15 +7,21 @@ namespace IMPossible.UI.Progress
     public class RerollAbilitiesButton : MonoBehaviour
     {
          private AbilityButtonUI[] _listOfButtons;
+        private int _rerollsMade;
         public void OnClick()
         {
-            foreach (var button in _listOfButtons)
+            if (_rerollsMade < 3)
             {
-                button.AssignRune();
+                foreach (var button in _listOfButtons)
+                {
+                    button.AssignRune();
+                }
+                _rerollsMade++;
             }
         }
         private void OnEnable()
         {
+            _rerollsMade = 0;
             _listOfButtons = FindObjectsByType<AbilityButtonUI>(FindObjectsSortMode.None);
         }
     }
