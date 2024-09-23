@@ -1,4 +1,3 @@
-using Codice.CM.Common;
 using IMPossible.Combat;
 using IMPossible.Combat.Missle;
 using IMPossible.Movement;
