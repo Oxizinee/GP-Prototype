@@ -3248,7 +3248,7 @@ MonoBehaviour:
       AmountToSpawn: 20
     Duration: 196
     SpawnRate: 0.2
-  _currentWave: 0
+  _eliteEnemy: {fileID: 1931298151966786, guid: 229ccfdc57846d8498b489af78fd543e, type: 3}
 --- !u!1 &1656469349
 GameObject:
   m_ObjectHideFlags: 0

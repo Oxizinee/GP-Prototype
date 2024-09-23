@@ -2,15 +2,17 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using static IMPossible.Core.EnemyWaveSpawner;
 
 namespace IMPossible.Core
 {
     public class EnemyWaveSpawner : MonoBehaviour
     {
         [SerializeField] private Wave[] _waves;
+        [SerializeField] private GameObject _eliteEnemy;
 
         private int _currentWave = 0;
-        private float _offset = 0.4f, _waveCountdown, _timeBetweenWaves = 3;
+        float _offset = 0.4f, _waveCountdown, _timeBetweenWaves = 3,_eliteEnemyTimer;
 
         public event Action OnEnemySpawned;
 
@@ -21,6 +23,9 @@ namespace IMPossible.Core
 
         private void Update()
         {
+
+            _eliteEnemyTimer += Time.deltaTime;
+
                 if (_waves[_currentWave].State == SpawnState.Waiting)
                 {
                     if (_waveCountdown <= 0)
@@ -31,6 +36,13 @@ namespace IMPossible.Core
                     {
                         _waveCountdown -= Time.deltaTime;
                     }
+                    
+                }
+                 if (_eliteEnemyTimer >= 30)
+                {
+                    Instantiate(_eliteEnemy, GetOffScreenPosition(), Quaternion.identity, transform);
+                    OnEnemySpawned?.Invoke();
+                    _eliteEnemyTimer = 0;
                 }
 
             WinGame();
@@ -40,6 +52,7 @@ namespace IMPossible.Core
         {
             if (_waves.All(x => x.State == SpawnState.Done) && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
             {
+                _eliteEnemyTimer = 0;
                 Debug.Log("You won");
             }
         }
@@ -85,16 +98,16 @@ namespace IMPossible.Core
             switch (side)
             {
                 case 0: // Left side
-                    viewportPosition = new Vector3(-_offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + 30);
+                    viewportPosition = new Vector3(-_offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + 10);
                     break;
                 case 1: // Right side
-                    viewportPosition = new Vector3(1f + _offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + 30);
+                    viewportPosition = new Vector3(1f + _offset, UnityEngine.Random.Range(0f, 1f), Camera.main.nearClipPlane + 10);
                     break;
                 case 2: // Top side
                     viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), 1f + _offset, Camera.main.nearClipPlane + 45);
                     break;
                 case 3: // Bottom side
-                    viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), -_offset, Camera.main.nearClipPlane + 25);
+                    viewportPosition = new Vector3(UnityEngine.Random.Range(0f, 1f), -_offset, Camera.main.nearClipPlane + 10);
                     break;
             }
 
